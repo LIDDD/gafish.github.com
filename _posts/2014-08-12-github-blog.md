@@ -3,7 +3,9 @@ layout: default
 title:  github搭建博客入门教程
 ---
 ## {{page.title}}
+
 搞开发又喜欢写博客的人一般都有两种选择：
+
 * 用免费博客空间，像[cnblogs](http://www.cnblogs.com/)、[iteye](http://www.iteye.com/blogs)、[wordpress](http://wordpress.com/)等；
 * 买空间域名建独立博客，像[张鑫旭](http://www.zhangxinxu.com/wordpress/)、[阮一峰](http://www.ruanyifeng.com/blog/)；
 
