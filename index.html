@@ -10,9 +10,3 @@ title: 徐辉的Blog
 <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
-<h4>最新成果</h4>
-<ul>
-{% for case in site.cases %}
-<li>{{ case.date | date_to_string }} <a href="{{ site.baseurl }}{{ case.url }}">{{ case.title }}</a></li>
-{% endfor %}
-</ul>
