@@ -143,13 +143,15 @@ title:  KISSY组件：图片主色获取脚本rgbaster.js
 
     KISSY.use('gallery/rgbaster/1.0/index',function(S,RGBaster){
 
-        RGBaster.colors('/images/rgbaster.jpg',{
+        var num = Math.floor(Math.random()*2+1);
+        var imgurl = '/images/rgb'+num+'.jpg';
+        RGBaster.colors(imgurl,{
             paletteSize: 1000,
             exclude: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ],
             success: function(color){
                 var demo = document.getElementById('demo');
                 var html = '';
-                html += '<img src="/images/rgbaster.jpg" /><br/>'; 
+                html += '<img src="'+imgurl+'" /><br/>'; 
                 html += '主色：<span style="display:inline-block;width:10px;height:10px;border: 1px solid #ccc;background:'+ color.dominant +'"></span><br/>'; 
                 html += '辅色：<span style="display:inline-block;width:10px;height:10px;border: 1px solid #ccc;background:'+ color.secondary +'"></span><br/>'; 
                 html += '所有颜色：';
