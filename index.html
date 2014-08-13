@@ -7,11 +7,15 @@ title: 徐辉的Blog
 <h4>最新文章</h4>
 <ul>
 {% for post in site.posts %}
-	<li>{{ post.date | date: "%Y-%m-%d" }} &raquo; <a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
+    <li>{{ post.date | date: "%Y-%m-%d" }} &raquo; <a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
 {% endfor %}
+</ul>
+<h4>学习资源</h4>
+<ul>
+    <li><a href="http://msdn.microsoft.com/zh-cn/library/d1et7k7c(v=vs.94).aspx" target="_blank">JavaScript 语言参考</a></li>
 </ul>
 <h4>朋友们</h4>
 <ul>
-	<li><a href="https://github.com/v10258" target="_blank">陈景辉</a></li>
-	<li><a href="https://github.com/lifesinger" target="_blank">王保平（玉伯）</a></li>
+    <li><a href="https://github.com/v10258" target="_blank">陈景辉</a></li>
+    <li><a href="https://github.com/lifesinger" target="_blank">王保平（玉伯）</a></li>
 </ul>
