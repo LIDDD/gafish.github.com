@@ -144,16 +144,17 @@ title:  KISSY组件：图片主色获取脚本rgbaster.js
     KISSY.use('gallery/rgbaster/1.0/index',function(S,RGBaster){
 
         RGBaster.colors('/images/rgbaster.jpg',{
-            //exclude: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ],
+            paletteSize: 1000,
+            exclude: [ 'rgb(255,255,255)', 'rgb(0,0,0)' ],
             success: function(color){
                 var demo = document.getElementById('demo');
                 var html = '';
                 html += '<img src="/images/rgbaster.jpg" /><br/>'; 
-                html += '主色：<span style="display:inline-block;width:20px;height:20px;border: 1px solid #ccc;background:'+ color.dominant +'"></span><br/>'; 
-                html += '辅色：<span style="display:inline-block;width:20px;height:20px;border: 1px solid #ccc;background:'+ color.secondary +'"></span><br/>'; 
+                html += '主色：<span style="display:inline-block;width:10px;height:10px;border: 1px solid #ccc;background:'+ color.dominant +'"></span><br/>'; 
+                html += '辅色：<span style="display:inline-block;width:10px;height:10px;border: 1px solid #ccc;background:'+ color.secondary +'"></span><br/>'; 
                 html += '所有颜色：';
                 for (var i = 0; i < color.palette.length; i++) {
-                    html += '<span style="display:inline-block;width:20px;height:20px;margin:0 5px 5px 0;border: 1px solid #ccc;background:'+ color.palette[i] +'"></span>'; 
+                    html += '<span style="display:inline-block;width:10px;height:10px;margin:0 5px 5px 0;border: 1px solid #ccc;background:'+ color.palette[i] +'"></span>'; 
                 };
                 demo.innerHTML = html;
             }
