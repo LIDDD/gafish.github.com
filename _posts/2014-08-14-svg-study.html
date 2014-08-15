@@ -1,0 +1,46 @@
+---
+layout: default
+title:  学习笔记：SVG开发实践
+---
+
+<h3>SVG学习资料汇总</h3>
+<ul>
+    <li><a href="http://www.w3.org/TR/SVG/">W3C</a></li>
+    <li><a href="http://www.w3cschool.cc/svg/svg-tutorial.html">SVG教程</a></li>
+    <li><a href="http://down.51cto.com/data/782094">svg开发实践 pdf</a></li>
+    <li><a href="http://www.zhangxinxu.com/wordpress/2014/06/deep-understand-svg-path-bezier-curves-command/">深度掌握SVG路径path的贝塞尔曲线指令 </a></li> 
+</ul>
+
+<h3>基本形状练习</h3>
+<svg width=0 height=0>
+<defs>
+    <symbol id="demo" stroke=black stroke-width=10 fill=red>
+        <line x1=10 y1=10 x2=100 y2=10 stroke-width=2 stroke-opacity=.2 > </line>
+        <line x1=10 y1=20 x2=100 y2=20 stroke-width=2 > </line>
+        <line x1=10 y1=30 x2=100 y2=30 stroke-width=2 stroke-dasharray=10,2,5 > </line>
+        <line x1=10 y1=40 x2=100 y2=40 stroke-linecap=butt > </line>
+        <line x1=10 y1=55 x2=100 y2=55 stroke-linecap=round > </line>
+        <line x1=10 y1=70 x2=100 y2=70 stroke-linecap=square > </line>
+        <polyline points="10,90 20,110 100,80" fill=none stroke-linejoin=miter ></polyline>
+        <polyline points="10,130 20,150 100,120" fill=none stroke-linejoin=round ></polyline>
+        <polyline points="10,170 20,190 100,160" fill=none stroke-linejoin=bevel ></polyline>
+        <polyline points="10,210 20,230 100,200" fill=none stroke-linejoin=round stroke-linecap=round ></polyline>
+        <rect x=150 y=10 width=50 height=50 rx=10 ry=5></rect>
+        <circle cx=200 cy=120 r=50></circle>
+        <ellipse cx=350 cy=50 rx=50 ry=20 ></ellipse>
+        <polygon points="450,60 550,60 450,160 500,10 550,160" fill-rule="nonzero"></polygon>
+        <polygon points="600,60 700,60 600,160 650,10 700,160" fill-rule="evenodd"></polygon>
+        <polygon points="750,60 850,60 750,160 800,10 850,160" fill-rule="evenodd" stroke-linejoin=round></polygon>
+    </symbol>
+</defs>
+</svg>
+<svg width=100% height=300>
+    <use xlink:href="#demo" />
+</svg>
+<h3>PATH练习</h3>
+<svg width=100% height=1000 stroke=black stroke-width=10 fill=red>
+    <path d="M10 10,L50 50,l100 -10,m-30 -30,H100,V100,h100,v100,z"></path>
+    <path d="M300 150,C300 50 400 50 400 150,c0 -50 200 -50 200 0,S800 10 800 150,s100 50 100 0,z"></path>
+    <path d="M300 300,Q400 500 500 300,q0 50 100 0,T700 300,t100 0,z " ></path>
+    <path d="M300 500,A100 50 45 0 1 500 500 " ></path>
+</svg>
