@@ -1,9 +1,8 @@
 ---
 layout: default
-title:  学习笔记：SVG开发实践
+title:  SVG开发实践练习
 ---
 
-<h3>SVG学习资料汇总</h3>
 <ul>
     <li><a href="http://www.w3.org/TR/SVG/">W3C</a></li>
     <li><a href="http://www.w3cschool.cc/svg/svg-tutorial.html">SVG教程</a></li>
@@ -38,8 +37,22 @@ title:  学习笔记：SVG开发实践
     <use xlink:href="#demo" />
 </svg>
 <h3>PATH练习</h3>
-<svg width=100% height=600 stroke=black stroke-width=10 fill=red>
+<svg width=100% height=450 stroke=black stroke-width=10 fill=red>
     <path d="M10 10,L50 50,l100 -10,m-30 -30,H100,V100,h100,v100,z"></path>
     <path d="M300 150,C300 50 400 50 400 150,c0 -50 200 -50 200 0,S800 10 800 150,s100 50 100 0,z"></path>
     <path d="M300 300,Q400 500 500 300,q0 50 100 0,T700 300,t100 0,z " ></path>
+</svg>
+<h3>viewbox</h3>
+<svg width=100 height=100 viewbox="0 0 1000 1000">
+    <circle cx=500 cy=500 r=200></circle>
+</svg>
+<h3>transform</h3>
+<svg width=100% height=500 stroke=red stroke-width=1>
+    <circle cx=100 cy=100 r=50></circle>
+    <circle cx=100 cy=100 r=50 transform="translate(100,0)"></circle>
+    <rect x=1 y=1 width=50 height=50 ></rect>
+    <rect x=1 y=1 width=50 height=50 transform="rotate(45)"></rect>
+    <rect x=60 y=0 width=50 height=50 transform="rotate(45,60,0)"></rect>
+    <rect x=250 y=10 width=50 height=50 ></rect>
+    <rect x=250 y=10 width=50 height=50 transform="scale(1.5)"></rect>
 </svg>
