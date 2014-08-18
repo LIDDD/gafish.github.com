@@ -9,6 +9,7 @@ title:  SVG开发实践练习
     <li><a href="http://www.w3cschool.cc/svg/svg-tutorial.html">SVG教程</a></li>
     <li><a href="http://down.51cto.com/data/782094">svg开发实践 pdf</a></li>
     <li><a href="http://www.zhangxinxu.com/wordpress/2014/06/deep-understand-svg-path-bezier-curves-command/">深度掌握SVG路径path的贝塞尔曲线指令 </a></li> 
+    <li><a href="http://blog.csdn.net/seacean2000/article/details/9669655">SVG animation动画 </a></li> 
 </ul>
 
 <h3>基本形状练习</h3>
@@ -57,3 +58,146 @@ title:  SVG开发实践练习
     <rect x=250 y=10 width=50 height=50 ></rect>
     <rect x=250 y=10 width=50 height=50 transform="scale(1.5)"></rect>
 </svg>
+<h3>linearGradient</h3>
+<svg width=200 height=100 >
+    <defs>
+        <lineargradient id="demoLinear" gradientUnits="userSpaceOnUse" x1=0 y1=0 x2=200 y2=100>
+            <stop stop-color=black offset=0 stop-opacity=0.8></stop>
+            <stop stop-color=red offset=100%></stop>
+        </lineargradient>
+    </defs>
+    <rect fill="url(#demoLinear)" width=200 height=100></rect>
+</svg>
+<h3>radialGradient</h3>
+<svg width=200 height=100 >
+    <defs>
+        <radialGradient id="demoRadial" gradientUnits="userSpaceOnUse" cx=50 cy=50 r=50% fx=50 fy=50>
+            <stop stop-color=black offset=0 stop-opacity=1></stop>
+            <stop stop-color=red offset=100%></stop>
+        </radialGradient>
+    </defs>
+    <rect fill="url(#demoRadial)" width=200 height=100></rect>
+</svg>
+<h3>marker</h3>
+<svg width=100% height=300 stroke=black stroke-width=1>
+    <defs>
+        <marker id="demoMarker" markerUnits="userSpaceOnUse" refx=0 refy=4 orient=auto markerWidth=9 markerHeight=9>
+            <path d="M0,0 L0,9 L8,4 L0,0" style="fill: #000000;" />
+        </marker>
+    </defs>
+    <path d="M50,50 L300,50" marker-end="url(#demoMarker)" ></path>
+    <line x1=50 y1=80 x2=300 y2=80 marker-start="url(#demoMarker)"></line>
+    <path d="M50,110 L300,110 L300,200" marker-mid="url(#demoMarker)" fill=none ></path>
+</svg>
+<h3>pattern</h3>
+<svg width=100% height=300 stroke=black stroke-width=1>
+    <defs>
+        <pattern id="demoPattern" patternUnits="userSpaceOnUse" width=80 height=80 viewBox="100 100">
+            <rect x=0 y=0 width=40 height=40></rect>
+            <rect x=40 y=40 width=40 height=40></rect>
+        </pattern>
+    </defs>
+    <rect x=0 y=0 width=400 height=200 fill="url(#demoPattern)"></rect>
+</svg>
+<h3>clipPath</h3>
+<svg width=100% height=300 stroke=black stroke-width=1>
+    <defs>
+        <clipPath id="demoClippath" clipPathUnits="userSpaceOnUse" >
+            <circle cx=100 cy=100 r=50></circle>
+        </clipPath>
+    </defs>
+    <rect x=0 y=0 width=400 height=200 clip-path="url(#demoClippath)"></rect>
+</svg>
+<h3>mask</h3>
+<svg width="8cm" height="3cm" viewBox="0 0 800 300">
+    <defs> 
+        <linearGradient id="Gradient" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="800" y2="0"> 
+            <stop offset="0" stop-color="white" stop-opacity="0" /> 
+            <stop offset="1" stop-color="white" stop-opacity="1" /> 
+        </linearGradient> 
+        <mask id="Mask" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="300"> 
+            <rect x="0" y="0" width="800" height="300" fill="url(#Gradient)" /> 
+        </mask> 
+        <text id="Text" x="400" y="200" font-family="Verdana" font-size="100" text-anchor="middle" > Masked text </text> 
+    </defs> 
+    <!-- 视窗的背景 --> 
+    <use xlink:href="#Text" fill="blue" mask="url(#Mask)" /> 
+</svg>
+<h3>text</h3>
+<svg width=100% height=200>
+    <text x=0 y=22 fill=red>Hello World!</text>
+    <text x=0 y=44 fill=red>
+        Hello
+        <tspan x=50 y=66>World</tspan>
+        <tspan dx="2 4 6 8 10" dy="2 4 6 8 10">World</tspan>
+        <tspan rotate="20 40 60 80 100">World</tspan>
+    </text>
+    <text x=300 y=22 fill=red opacity=0.2>Hello World!</text>
+    <text x=300 y=88 fill=red stroke-width=1 stroke=yellow font-size=30>Hello World!</text>
+    <defs>
+        <path d="M600,22 L600,100 L800,100 L1000,0" id="path">
+    </defs>
+    <text fill=red >
+        <textPath xlink:href="#path">Hello World!Hello World!Hello World!Hello World!</textPath>
+    </text>
+    <text x=0 y=150 fill=red >这是一个神奇的世界！</text>
+</svg>
+<h3>动画练习</h3>
+<svg width=100% height=300>
+    <circle cx=50 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s"></animate>
+    </circle>
+    <circle cx=150 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="1s" ></animate>
+    </circle>
+    <circle cx=250 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="Endefinite" id="demoAnimate1"></animate>
+    </circle>
+    <circle cx=350 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" ></animate>
+    </circle>
+    <circle cx=450 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" end="0.3s" ></animate>
+    </circle>
+    <circle cx=550 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" restart="always" ></animate>
+    </circle>
+    <circle cx=650 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" restart="whenNotactive" ></animate>
+    </circle>
+    <circle cx=750 cy=50 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" restart="never" ></animate>
+    </circle>
+    <circle cx=50 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatCount="2" ></animate>
+    </circle>
+    <circle cx=150 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatCount="indefinite" ></animate>
+    </circle>
+    <circle cx=250 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatDur="2.5" ></animate>
+    </circle>
+    <circle cx=350 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatDur="2.5" fill="freeze"></animate>
+    </circle>
+    <circle cx=450 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatDur="2.5" fill="remove"></animate>
+    </circle>
+    <circle cx=550 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=0 by="100" dur="1s" ></animate>
+    </circle>
+    <circle cx=650 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=5 to="50" dur="1s" additive="replace"></animate>
+    </circle>
+    <circle cx=750 cy=150 r=50>
+        <animate attributeType="XML" attributeName="r" from=5 to="50" dur="1s" additive="sum"></animate>
+    </circle>
+    <circle cx=50 cy=250 r=50>
+        <animate attributeType="XML" attributeName="r" from=5 to="50" dur="1s" repeatDur=2 calcMode=paced accumulate="sum" repeatCount="indefinite"></animate>
+    </circle>
+</svg>
+<script type="text/javascript">
+    setTimeout(function(){
+        demoAnimate1.beginElement();
+    },2000);
+</script>
