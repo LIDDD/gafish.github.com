@@ -224,6 +224,40 @@ title:  SVG开发实践练习
     </rect>
 </svg>
 <h3>滤镜练习</h3>
+<svg width=100% height=350>
+    <defs>
+        <filter id="demoBlur" x=0 y=0 width=100% height=100%>
+            <feGaussianBlur stdDeviation="2 10"></feGaussianBlur>
+        </filter>
+        <filter id="demoMophologyErode" x=0 y=0 width=100% height=100%>
+            <feMorphology operator="erode" radius=1.2></feMorphology>
+        </filter>
+        <filter id="demoMophologyDilate" x=0 y=0 width=100% height=100%>
+            <feMorphology operator="dilate" radius=1.2></feMorphology>
+        </filter>
+        <filter id="demoFlood" x=0 y=0 width=100% height=100% >
+            <feFlood flood-color="red" flood-opacity=0.5></feFlood>
+        </filter>
+        <filter id="demoTile" x=0 y=0 width=100% height=100% >
+            <feImage xlink:href="http://gtms03.alicdn.com/tps/i3/TB1BTMZFVXXXXaCXXXXvYXxIpXX-70-69.png" result="imageTile" width=70 height=70></feImage>
+            <feTile in="imageTile" x=0 y=0 width=600 height=400></feTile>
+        </filter>
+        <filter id="demoDistantLight" x=0 y=0 width=100% height=100% >
+            <feDiffuseLighting surfaceScale="1" diffuseConstant="1" style="lighting-color:white"> 
+                <feDistantLight azimuth="135" elevation="60"/> 
+            </feDiffuseLighting>
+        </filter>
+    </defs>
+    <rect x=20 y=20 width=100 height=50 fill=red stroke=black stroke-width=10 filter="url(#demoBlur)"></rect>
+    <text x=150 y=60 font-size=40>Hello World</text>
+    <text x=400 y=60 font-size=40 filter="url(#demoMophologyErode)">Hello World</text>
+    <text x=650 y=60 font-size=40 filter="url(#demoMophologyDilate)">Hello World</text>
+    <rect x=40 y=100 width=30 height=50 fill=green></rect>
+    <rect x=20 y=80 width=100 height=50 fill=red stroke=black stroke-width=10 filter="url(#demoFlood)"></rect>
+    <rect x=150 y=100 width=300 height=200 filter="url(#demoTile)"></rect>
+    <rect x=550 y=100 width=100 height=100 fill=red filter="url(#demoDistantLight)"></rect>
+</svg>
+<h3>脚本练习</h3>
 <script type="text/javascript">
     setTimeout(function(){
         demoAnimate1.beginElement();
