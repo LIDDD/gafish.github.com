@@ -258,6 +258,28 @@ title:  SVG开发实践练习
     <rect x=550 y=100 width=100 height=100 fill=red filter="url(#demoDistantLight)"></rect>
 </svg>
 <h3>脚本练习</h3>
+<svg width=100% height=100 id="demoJavascript">
+    <text x=50 y=50>Hello World</text>
+    <script type="text/javascript">
+        var text = demoJavascript.getElementsByTagName('text').item(0);
+        console.log('getNumberOfChars==='+text.getNumberOfChars())
+        console.log('getComputedTextLength==='+text.getComputedTextLength())
+        text.selectSubString(6,11);
+        text.style.fill = "red";
+        text.style.setProperty('fill','green');
+        console.log('style.fill===='+text.style.fill)
+        console.log('style.getPropertyValue===='+text.style.getPropertyValue('fill'))
+        console.log('getBBox()==');
+        console.log(demoJavascript.getBBox());
+        console.log('getCTM()==');
+        console.log(demoJavascript.getCTM());
+        console.log('currentScale==');
+        console.log(demoJavascript.currentScale);
+        console.log('currentTranslate==');
+        console.log(demoJavascript.currentTranslate);
+    </script>
+</svg>
+<h3>链接练习</h3>
 <script type="text/javascript">
     setTimeout(function(){
         demoAnimate1.beginElement();
