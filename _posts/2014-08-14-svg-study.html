@@ -280,6 +280,11 @@ title:  SVG开发实践练习
     </script>
 </svg>
 <h3>链接练习</h3>
+<svg width=100% height=100 id="demoLink" xlink:actuate＝"onLoad">
+    <a xlink:href="#demoLink" xlink:show="replace" target="_blank" xlink:actuate="">
+        <text x=0 y=50>Hello</text>
+    </a>
+</svg>
 <script type="text/javascript">
     setTimeout(function(){
         demoAnimate1.beginElement();
