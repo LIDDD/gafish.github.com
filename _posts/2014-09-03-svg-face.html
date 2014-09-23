@@ -1,0 +1,128 @@
+---
+layout: default
+title:  SVG表情
+---
+<!-- 
+<svg width=200 height=200 viewBox="0 0 200 200" id="svgElement" stroke-width=3 fill=none stroke=green>
+    <circle cx=100 cy=100 r=80 />
+    <circle cx=100 cy=100 r=70 />
+    <polyline points="60 80, 70 70, 80 80" />
+    <polyline points="120 80, 130 70, 140 80" />
+    <polyline points="90 120, 100 130, 110 120" />
+</svg>
+ --> 
+ <style type="text/css"> 
+    div{
+        float: left;
+    } 
+ </style>
+<div id="face0"></div>
+<div id="face1"></div>
+<div id="face2"></div>
+<div id="face3"></div>
+<div id="face4"></div>
+<div id="face5"></div>
+<div id="face6"></div>
+<div id="face7"></div>
+<div id="face8"></div>
+<div id="face9"></div>
+<div id="face10"></div>
+
+<script type="text/javascript">
+/*
+    name: SVG表情生成工具
+    param:
+        container: 表情加载容器（eg. #demo|.demo|document.getElement('demo')）
+        level: 表情级别（0-100）
+*/
+function faceTool(container,level){
+    var face = {
+        r: 80,
+        x: 100,
+        y: 100
+    }
+    function createElementNS(nodeName){
+        return document.createElementNS('http://www.w3.org/2000/svg',nodeName);
+    }
+    /*构建画面*/
+    function createSVG(){
+        var svg = createElementNS('svg');
+        svg.setAttribute('width',200);
+        svg.setAttribute('height',200);
+        svg.setAttribute('viewBox','0 0 200 200');
+        svg.setAttribute('stroke',calcColor());
+        svg.setAttribute('fill','none');
+        svg.setAttribute('stroke-width','3');
+        if (level > 0) {
+            svg.appendChild(createCircle(100,100,80,true));
+        }
+        svg.appendChild(createCircle(100,100,70));
+        var eyePoint = calcY(level,100,-2.5);
+        var mouthPoint = calcY(level,100,2.5);
+        svg.appendChild(createpolyline('50 80, 70 80, 90 80','50 80, 70 '+ (eyePoint>80?80:eyePoint) +', 90 80'));
+        svg.appendChild(createpolyline('110 80, 130 80, 150 80','110 80, 130 '+ (eyePoint>80?80:eyePoint) +', 150 80'));
+        svg.appendChild(createpolyline('80 120, 100 120, 120 120','80 120, 100 '+ mouthPoint +', 120 120'));
+        return svg;
+    }
+    /*构建圆脸*/
+    function createCircle(cx,cy,r,b){
+        var circle = createElementNS('circle');
+        circle.setAttribute('cx',cx);
+        circle.setAttribute('cy',cy);
+        circle.setAttribute('r',r);
+        if (b) {
+            var perimeter = 3.14*2*r;
+            var length = perimeter/100*level;
+            var otherLength = perimeter-length;
+            var toDasharray = length+' '+otherLength;
+            var fromDasharray = '0 '+perimeter
+            circle.setAttribute('stroke-dasharray',toDasharray);
+            circle.appendChild(createAnimate('stroke-dasharray',fromDasharray,toDasharray));
+        };
+        // <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s"></animate>
+        return circle;
+    }
+    /*构建眼睛嘴巴*/
+    function createpolyline(from,to){
+        var polyline = createElementNS('polyline');
+        polyline.setAttribute('points',to);
+        polyline.appendChild(createAnimate('points',from,to));
+        return polyline;
+    }
+    /*构建动画*/
+    function createAnimate(name,from,to){
+        var animate = createElementNS('animate');
+        animate.setAttribute('attributeType','XML');
+        animate.setAttribute('attributeName',name);
+        animate.setAttribute('from',from);
+        animate.setAttribute('to',to);
+        animate.setAttribute('dur','.5s');
+        // animate.setAttribute('repeatCount','indefinite');
+        return animate;
+    }
+    /*计算表情颜色*/
+    function calcColor(){
+        return '#f40';
+    }
+    /*计算Y轴*/
+    function calcY(level,baseY,proportion){
+        return baseY + Math.floor(level/proportion);
+    }
+
+    container = (typeof container == 'string') ? document.querySelector(container) : container;
+    level = level > 100 ? 100 : (level < 0 ? 0 : level);
+    container.innerHTML = '';
+    container.appendChild(createSVG());
+
+}
+
+// faceTool('#face1',0);
+// faceTool('#face2',20);
+// faceTool('#face3',40);
+// faceTool('#face4',60);
+
+for (var i = 0; i <= 10; i++) {
+    faceTool('#face'+i,i*10);
+};
+
+</script>
