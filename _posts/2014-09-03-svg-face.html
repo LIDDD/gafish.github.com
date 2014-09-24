@@ -11,22 +11,17 @@ title:  SVG表情
     <polyline points="90 120, 100 130, 110 120" />
 </svg>
  --> 
- <style type="text/css"> 
-    div{
+<script type="text/javascript" src="http://g.alicdn.com/kissy/k/1.4.7/seed-min.js"></script>
+<style type="text/css"> 
+    #demo {
+        overflow: hidden;
+    }
+    #demo div{
         float: left;
     } 
- </style>
-<div id="face0"></div>
-<div id="face1"></div>
-<div id="face2"></div>
-<div id="face3"></div>
-<div id="face4"></div>
-<div id="face5"></div>
-<div id="face6"></div>
-<div id="face7"></div>
-<div id="face8"></div>
-<div id="face9"></div>
-<div id="face10"></div>
+</style>
+<div id="demo">
+</div>
 
 <script type="text/javascript">
 /*
@@ -35,7 +30,7 @@ title:  SVG表情
         container: 表情加载容器（eg. #demo|.demo|document.getElement('demo')）
         level: 表情级别（0-100）
 */
-function faceTool(container,level){
+function createFace(container,level){
     var face = {
         r: 80,
         x: 100,
@@ -54,9 +49,9 @@ function faceTool(container,level){
         svg.setAttribute('fill','none');
         svg.setAttribute('stroke-width','3');
         if (level > 0) {
-            svg.appendChild(createCircle(100,100,80,true));
+            svg.appendChild(createCircle(100,100,80,10,true));
         }
-        svg.appendChild(createCircle(100,100,70));
+        svg.appendChild(createCircle(100,100,70,5,false));
         var eyePoint = calcY(level,100,-2.5);
         var mouthPoint = calcY(level,100,2.5);
         svg.appendChild(createpolyline('50 80, 70 80, 90 80','50 80, 70 '+ (eyePoint>80?80:eyePoint) +', 90 80'));
@@ -65,11 +60,14 @@ function faceTool(container,level){
         return svg;
     }
     /*构建圆脸*/
-    function createCircle(cx,cy,r,b){
+    function createCircle(cx,cy,r,width,b){
         var circle = createElementNS('circle');
         circle.setAttribute('cx',cx);
         circle.setAttribute('cy',cy);
         circle.setAttribute('r',r);
+        if (width) {
+            circle.setAttribute('stroke-width',width);
+        };
         if (b) {
             var perimeter = 3.14*2*r;
             var length = perimeter/100*level;
@@ -100,9 +98,25 @@ function faceTool(container,level){
         // animate.setAttribute('repeatCount','indefinite');
         return animate;
     }
-    /*计算表情颜色*/
+    /*计算表情颜色*/ 
+    /**
+     * r:212 g:89 b:84
+     * r:255 g:153 b:0
+     * r:123 g:219 b:68
+     */
     function calcColor(){
-        return '#f40';
+        var color;
+        var calc = function(a,b,c){
+            return Math.floor(a+(b-a)*((level-50*c)/50));
+        }
+        if (level <= 50) {
+            color = 'rgb('+calc(212,255,0)+','+calc(89,153,0)+','+calc(84,0,0)+')'
+        } else if(level < 100){
+            color = 'rgb('+calc(255,123,1)+','+calc(153,219,1)+','+calc(0,68,1)+')'
+        } else {
+            color = 'rgb(123,219,68)'
+        };
+        return color;
     }
     /*计算Y轴*/
     function calcY(level,baseY,proportion){
@@ -116,13 +130,13 @@ function faceTool(container,level){
 
 }
 
-// faceTool('#face1',0);
-// faceTool('#face2',20);
-// faceTool('#face3',40);
-// faceTool('#face4',60);
-
-for (var i = 0; i <= 10; i++) {
-    faceTool('#face'+i,i*10);
-};
+setInterval(function(){
+    document.getElementById('demo').innerHTML = '';
+    for (var i = 0; i <= 10; i++) {
+        var div = document.createElement('div');
+        createFace(div,i*10);
+        document.getElementById('demo').appendChild(div);
+    };
+},1000);
 
 </script>
