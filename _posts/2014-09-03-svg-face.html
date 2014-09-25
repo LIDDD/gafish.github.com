@@ -4,7 +4,17 @@ title:  SVG表情
 ---
 <!-- 
 <svg width=200 height=200 viewBox="0 0 200 200" id="svgElement" stroke-width=3 fill=none stroke=green>
-    <circle cx=100 cy=100 r=80 />
+  <defs>
+    <filter id="dropshadow" height="130%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> 
+      <feOffset dx="2" dy="2" result="offsetblur"/> 
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+  </defs>
+    <circle cx=100 cy=100 r=80 filter="url(#dropshadow)/>
     <circle cx=100 cy=100 r=70 />
     <polyline points="60 80, 70 70, 80 80" />
     <polyline points="120 80, 130 70, 140 80" />
@@ -19,6 +29,9 @@ title:  SVG表情
     #demo div{
         float: left;
     } 
+    circle{
+        -webkit-svg-shadow: 0 0 7px #53BE12;
+    }
 </style>
 <div id="demo">
 </div>
@@ -48,16 +61,40 @@ function createFace(container,level){
         svg.setAttribute('stroke',calcColor());
         svg.setAttribute('fill','none');
         svg.setAttribute('stroke-width','3');
+        svg.appendChild(createdefs());
         if (level > 0) {
             svg.appendChild(createCircle(100,100,80,10,true));
         }
         svg.appendChild(createCircle(100,100,70,5,false));
-        var eyePoint = calcY(level,100,-2.5);
-        var mouthPoint = calcY(level,100,2.5);
-        svg.appendChild(createpolyline('50 80, 70 80, 90 80','50 80, 70 '+ (eyePoint>80?80:eyePoint) +', 90 80'));
-        svg.appendChild(createpolyline('110 80, 130 80, 150 80','110 80, 130 '+ (eyePoint>80?80:eyePoint) +', 150 80'));
-        svg.appendChild(createpolyline('80 120, 100 120, 120 120','80 120, 100 '+ mouthPoint +', 120 120'));
+        var eyeRY = level<=50?1:level/10;
+        svg.appendChild(createellipse(70,80,10,eyeRY));
+        svg.appendChild(createellipse(130,80,10,eyeRY));
+        var mouthY = (level/100)*40+100;
+        if (mouthY==120) {mouthY--}
+        svg.appendChild(createpath('M 80 120, Q 100 '+mouthY+' 120 120,z'));
+        // svg.appendChild(createpolyline('50 80, 70 80, 90 80','50 80, 70 '+ (eyePoint>80?80:eyePoint) +', 90 80'));
+        // svg.appendChild(createpolyline('110 80, 130 80, 150 80','110 80, 130 '+ (eyePoint>80?80:eyePoint) +', 150 80'));
+        // var mouthPoint = calcY(level,100,2.5);
+        // svg.appendChild(createpolyline('80 120, 100 120, 120 120','80 120, 100 '+ mouthPoint +', 120 120'));
         return svg;
+    }
+    /*构建高光*/
+    function createdefs(){
+        var defs = createElementNS('defs');
+        var filter = createElementNS('filter');
+        filter.setAttribute('id','dropshadow');
+        var feGaussianBlur = createElementNS('feGaussianBlur');
+        feGaussianBlur.setAttribute('stdDeviation',4);
+        var feMerge = createElementNS('feMerge');
+        var feMergeNode1 = createElementNS('feMergeNode');
+        var feMergeNode2 = createElementNS('feMergeNode');
+        feMergeNode2.setAttribute('in','SourceGraphic');
+        feMerge.appendChild(feMergeNode1);
+        feMerge.appendChild(feMergeNode2);
+        filter.appendChild(feGaussianBlur);
+        filter.appendChild(feMerge);
+        defs.appendChild(filter);
+        return defs;
     }
     /*构建圆脸*/
     function createCircle(cx,cy,r,width,b){
@@ -65,6 +102,7 @@ function createFace(container,level){
         circle.setAttribute('cx',cx);
         circle.setAttribute('cy',cy);
         circle.setAttribute('r',r);
+        circle.setAttribute('filter','url(#dropshadow)');
         if (width) {
             circle.setAttribute('stroke-width',width);
         };
@@ -80,12 +118,33 @@ function createFace(container,level){
         // <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s"></animate>
         return circle;
     }
+    /*构建眼睛*/
+    function createellipse(cx,cy,rx,ry){
+        var ellipse = createElementNS('ellipse');
+        ellipse.setAttribute('cx',cx);
+        ellipse.setAttribute('cy',cy);
+        ellipse.setAttribute('rx',rx);
+        ellipse.setAttribute('ry',ry);
+        ellipse.setAttribute('stroke-width',0);
+        ellipse.setAttribute('fill',calcColor());
+        ellipse.appendChild(createAnimate('ry',1,ry));
+        return ellipse;
+    }
     /*构建眼睛嘴巴*/
     function createpolyline(from,to){
         var polyline = createElementNS('polyline');
         polyline.setAttribute('points',to);
         polyline.appendChild(createAnimate('points',from,to));
         return polyline;
+    }
+    /*构建嘴巴*/
+    function createpath(d){
+        var path = createElementNS('path');
+        path.setAttribute('d',d);
+        path.setAttribute('fill',calcColor());
+        path.setAttribute('stroke-width',0);
+        path.appendChild(createAnimate('d','M 80 120, Q 100 100 120 120,z',d));
+        return path;
     }
     /*构建动画*/
     function createAnimate(name,from,to){
@@ -118,10 +177,6 @@ function createFace(container,level){
         };
         return color;
     }
-    /*计算Y轴*/
-    function calcY(level,baseY,proportion){
-        return baseY + Math.floor(level/proportion);
-    }
 
     container = (typeof container == 'string') ? document.querySelector(container) : container;
     level = level > 100 ? 100 : (level < 0 ? 0 : level);
@@ -130,13 +185,15 @@ function createFace(container,level){
 
 }
 
-setInterval(function(){
+var face = function(){
     document.getElementById('demo').innerHTML = '';
     for (var i = 0; i <= 10; i++) {
         var div = document.createElement('div');
         createFace(div,i*10);
         document.getElementById('demo').appendChild(div);
     };
-},1000);
+}
+face();
+// setInterval(face,1000);
 
 </script>
