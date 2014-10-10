@@ -120,6 +120,7 @@ body{
     line-height: 1.5;
     color: #f40;
     padding: 30px 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .tab{
@@ -167,6 +168,10 @@ body{
     width: 33%;
     line-height: 2;
     text-align: center;
+}
+.toolbar li:nth-child(2){
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
 }
 .toolbar a{
     display: block;
@@ -319,4 +324,7 @@ body{
 }
 .simple-btn{
     margin: 20px;
+}
+.quick{
+    padding: 20px;
 }
