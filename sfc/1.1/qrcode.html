@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>阿里顺风车APP</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Include the compiled Ratchet CSS -->
+    <link href="css/ratchet.css" rel="stylesheet">
+
+    <!-- Include the compiled Ratchet JS -->
+    <!-- 
+    <script src="js/ratchet.js"></script>
+     -->
+  </head>
+  <body>
+
+    <!-- Make sure all your bars are the first things in your <body> -->
+    <header class="bar bar-nav"> 
+        <h1 class="title">二维码</h1>
+    </header>
+
+    <div class="content"> 
+      <img src="../img/qcode.jpg" alt="" style="display:block;margin: 10px auto;padding:10px;border: 1px solid #ddd; border-radius: 5px;"> 
+    </div>
+
+    <nav class="bar bar-tab">
+      <a class="tab-item active" href="index.html">
+        <span class="icon icon-home"></span>
+        <span class="tab-label">首页</span>
+      </a>
+      <a class="tab-item" href="qrcode.html">
+        <span class="icon icon-person"></span>
+        <span class="tab-label">二维码</span>
+      </a>
+      <a class="tab-item" href="history.html">
+        <span class="icon icon-bars"></span>
+        <span class="tab-label">搭车记录</span>
+      </a>
+      <a class="tab-item" href="ranking.html">
+        <span class="icon icon-more-vertical"></span>
+        <span class="tab-label">排行榜</span>
+      </a>
+    </nav>
+
+  </body>
+</html>
