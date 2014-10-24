@@ -9,15 +9,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap add-luxian">
+    <h3 class="title">填写路线信息</h3>
     <div class="form">
       <!-- <form action="luxian.html"> -->
         <div class="item">
-          <span class="label">类型：</span>
-          <ul class="select">
-            <li class="selected">上班</li>
-            <li>下班</li>
-          </ul>
         </div>
         <div class="item">
           <span class="label">起点：</span>
@@ -29,21 +25,42 @@
         </div>
         <div class="item">
           <span class="label">空位：</span>
-          <input type="text" class="text"> 个
+          <select name="" id="">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+          </select>
+           个
         </div>
         <div class="item">
+          <span class="label">车牌：</span>
+          <input type="text" class="text">
+        </div>
+        <div class="item tujindian">
           <span class="label">途径点：</span>
-          <textarea name="" id="" cols="25" rows="10"></textarea>
+          <div class="tujindian-input">
+            <input type="text" class="text">
+            <input type="text" class="text">
+            <input type="text" class="text">
+            <a href="" class="btn tujindian-add">添加途径点</a>
+          </div>
         </div>
         <div class="item">
           <span class="label">出发时间：</span>
           <select name="" id="">
-            <option value="">5分钟后</option>
-            <option value="" selected>10分钟后</option>
-            <option value="">20分钟后</option>
-            <option value="">30分钟后</option>
-            <option value="">1小时后</option>
+            <option value="">12</option>
+            <option value="" selected>13</option>
+            <option value="">14</option>
+            <option value="">15</option>
+            <option value="">16</option>
           </select>
+          时
+          <select name="" id="">
+            <option value="">1</option>
+            <option value="">2</option>
+            <option value="">3</option>
+          </select>
+          分
         </div>
         <div class="simple-btn">
           <a class="btn btn-large" href="luxian.html">提交</a>
