@@ -56,6 +56,7 @@ body{
     <div id="scroller">
         <p>测试文字测试测试文字测试</p>
         <p>测试文字测试测试文字测试</p>
+        <p>测试文字测试测试文字测试</p>
         <p>测试文字测试</p>
         <p>测试文字测试</p>
         <p>测试文字测试</p>
@@ -480,19 +481,19 @@ body{
 
         _start: function(e) {
             // React to left mouse button only
-            // if (utils.eventType[e.type] != 1) {
-            //     if (e.button !== 0) {
-            //         return;
-            //     }
-            // }
+            if (utils.eventType[e.type] != 1) {
+                if (e.button !== 0) {
+                    return;
+                }
+            }
 
-            // if (!this.enabled || (this.initiated && utils.eventType[e.type] !== this.initiated)) {
-            //     return;
-            // }
+            if (!this.enabled || (this.initiated && utils.eventType[e.type] !== this.initiated)) {
+                return;
+            }
 
-            // if (this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
-            //     e.preventDefault();
-            // }
+            if (this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
+                e.preventDefault();
+            }
 
             // var point = e.touches ? e.touches[0] : e,
             //     pos;
