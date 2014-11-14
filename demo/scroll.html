@@ -53,7 +53,7 @@ body{
     <a id="button" href="" >刷新</a>
 </div>
 <div id="wrapper">
-    <div id="scroller">
+    <div id="scroller" style="transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); -webkit-transition: 0ms cubic-bezier(0.1, 0.57, 0.1, 1); transform: translate(0px, 0px) translateZ(0px);">
         <p>测试文字测试</p>
         <p>测试文字测试</p>
         <p>测试文字测试</p>
@@ -1047,7 +1047,6 @@ body{
         },
 
         _initIndicators: function() {
-            alert(11)
             var interactive = this.options.interactiveScrollbars,
                 customStyle = typeof this.options.scrollbars != 'string',
                 indicators = [],
@@ -1780,10 +1779,10 @@ body{
 //     return window.IScroll;
 // })
 
-new IScroll('#wrapper', { 
-    mouseWheel: true,
-    scrollbars: false
-});
+// new IScroll('#wrapper', { 
+//     mouseWheel: true,
+//     scrollbars: false
+// });
 
 
 
