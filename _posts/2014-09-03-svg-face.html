@@ -126,13 +126,6 @@ function createFace(cfg){
         ellipse.appendChild(createAnimate('ry',1,ry));
         return ellipse;
     }
-    /*构建眼睛嘴巴*/
-    function createpolyline(from,to){
-        var polyline = createElementNS('polyline');
-        polyline.setAttribute('points',to);
-        polyline.appendChild(createAnimate('points',from,to));
-        return polyline;
-    }
     /*构建嘴巴*/
     function createpath(d){
         var path = createElementNS('path');
@@ -160,15 +153,13 @@ function createFace(cfg){
      */
     function calcColor(){
         var color;
-        var calc = function(a,b,c){
-            return Math.floor(a+(b-a)*((level-50*c)/50));
+        var calc = function(start,end,index){
+            return Math.floor(start+(end-start)*((level-50*index)/50));
         }
         if (level <= 50) {
             color = 'rgb('+calc(212,255,0)+','+calc(89,153,0)+','+calc(84,0,0)+')'
-        } else if(level < 100){
-            color = 'rgb('+calc(255,123,1)+','+calc(153,219,1)+','+calc(0,68,1)+')'
         } else {
-            color = 'rgb(123,219,68)'
+            color = 'rgb('+calc(255,123,1)+','+calc(153,219,1)+','+calc(0,68,1)+')'
         };
         return color;
     }
