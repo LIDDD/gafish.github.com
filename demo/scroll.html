@@ -8,6 +8,9 @@
 <title>iScroll demo: barebone</title>
 
 <style>
+body{
+    -webkit-overflow-scrolling: touch;
+}
 #wrapper {
     position: absolute;
     z-index: 1;
@@ -1676,12 +1679,12 @@
 
         handleEvent: function(e) {
             switch (e.type) {
-                // case 'touchstart':
-                // // case 'pointerdown':
-                // // case 'MSPointerDown':
-                // // case 'mousedown':
-                //     this._start(e);
-                //     break;
+                case 'touchstart':
+                // case 'pointerdown':
+                // case 'MSPointerDown':
+                // case 'mousedown':
+                    this._start(e);
+                    break;
                 case 'touchmove':
                 // case 'pointermove':
                 // case 'MSPointerMove':
@@ -1875,15 +1878,15 @@
 
             this.startTime = utils.getTime();
 
-            if (!this.options.disableTouch) {
-                utils.addEvent(window, 'touchmove', this);
-            }
-            if (!this.options.disablePointer) {
-                utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
-            }
-            if (!this.options.disableMouse) {
-                utils.addEvent(window, 'mousemove', this);
-            }
+            // if (!this.options.disableTouch) {
+            //     utils.addEvent(window, 'touchmove', this);
+            // }
+            // if (!this.options.disablePointer) {
+            //     utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
+            // }
+            // if (!this.options.disableMouse) {
+            //     utils.addEvent(window, 'mousemove', this);
+            // }
 
             this.scroller._execEvent('beforeScrollStart');
         },
@@ -2176,16 +2179,16 @@ new IScroll('#wrapper', { mouseWheel: true });
 
     var index = 0;
     document.addEventListener('touchstart',function(){
-        document.getElementById('header').innerHTML = 'start=>'+(++index);
+        document.getElementById('header').innerHTML = 'start=>>'+(++index);
     },this)
     document.addEventListener('touchmove',function(){
-        document.getElementById('header').innerHTML = 'move=>'+(++index);
+        document.getElementById('header').innerHTML = 'move=>>'+(++index);
     },this)
     document.addEventListener('touchend',function(){
-        document.getElementById('header').innerHTML = 'end=>'+(++index);
+        document.getElementById('header').innerHTML = 'end=>>'+(++index);
     },this)
     document.addEventListener('touchcancel',function(){
-        document.getElementById('header').innerHTML = 'cancel=>'+(++index);
+        document.getElementById('header').innerHTML = 'cancel=>>'+(++index);
     },this)
 
     document.getElementById('button').href = "?"+Math.random();
