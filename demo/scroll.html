@@ -502,7 +502,6 @@ body{
             if (!this.enabled || (this.initiated && utils.eventType[e.type] !== this.initiated)) {
                 return;
             }
-            alert(this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException))
 
             if (this.options.preventDefault && !utils.isBadAndroid && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
                 // e.preventDefault();
@@ -522,8 +521,6 @@ body{
             this._transitionTime();
 
             this.startTime = utils.getTime();
-            alert(this.options.useTransition && this.isInTransition)
-            alert(!this.options.useTransition && this.isAnimating)
 
             if (this.options.useTransition && this.isInTransition) {
                 this.isInTransition = false;
@@ -542,7 +539,7 @@ body{
             this.pointX = point.pageX;
             this.pointY = point.pageY;
 
-            this._execEvent('beforeScrollStart');
+            // this._execEvent('beforeScrollStart');
         },
 
         _move: function(e) {
