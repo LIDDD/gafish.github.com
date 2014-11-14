@@ -13,7 +13,7 @@
 <body>
 
 <div id="wrapper">
-    <div id="header" style="position:fixed; top:0; left:0; width: 100%; height: 25px; background: #eee;"></div>
+    <div id="header" style="position:fixed; top:0; left:0; width: 100%; height: 25px; background: #eee; color: #f00;"></div>
     <div id="content">
         <p>测试文字测试</p>
         <p>测试文字测试</p>
@@ -60,23 +60,18 @@
 </div>
 
 <script type="text/javascript">
-    var $ = document.getElementById;
     var index = 0;
     document.addEventListener('touchstart',function(){
-        alert("touchstart")
-        $('header').innerHTML = 'start'+(++index);
+        document.getElementById('header').innerHTML = 'start'+(++index);
     },this)
     document.addEventListener('touchmove',function(){
-        alert("touchmove")
-        $('header').innerHTML = 'move'+(++index);
+        document.getElementById('header').innerHTML = 'move'+(++index);
     },this)
     document.addEventListener('touchend',function(){
-        alert("touchend")
-        $('header').innerHTML = 'end'+(++index);
+        document.getElementById('header').innerHTML = 'end'+(++index);
     },this)
     document.addEventListener('touchcancel',function(){
-        alert("touchcancel")
-        $('header').innerHTML = 'cancel'+(++index);
+        document.getElementById('header').innerHTML = 'cancel'+(++index);
     },this)
 </script>
 
