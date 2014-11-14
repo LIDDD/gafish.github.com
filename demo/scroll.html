@@ -445,20 +445,6 @@
         version: '5.1.3',
 
         _init: function() {
-
-    var index = 0;
-    document.addEventListener('touchstart',function(){
-        document.getElementById('header').innerHTML = 'start===='+(++index);
-    },this)
-    document.addEventListener('touchmove',function(){
-        document.getElementById('header').innerHTML = 'move===='+(++index);
-    },this)
-    document.addEventListener('touchend',function(){
-        document.getElementById('header').innerHTML = 'end===='+(++index);
-    },this)
-    document.addEventListener('touchcancel',function(){
-        document.getElementById('header').innerHTML = 'cancel===='+(++index);
-    },this)
             this._initEvents();
 
             if (this.options.scrollbars || this.options.indicators) {
@@ -2184,6 +2170,20 @@
 new IScroll('#wrapper', { mouseWheel: true });
 
 
+
+    var index = 0;
+    document.addEventListener('touchstart',function(){
+        document.getElementById('header').innerHTML = 'start='+(++index);
+    },this)
+    document.addEventListener('touchmove',function(){
+        document.getElementById('header').innerHTML = 'move='+(++index);
+    },this)
+    document.addEventListener('touchend',function(){
+        document.getElementById('header').innerHTML = 'end='+(++index);
+    },this)
+    document.addEventListener('touchcancel',function(){
+        document.getElementById('header').innerHTML = 'cancel='+(++index);
+    },this)
 </script>
 
 </body>
