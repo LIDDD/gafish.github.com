@@ -7,18 +7,14 @@
 
 <title>iScroll demo: barebone</title>
 
-
-<script type="text/javascript">
-</script>
-
 <style>
 </style>
 </head>
 <body>
 
 <div id="wrapper">
-    <div id="header"></div>
-    <div id="content" style="height:300px;overflow: scroll;">
+    <div id="header" style="position:fixed; top:0; left:0; width: 100%; height: 25px; background: #eee;"></div>
+    <div id="content">
         <p>测试文字测试</p>
         <p>测试文字测试</p>
         <p>测试文字测试</p>
@@ -62,6 +58,23 @@
         <p>测试文字测试</p>
     </div>
 </div>
+
+<script type="text/javascript">
+    var $ = document.getElementById;
+    var index = 0;
+    document.addEventListener('touchstart',function(){
+        $('header').innerHTML = 'start'+(++index);
+    },this)
+    document.addEventListener('touchmove',function(){
+        $('header').innerHTML = 'move'+(++index);
+    },this)
+    document.addEventListener('touchend',function(){
+        $('header').innerHTML = 'end'+(++index);
+    },this)
+    document.addEventListener('touchcancel',function(){
+        $('header').innerHTML = 'cancel'+(++index);
+    },this)
+</script>
 
 </body>
 </html>
