@@ -1879,14 +1879,14 @@ body{
             this.startTime = utils.getTime();
 
             if (!this.options.disableTouch) {
-                utils.addEvent(window, 'touchmove', this);
+                utils.addEvent(document, 'touchmove', this);
             }
-            // if (!this.options.disablePointer) {
-            //     utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
-            // }
-            // if (!this.options.disableMouse) {
-            //     utils.addEvent(window, 'mousemove', this);
-            // }
+            if (!this.options.disablePointer) {
+                utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
+            }
+            if (!this.options.disableMouse) {
+                utils.addEvent(window, 'mousemove', this);
+            }
 
             this.scroller._execEvent('beforeScrollStart');
         },
