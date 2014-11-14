@@ -519,25 +519,24 @@ body{
 
             this.startTime = utils.getTime();
 
-            if (this.options.useTransition && this.isInTransition) {
-                this.isInTransition = false;
-                pos = this.getComputedPosition();
-                this._translate(Math.round(pos.x), Math.round(pos.y));
-                this._execEvent('scrollEnd');
-            } else if (!this.options.useTransition && this.isAnimating) {
-                this.isAnimating = false;
-                this._execEvent('scrollEnd');
-            }
+            // if (this.options.useTransition && this.isInTransition) {
+            //     this.isInTransition = false;
+            //     pos = this.getComputedPosition();
+            //     this._translate(Math.round(pos.x), Math.round(pos.y));
+            //     this._execEvent('scrollEnd');
+            // } else if (!this.options.useTransition && this.isAnimating) {
+            //     this.isAnimating = false;
+            //     this._execEvent('scrollEnd');
+            // }
 
-            this.startX = this.x;
-            this.startY = this.y;
-            this.absStartX = this.x;
-            this.absStartY = this.y;
-            this.pointX = point.pageX;
-            this.pointY = point.pageY;
+            // this.startX = this.x;
+            // this.startY = this.y;
+            // this.absStartX = this.x;
+            // this.absStartY = this.y;
+            // this.pointX = point.pageX;
+            // this.pointY = point.pageY;
 
-            this._execEvent('beforeScrollStart');
-            alert(document.body.innerHTML)
+            // this._execEvent('beforeScrollStart');
         },
 
         _move: function(e) {
