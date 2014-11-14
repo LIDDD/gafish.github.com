@@ -1878,9 +1878,9 @@ body{
 
             this.startTime = utils.getTime();
 
-            // if (!this.options.disableTouch) {
-            //     utils.addEvent(window, 'touchmove', this);
-            // }
+            if (!this.options.disableTouch) {
+                utils.addEvent(window, 'touchmove', this);
+            }
             // if (!this.options.disablePointer) {
             //     utils.addEvent(window, utils.prefixPointerEvent('pointermove'), this);
             // }
