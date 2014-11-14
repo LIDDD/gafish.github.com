@@ -448,16 +448,16 @@
 
     var index = 0;
     document.addEventListener('touchstart',function(){
-        document.getElementById('header====').innerHTML = 'start'+(++index);
+        document.getElementById('header').innerHTML = 'start===='+(++index);
     },this)
     document.addEventListener('touchmove',function(){
-        document.getElementById('header====').innerHTML = 'move'+(++index);
+        document.getElementById('header').innerHTML = 'move===='+(++index);
     },this)
     document.addEventListener('touchend',function(){
-        document.getElementById('header====').innerHTML = 'end'+(++index);
+        document.getElementById('header').innerHTML = 'end===='+(++index);
     },this)
     document.addEventListener('touchcancel',function(){
-        document.getElementById('header====').innerHTML = 'cancel'+(++index);
+        document.getElementById('header').innerHTML = 'cancel===='+(++index);
     },this)
             this._initEvents();
 
