@@ -55,9 +55,6 @@ body{
 <div id="wrapper">
     <div id="scroller">
         <p>测试文字测试测试文字测试</p>
-        <p>测试文字测试测试文字测试</p>
-        <p>测试文字测试测试文字测试</p>
-        <p>测试文字测试测试文字测试</p>
         <p>测试文字测试</p>
         <p>测试文字测试</p>
         <p>测试文字测试</p>
@@ -496,39 +493,39 @@ body{
                 // e.preventDefault();
             }
 
-            // var point = e.touches ? e.touches[0] : e,
-            //     pos;
+            var point = e.touches ? e.touches[0] : e,
+                pos;
 
-            // this.initiated = utils.eventType[e.type];
-            // this.moved = false;
-            // this.distX = 0;
-            // this.distY = 0;
-            // this.directionX = 0;
-            // this.directionY = 0;
-            // this.directionLocked = 0;
+            this.initiated = utils.eventType[e.type];
+            this.moved = false;
+            this.distX = 0;
+            this.distY = 0;
+            this.directionX = 0;
+            this.directionY = 0;
+            this.directionLocked = 0;
 
-            // this._transitionTime();
+            this._transitionTime();
 
-            // this.startTime = utils.getTime();
+            this.startTime = utils.getTime();
 
-            // if (this.options.useTransition && this.isInTransition) {
-            //     this.isInTransition = false;
-            //     pos = this.getComputedPosition();
-            //     this._translate(Math.round(pos.x), Math.round(pos.y));
-            //     this._execEvent('scrollEnd');
-            // } else if (!this.options.useTransition && this.isAnimating) {
-            //     this.isAnimating = false;
-            //     this._execEvent('scrollEnd');
-            // }
+            if (this.options.useTransition && this.isInTransition) {
+                this.isInTransition = false;
+                pos = this.getComputedPosition();
+                this._translate(Math.round(pos.x), Math.round(pos.y));
+                this._execEvent('scrollEnd');
+            } else if (!this.options.useTransition && this.isAnimating) {
+                this.isAnimating = false;
+                this._execEvent('scrollEnd');
+            }
 
-            // this.startX = this.x;
-            // this.startY = this.y;
-            // this.absStartX = this.x;
-            // this.absStartY = this.y;
-            // this.pointX = point.pageX;
-            // this.pointY = point.pageY;
+            this.startX = this.x;
+            this.startY = this.y;
+            this.absStartX = this.x;
+            this.absStartY = this.y;
+            this.pointX = point.pageX;
+            this.pointY = point.pageY;
 
-            // this._execEvent('beforeScrollStart');
+            this._execEvent('beforeScrollStart');
         },
 
         _move: function(e) {
@@ -537,7 +534,7 @@ body{
             }
 
             if (this.options.preventDefault) { // increases performance on Android? TODO: check!
-                e.preventDefault();
+                // e.preventDefault();
             }
 
             var point = e.touches ? e.touches[0] : e,
@@ -641,7 +638,7 @@ body{
             }
 
             if (this.options.preventDefault && !utils.preventDefaultException(e.target, this.options.preventDefaultException)) {
-                e.preventDefault();
+                // e.preventDefault();
             }
 
             var point = e.changedTouches ? e.changedTouches[0] : e,
@@ -1570,22 +1567,22 @@ body{
                 // case 'mousedown':
                     this._start(e);
                     break;
-                // case 'touchmove':
-                // // case 'pointermove':
-                // // case 'MSPointerMove':
-                // // case 'mousemove':
-                //     this._move(e);
-                //     break;
-                // case 'touchend':
-                // // case 'pointerup':
-                // // case 'MSPointerUp':
-                // // case 'mouseup':
-                // // case 'touchcancel':
-                // // case 'pointercancel':
-                // // case 'MSPointerCancel':
-                // // case 'mousecancel':
-                //     this._end(e);
-                //     break;
+                case 'touchmove':
+                // case 'pointermove':
+                // case 'MSPointerMove':
+                // case 'mousemove':
+                    this._move(e);
+                    break;
+                case 'touchend':
+                // case 'pointerup':
+                // case 'MSPointerUp':
+                // case 'mouseup':
+                // case 'touchcancel':
+                // case 'pointercancel':
+                // case 'MSPointerCancel':
+                // case 'mousecancel':
+                    this._end(e);
+                    break;
                 // case 'orientationchange':
                 // case 'resize':
                 //     this._resize();
