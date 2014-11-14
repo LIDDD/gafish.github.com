@@ -1674,15 +1674,15 @@
         handleEvent: function(e) {
             switch (e.type) {
                 case 'touchstart':
-                case 'pointerdown':
-                case 'MSPointerDown':
-                case 'mousedown':
+                // case 'pointerdown':
+                // case 'MSPointerDown':
+                // case 'mousedown':
                     this._start(e);
                     break;
                 case 'touchmove':
-                case 'pointermove':
-                case 'MSPointerMove':
-                case 'mousemove':
+                // case 'pointermove':
+                // case 'MSPointerMove':
+                // case 'mousemove':
                     this._move(e);
                     break;
                 case 'touchend':
@@ -1695,30 +1695,30 @@
                 // case 'mousecancel':
                     this._end(e);
                     break;
-                case 'orientationchange':
-                case 'resize':
-                    this._resize();
-                    break;
-                case 'transitionend':
-                case 'webkitTransitionEnd':
-                case 'oTransitionEnd':
-                case 'MSTransitionEnd':
-                    this._transitionEnd(e);
-                    break;
-                case 'wheel':
-                case 'DOMMouseScroll':
-                case 'mousewheel':
-                    this._wheel(e);
-                    break;
-                case 'keydown':
-                    this._key(e);
-                    break;
-                case 'click':
-                    if (!e._constructed) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                    break;
+                // case 'orientationchange':
+                // case 'resize':
+                //     this._resize();
+                //     break;
+                // case 'transitionend':
+                // case 'webkitTransitionEnd':
+                // case 'oTransitionEnd':
+                // case 'MSTransitionEnd':
+                //     this._transitionEnd(e);
+                //     break;
+                // case 'wheel':
+                // case 'DOMMouseScroll':
+                // case 'mousewheel':
+                //     this._wheel(e);
+                //     break;
+                // case 'keydown':
+                //     this._key(e);
+                //     break;
+                // case 'click':
+                //     if (!e._constructed) {
+                //         e.preventDefault();
+                //         e.stopPropagation();
+                //     }
+                //     break;
             }
         }
     };
@@ -2173,16 +2173,16 @@ new IScroll('#wrapper', { mouseWheel: true });
 
     var index = 0;
     document.addEventListener('touchstart',function(){
-        document.getElementById('header').innerHTML = 'start='+(++index);
+        document.getElementById('header').innerHTML = 'start=>'+(++index);
     },this)
     document.addEventListener('touchmove',function(){
-        document.getElementById('header').innerHTML = 'move='+(++index);
+        document.getElementById('header').innerHTML = 'move=>'+(++index);
     },this)
     document.addEventListener('touchend',function(){
-        document.getElementById('header').innerHTML = 'end='+(++index);
+        document.getElementById('header').innerHTML = 'end=>'+(++index);
     },this)
     document.addEventListener('touchcancel',function(){
-        document.getElementById('header').innerHTML = 'cancel='+(++index);
+        document.getElementById('header').innerHTML = 'cancel=>'+(++index);
     },this)
 </script>
 
