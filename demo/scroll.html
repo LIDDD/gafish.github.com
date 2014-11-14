@@ -63,15 +63,19 @@
     var $ = document.getElementById;
     var index = 0;
     document.addEventListener('touchstart',function(){
+        alert("touchstart")
         $('header').innerHTML = 'start'+(++index);
     },this)
     document.addEventListener('touchmove',function(){
+        alert("touchmove")
         $('header').innerHTML = 'move'+(++index);
     },this)
     document.addEventListener('touchend',function(){
+        alert("touchend")
         $('header').innerHTML = 'end'+(++index);
     },this)
     document.addEventListener('touchcancel',function(){
+        alert("touchcancel")
         $('header').innerHTML = 'cancel'+(++index);
     },this)
 </script>
