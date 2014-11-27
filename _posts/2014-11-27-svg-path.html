@@ -1,0 +1,41 @@
+---
+layout: default
+title:  path 演示
+---
+
+<div id="show">点击路径显示路径长度</div>
+<svg width=100% height=100% stroke="red" fill="none" stroke-width=10 id="demo" >
+    <path d="M 10 10,L 400 400" stroke="red"/>
+    <path d="M 10 10,V 400,H 400" stroke="green"/>
+    <path d="M 10 10,H 400,V 400" stroke="orange"/>
+    <path d="M 10 10,A 200 100 30 0 1 200 200" stroke="black"/>
+    <path d="M 10 10,Q 100 200 200 200" stroke="brown"/>
+    <path d="M 10 10,Q 10 220 200 200,T 400 400" stroke="pink"/>
+    <path d="M 10 10,C 100 20 200 50 200 200" stroke="purple"/>
+    <path d="M 10 10,C 100 20 200 50 200 200,S 300 350 400 400" stroke="blue"/>
+</svg>
+<script>
+    var cfg = {
+        red    : '红色',
+        green  : '绿色',
+        orange : '橙色',
+        black  : '黑色',
+        brown  : '棕色',
+        pink   : '粉色',
+        purple : '紫色',
+        blue   : '蓝色'
+    }
+    var path = demo.getElementsByTagName('path');
+
+    demo.addEventListener('click',function(e){
+        if (e.target.nodeName.toLowerCase() === 'path') {
+            var name = e.target.getAttribute('stroke');
+            show.innerHTML = cfg[name]+'路径的长度是 '+e.target.getTotalLength()+'px';
+            show.style.color = name;
+        }else{
+            show.innerHTML = '未选中路径';
+            show.style.color = '';
+        }
+    },false);
+
+</script>
