@@ -1,0 +1,72 @@
+---
+layout: default
+title:  text 演示
+---
+
+<style>
+    html,
+    body{
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+</style>
+<svg width=100% height=100%>
+    <defs>
+        <pattern id="demoPattern" x=0 y=0 width=20 height=20 patternUnits="userSpaceOnUse">
+            <path d="M 0 0,H 20,M 0 0,V 20" stroke="#ddd" stroke-width=1 />
+        </pattern>
+    </defs>
+    <rect x=0 y=0 width=100% height=100% fill="url(#demoPattern)" />
+    <text X=100 Y=150 id="demoText"></text>
+</svg>
+<script>
+    var text = 'ABCDEFGHIGKLMNOPQRSTUVWXYZ';
+    var n = text.length;
+    var i = n;
+    var x = [];
+    var y = null;
+    var t = 0;
+
+
+    while(i--){
+        x.push(20);
+        demoText.appendChild(createTspan(text[n-i-1],i));
+    }
+
+    function arrange(t){
+        y = [];
+        var ly = 0;
+        var cy;
+
+        for (i = 0; i < n; ++i) {
+            cy = - 100 * Math.sin(0.02 * i * 20 + t);
+            y.push(cy - ly);
+            ly = cy;
+
+        };
+    }
+
+    function createTspan (text,i) {
+        var tspan = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+        var h = Math.round(360/n*i);
+        tspan.textContent = text;
+        tspan.setAttribute('fill','hsl('+h+',100%,50%)');
+        return tspan;
+    }
+
+    function render(){
+        demoText.setAttribute('dx',x.join(' '));
+        demoText.setAttribute('dy',y.join(' '));
+    }
+
+    function frame () {
+        t += 0.1;
+        arrange(t);
+        render();
+        requestAnimationFrame(frame);
+    }
+
+    frame();
+
+</script>
