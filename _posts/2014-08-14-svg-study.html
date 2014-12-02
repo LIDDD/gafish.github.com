@@ -7,36 +7,65 @@ title:  SVG开发实践练习
 <ul>
     <li><a href="http://www.w3.org/TR/SVG/">W3C</a></li>
     <li><a href="http://www.w3cschool.cc/svg/svg-tutorial.html">SVG教程</a></li>
-    <li><a href="http://down.51cto.com/data/782094">svg开发实践 pdf</a></li>
-    <li><a href="http://www.zhangxinxu.com/wordpress/2014/06/deep-understand-svg-path-bezier-curves-command/">深度掌握SVG路径path的贝塞尔曲线指令 </a></li> 
-    <li><a href="http://blog.csdn.net/seacean2000/article/details/9669655">SVG animation动画 </a></li> 
+    <li><a href="http://www.imooc.com/learn/143">走进SVG（视频）</a></li>
+    <li><a href="http://www.oxxostudio.tw/articles/201410/svg-tutorial.html">SVG 完整教學 31 天（台湾）</a></li> 
     <li><a href="http://msdn.microsoft.com/zh-cn/library/gg193979">SVG动画 </a></li> 
+    <li><a href="http://svg-edit.googlecode.com/svn/branches/2.6/editor/svg-editor.html">SVG 在线绘制工具 </a></li> 
 </ul>
 
-<h3>基本形状练习</h3>
-<svg width=0 height=0>
-<defs>
-    <symbol id="demo" stroke=black stroke-width=10 fill=red>
-        <line x1=10 y1=10 x2=100 y2=10 stroke-width=2 stroke-opacity=.2 > </line>
-        <line x1=10 y1=20 x2=100 y2=20 stroke-width=2 > </line>
-        <line x1=10 y1=30 x2=100 y2=30 stroke-width=2 stroke-dasharray=10,2,5 > </line>
-        <line x1=10 y1=40 x2=100 y2=40 stroke-linecap=butt > </line>
-        <line x1=10 y1=55 x2=100 y2=55 stroke-linecap=round > </line>
-        <line x1=10 y1=70 x2=100 y2=70 stroke-linecap=square > </line>
-        <polyline points="10,90 20,110 100,80" fill=none stroke-linejoin=miter ></polyline>
-        <polyline points="10,130 20,150 100,120" fill=none stroke-linejoin=round ></polyline>
-        <polyline points="10,170 20,190 100,160" fill=none stroke-linejoin=bevel ></polyline>
-        <polyline points="10,210 20,230 100,200" fill=none stroke-linejoin=round stroke-linecap=round ></polyline>
-        <rect x=150 y=10 width=50 height=50 rx=10 ry=5></rect>
-        <circle cx=200 cy=120 r=50></circle>
-        <ellipse cx=350 cy=50 rx=50 ry=20 ></ellipse>
-        <polygon points="450,60 550,60 450,160 500,10 550,160" fill-rule="nonzero"></polygon>
-        <polygon points="600,60 700,60 600,160 650,10 700,160" fill-rule="evenodd"></polygon>
-        <polygon points="750,60 850,60 750,160 800,10 850,160" fill-rule="evenodd" stroke-linejoin=round></polygon>
-    </symbol>
-</defs>
+<svg width="0" height="0">
+    <defs id="">
+        <pattern id="demoPattern" patternUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+            <path d="M 20 0,H 0 0,V 0 20" fill="none" stroke="#ddd" stroke-width="1"></path>
+        </pattern>
+    </defs>
 </svg>
-<svg width=100% height=300>
+
+<h3>基本形状练习</h3>
+<svg width="100%" height="701">
+    <defs>
+        <line id="line" x1=20 y1=20 x2=100 y2=20  stroke="black" > </line>
+        <polyline id="polyline" points="220,20 230,50 260,60 230,70 220,100 210,70 180,60 210,50 220,20" stroke="black" stroke-width="10" fill="red" ></polyline>
+        <rect id="rect" x=340 y=20 width=100 height=40 rx=20 ry=20 fill="red" stroke="black"></rect>
+        <circle id="circle" cx=560 cy=60 r=40 fill="red" stroke="black"></circle>
+        <ellipse id="ellipse" cx=720 cy=40 rx=40 ry=20 fill="red" stroke="black"></ellipse>
+        <polygon id="polygon" points="820,60 920,60 820,120 870,20 920,120" fill="red" stroke="black" stroke-width="10"></polygon>
+        <symbol id="demo" fill="yellow" stroke="black">
+            <rect x="1000" y="80" width="100" height="20" />
+            <rect x="1040" y="60" width="20" height="100" />
+            <rect x="1040" y="60" width="20" height="100" stroke-width="0" />
+            <rect x="1000" y="80" width="100" height="20" stroke-width="0" />
+        </symbol>
+    </defs>
+    <rect id="" x="0" y="0" width="100%" height="100%" fill="url(#demoPattern)"></rect>
+
+    <use xlink:href="#line" />
+    <use xlink:href="#line" transform="translate(0 20)" stroke-opacity="0.2"/>
+    <use xlink:href="#line" transform="translate(0 40)" stroke-dasharray="20,40" />
+    <use xlink:href="#line" transform="translate(0 60)" stroke-dasharray="20,40" stroke-dashoffset="-20" />
+    <use xlink:href="#line" transform="translate(0 80)" stroke-width="10" stroke-linecap="butt" />
+    <use xlink:href="#line" transform="translate(0 100)" stroke-width="10" stroke-linecap="round" />
+    <use xlink:href="#line" transform="translate(0 120)" stroke-width="10" stroke-linecap="square" />
+    
+    <use xlink:href="#polyline" stroke-linejoin="miter" />
+    <use xlink:href="#polyline" transform="translate(0 100)" stroke-linejoin="bevel" />
+    <use xlink:href="#polyline" transform="translate(0 200)" stroke-linejoin="round" />
+    <use xlink:href="#polyline" transform="translate(0 300)" stroke-linejoin="miter" stroke-linecap="butt" />
+    <use xlink:href="#polyline" transform="translate(0 400)" stroke-linejoin="miter" stroke-linecap="round" />
+    <use xlink:href="#polyline" transform="translate(0 500)" stroke-linejoin="miter" stroke-linecap="square" />
+    
+    <use xlink:href="#rect" />
+
+    <use xlink:href="#circle" />
+
+    <use xlink:href="#ellipse" />
+
+    <use xlink:href="#polygon" fill-rule="nonzero" />
+    <use xlink:href="#polygon" transform="translate(0 100)" fill-rule="evenodd" />
+    <use xlink:href="#polygon" transform="translate(0 200)" fill-rule="nonzero" stroke-linejoin="miter" />
+    <use xlink:href="#polygon" transform="translate(0 300)" fill-rule="nonzero" stroke-linejoin="bevel" />
+    <use xlink:href="#polygon" transform="translate(0 400)" fill-rule="nonzero" stroke-linejoin="round" />
+
     <use xlink:href="#demo" />
 </svg>
 <h3>PATH练习</h3>
@@ -92,12 +121,6 @@ title:  SVG开发实践练习
 </svg>
 <h3>pattern</h3>
 <svg width=100% height=300 stroke=black stroke-width=1>
-    <defs>
-        <pattern id="demoPattern" patternUnits="userSpaceOnUse" width=80 height=80 viewBox="100 100">
-            <rect x=0 y=0 width=40 height=40></rect>
-            <rect x=40 y=40 width=40 height=40></rect>
-        </pattern>
-    </defs>
     <rect x=0 y=0 width=400 height=200 fill="url(#demoPattern)"></rect>
 </svg>
 <h3>clipPath</h3>
@@ -286,6 +309,26 @@ title:  SVG开发实践练习
         <text x=0 y=50>Hello</text>
     </a>
 </svg>
+<h3>CSS练习</h3>
+<style>
+    #rect1:hover,
+    #rect2:hover,
+    #rect3:hover,
+    #rect4:hover
+    {
+        fill:white;
+        stroke:black;
+    }
+</style>
+<svg width="100%" height="201" id="cssDemo">
+    <rect id="" x="0" y="0" width="100%" height="100%" fill="url(#demoPattern)"></rect>
+
+    <rect id="rect1" x="20" y="20" width="40" height="40" fill="red"></rect>
+    <rect id="rect2" x="60" y="20" width="40" height="40" fill="yellow"></rect>
+    <rect id="rect3" x="20" y="60" width="40" height="40" fill="blue"></rect>
+    <rect id="rect4" x="60" y="60" width="40" height="40" fill="black"></rect>
+</svg>
+
 <script type="text/javascript">
     setTimeout(function(){
         demoAnimate1.beginElement();
