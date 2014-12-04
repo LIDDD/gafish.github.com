@@ -215,11 +215,11 @@ title:  游戏：英雄难过棍子关
                 });
             };
             function end(x){
-                alert('Game OVer!');
                 util.translateAnimate(hero,{
                     x: [x,x],
                     y: [0,200]
                 },function(){
+                    alert('Game OVer!');
                     init();
                     count();
                 });
