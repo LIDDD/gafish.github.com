@@ -13,6 +13,10 @@ title:  游戏：英雄难过棍子关
     }
 </style>
 
+<svg width=500 height=500>
+    <image href="../images/hero.png" x=0 y=0></image>
+</svg>
+
 <div id="game"></div>
 
 <script>
@@ -23,8 +27,11 @@ title:  游戏：英雄难过棍子关
         var XINKNS = 'http://www.w3.org/1999/xlink';
 
         var util = {
+            createTag: function(tagName){
+                return doc.createElementNS(SVGNS,tagName);
+            },
             createSVG: function(){
-                var svg = doc.createElementNS(SVGNS,'svg');
+                var svg = util.createTag('svg');
                 svg.setAttribute('width','500');
                 svg.setAttribute('height','500');
                 svg.setAttribute('viewBox','0 0 500 500');
@@ -32,18 +39,18 @@ title:  游戏：英雄难过棍子关
                 return svg;
             },
             createG: function(){
-                var g = doc.createElementNS(SVGNS,'g');
+                var g = util.createTag('g');
                 return g;
             },
             createPath: function(d,translate,color){
-                var path = doc.createElementNS(SVGNS,'path');
+                var path = util.createTag('path');
                 path.setAttribute('d',d);
                 path.setAttribute('transform','translate('+translate+')');
                 path.setAttribute('fill',color||'black');
                 return path;
             },
             createRect: function(x,y,w,h,color){
-                var rect = doc.createElementNS(SVGNS,'rect');
+                var rect = util.createTag('rect');
                 rect.setAttribute('x',x);
                 rect.setAttribute('y',y);
                 rect.setAttribute('width',w);
@@ -52,7 +59,7 @@ title:  游戏：英雄难过棍子关
                 return rect;
             },
             createText: function(x,y,t){
-                var text = doc.createElementNS(SVGNS,'text');
+                var text = util.createTag('text');
                 text.setAttribute('x',x);
                 text.setAttribute('y',y);
                 text.textContent = t;

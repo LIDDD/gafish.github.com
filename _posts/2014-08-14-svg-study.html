@@ -166,87 +166,6 @@ title:  SVG开发实践练习
     </text>
     <text x=0 y=150 fill=red >这是一个神奇的世界！</text>
 </svg>
-<h3>动画练习</h3>
-<svg width=100% height=300>
-    <circle cx=50 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s"></animate>
-    </circle>
-    <circle cx=150 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="1s" ></animate>
-    </circle>
-    <circle cx=250 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="Endefinite" id="demoAnimate1"></animate>
-    </circle>
-    <circle cx=350 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" ></animate>
-    </circle>
-    <circle cx=450 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" end="0.3s" ></animate>
-    </circle>
-    <circle cx=550 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" restart="always" ></animate>
-    </circle>
-    <circle cx=650 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" restart="whenNotactive" ></animate>
-    </circle>
-    <circle cx=750 cy=50 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" begin="mousedown" restart="never" ></animate>
-    </circle>
-    <circle cx=50 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatCount="2" ></animate>
-    </circle>
-    <circle cx=150 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatCount="indefinite" ></animate>
-    </circle>
-    <circle cx=250 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatDur="2.5" ></animate>
-    </circle>
-    <circle cx=350 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatDur="2.5" fill="freeze"></animate>
-    </circle>
-    <circle cx=450 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 to=50 dur="1s" repeatDur="2.5" fill="remove"></animate>
-    </circle>
-    <circle cx=550 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=0 by="100" dur="1s" ></animate>
-    </circle>
-    <circle cx=650 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=5 to="50" dur="1s" additive="replace"></animate>
-    </circle>
-    <circle cx=750 cy=150 r=50>
-        <animate attributeType="XML" attributeName="r" from=5 to="50" dur="1s" additive="sum"></animate>
-    </circle>
-    <circle cx=50 cy=250 r=50>
-        <animate attributeType="XML" attributeName="r" from=5 to="50" dur="1s" repeatDur=2 calcMode=paced accumulate="sum" repeatCount="indefinite"></animate>
-    </circle>
-    <circle cx=150 cy=250 r=50 fill=none stroke-width=1 stroke=black>
-        <set attributeType="XML" attributeName="stroke" to="red" ></set>
-    </circle>
-    <rect x=200 y=200 width=100 height=50>
-        <animateMotion path="M0,0 L50,0 L150,-10" dur="1s" begin=0 fill="freeze" rotate="auto"/>
-    </rect>
-    <rect x=300 y=250 width=100 height=50 fill=none stroke=red stroke-width=1>
-        <animateMotion path="M0,0 L50,0 L150,-10" dur="1s" begin=0 fill="remove" rotate="auto"/>
-    </rect>
-    <rect x=400 y=250 width=100 height=50 fill=none stroke=black stroke-width=1>
-        <animateMotion path="M0,0 L50,0 L150,-10" dur="1s" begin=0 fill="freeze" rotate="90deg"/>
-    </rect>
-    <rect x=500 y=250 width=100 height=50 fill=none stroke=red stroke-width=1>
-        <animateTransform attributeType="XML" attributeName="transform" type="translate" from=50 to="100" dur="2s" fill="freeze"/>
-    </rect>
-    <rect x=600 y=250 width=100 height=50 fill=none stroke=black stroke-width=1>
-        <animateTransform attributeType="XML" attributeName="transform" type="scale" from="1" to="1.5" dur="2s" fill="freeze"/>
-    </rect>
-    <rect x=700 y=250 width=100 height=50 fill=none stroke=red stroke-width=1>
-        <animateTransform attributeType="XML" attributeName="transform" type="rotate" from="0" to="10" dur="2s" fill="freeze"/>
-    </rect>
-    <rect x=0 y=350 width=100 height=50 fill=none stroke=red stroke-width=1>
-        <animateTransform attributeType="XML" attributeName="transform" type="skewX" from="0" to="10" dur="2s" fill="freeze"/>
-    </rect>
-    <rect x=0 y=350 width=100 height=50 fill=none stroke=red stroke-width=1>
-        <animateTransform attributeType="XML" attributeName="transform" type="skewY" from="0" to="10" dur="2s" fill="freeze"/>
-    </rect>
-</svg>
 <h3>滤镜练习</h3>
 <svg width=100% height=350>
     <defs>
@@ -334,9 +253,3 @@ title:  SVG开发实践练习
         <path d="M222.75,0l15.375,38.438h-6.375l-3.938-10.312H210.75l-3.938,10.312h-6.375L215.812,0H222.75z M219.375,5.062h-0.188 c-0.375,1.125-0.75,2.25-1.125,3.375c-0.125,0.252-2.062,5.25-5.812,15h14.062c-3.75-9.75-5.689-14.748-5.812-15 c0-0.123-0.064-0.375-0.188-0.75C219.685,6.188,219.375,5.314,219.375,5.062z"/>
     </g>
 </svg>
-
-<script type="text/javascript">
-    setTimeout(function(){
-        demoAnimate1.beginElement();
-    },2000);
-</script>

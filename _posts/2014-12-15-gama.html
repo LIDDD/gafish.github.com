@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>摇财神</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=640">
+
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        /*
+        #game{
+            width: 320px;
+            height: 565px;
+            margin: 0 auto;
+            overflow: hidden;
+            background: url(images/bg.png);
+            background-size: 100%;
+        }*/
+    </style>
+</head>
+<body>
+
+    <div id="msg"></div>
+    <div id="game"></div>
+
+    <script src="http://g.tbcdn.cn/tbc/gama-loader/0.0.1/index-standalone-min.js"></script>
+    <script src="http://g.tbcdn.cn/tbc/gama-ticker/0.0.1/index-standalone-min.js"></script>
+    <script src="http://g.tbcdn.cn/tbc/gama-gamekit/0.0.1/index-standalone-min.js"></script>
+
+    <script>
+
+    if (window.DeviceMotionEvent) {
+
+        var DomRenderer = Gama.GameKit.DomRenderer
+        var Obj2d = Gama.GameKit.Obj2d
+        var Stage = Gama.GameKit.Stage
+        var Ticker = Gama.Ticker
+        var Loader = Gama.Loader
+
+        var loader = new Loader()
+        loader.add([
+            {
+              id: 'bg',
+              url: 'images/bg.png'
+            },
+            {
+              id: 'home',
+              url: 'images/home.png'
+            },
+            {
+              id: 'start',
+              url: 'images/start.png'
+            },
+            {
+              id: 'rock1',
+              url: 'images/rock1.png'
+            },
+            {
+              id: 'rock2',
+              url: 'images/rock2.png'
+            },
+            {
+              id: 'rock3',
+              url: 'images/rock3.png'
+            },
+            {
+              id: 'fail',
+              url: 'images/fail.png'
+            },
+            {
+              id: 'success',
+              url: 'images/success.png'
+            },
+            {
+              id: 'restart',
+              url: 'images/restart.png'
+            }
+        ])
+        loader.on('load', start)
+        loader.load();
+
+        var renderer = new DomRenderer();
+
+        function createRectangleObj(stage,width,height,image){
+            var obj = new Obj2d({
+                shape: {
+                    type: 'rectangle',
+                    width: width,
+                    height: height,
+                    originX: 0,
+                    originY: 0
+                },
+                coverage: {
+                    type: 'texture',
+                    image: image,
+                    scaleX: 1,
+                    scaleY: 1,
+                    x:0,
+                    y:0
+                }
+            });
+            obj.setTranslation(0,-2000);
+            stage.addChild(obj);
+            return obj;
+        }
+
+        function addTicker(a,b,renderer,stage){
+            var offset = 0;
+            var maxOffset = window.innerHeight+200;
+            var ticker = new Ticker();
+            ticker.add({
+                tick: function(){
+                    offset += 50;
+                    a.setTranslation(0,offset);
+                    if (offset >= maxOffset) {
+                        b.setTranslation(0,0);
+                        ticker.stop();
+                    }
+                    renderer.render(stage);
+                }
+            });
+            ticker.start();
+        }
+
+        function start() {
+
+            var bg = loader.get('bg').content;
+            var home = loader.get('home').content;
+            var start = loader.get('start').content;
+            var rock1 = loader.get('rock1').content;
+            var fail = loader.get('fail').content;
+            var success = loader.get('success').content;
+
+            var stage = new Stage({
+                container: document.getElementById('game'),
+                width: 640,
+                height: 1130,
+                viewWidth: 640,
+                viewHeight: 1130,
+                background: bg
+            });
+
+            var homeObj = createRectangleObj(stage,640,1130,home);
+            var startObj = createRectangleObj(stage,640,1130,start);
+            var rockObj = createRectangleObj(stage,640,1130,rock1);
+            var successObj = createRectangleObj(stage,640,1130,success);
+            var failObj = createRectangleObj(stage,640,1130,fail);
+
+            homeObj.setTranslation(0,0);
+
+            renderer.render(stage);
+
+            var isRock = false;
+            var isStart = false;
+            var isCalc = false;
+
+            var rockTicker = new Ticker();
+            var index = 0;
+            rockTicker.add({
+                tick: function(){
+                    index++;
+                    rockObj.coverage.set({
+                        type: 'texture',
+                        image: loader.get('rock'+index).content,
+                        scaleX: 1,
+                        scaleY: 1,
+                        x:0,
+                        y:0
+                    });
+                    if (index>=3) {index=0}
+                    renderer.render(stage);
+                }
+            });
+            
+            document.getElementById('game').onclick = function(e){
+                var x = e.offsetX;
+                var y = e.offsetY;
+                if(homeObj.inside(x,y)){
+                    addTicker(homeObj,startObj,renderer,stage);
+                    isStart = true;
+                }else if(failObj.inside(x,y)){
+                    addTicker(failObj,startObj,renderer,stage);
+                    isRock = false;
+                    isCalc = false;
+                }else if(successObj.inside(x,y)){
+                    addTicker(successObj,startObj,renderer,stage);
+                    isRock = false;
+                    isCalc = false;
+                }
+            }
+
+            var SHAKE_START = 300;
+            var SHAKE_THRESHOLD = 3000;
+            var last_update = 0;
+            var x, y, z, last_x, last_y, last_z;
+            var count = 0;
+            window.addEventListener('devicemotion',function(eventData){
+                if (!isStart) {return}
+
+                var acceleration = eventData.accelerationIncludingGravity;
+                var curTime = new Date().getTime();
+                var diffTime = curTime -last_update;
+                
+                if (diffTime > 100) {
+                    last_update = curTime;
+                    x = acceleration.x;
+                    y = acceleration.y;
+                    z = acceleration.z;
+
+                    var speed = Math.abs(x +y + z - last_x - last_y - last_z) / diffTime * 10000;
+
+                    if (speed > SHAKE_START && !isRock) {
+                        addTicker(startObj,rockObj,renderer,stage);
+                        isRock = true;
+                        rockTicker.start();
+                    }
+
+                    if (speed > SHAKE_THRESHOLD && isRock && !isCalc) {
+                        var random = Math.random();
+                        count++;
+                        if (count>5) {
+                            if (random > .8) {
+                                addTicker(rockObj,failObj,renderer,stage);
+                            } else{
+                                addTicker(rockObj,successObj,renderer,stage);
+                            }
+                            isCalc = true;
+                            count = 0;
+                            rockTicker.stop();
+                        }
+                    }
+
+                    last_x = x;
+                    last_y = y;
+                    last_z = z;
+                }    
+            }, false); 
+        } 
+    }else{
+        document.getElementById('game').innerHTML = '本机不支持摇一摇哦';
+    }
+
+    </script>
+
+</body>
+</html>
