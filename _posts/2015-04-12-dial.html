@@ -1,0 +1,109 @@
+---
+layout: default
+title: 小转盘动效
+---
+<style type="text/css">
+	#dial{
+		width: 300px;
+		height: 300px;
+		position: relative;
+		color: #fff;
+		border-radius: 150px;
+		margin: 50px auto;
+		transition: all .2s ease-in;
+	}
+	#dial .ball{
+		width: 0;
+		height: 0;
+		background: #000;
+		border-radius: 25px;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		transition: all .2s ease-in;
+		z-index: 1;
+		font-size: 0;
+	}
+	#dial .ball b{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	#dial.show{
+		background: #eee;
+	}
+	#dial.show .ball{
+		width: 50px;
+		height: 50px;
+		font-size: 32px;
+	}
+	#dial .center{
+		width: 100px;
+		height: 100px;
+		background: #000;
+		border-radius: 50px;
+		line-height: 100px;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		cursor: pointer;
+		z-index: 2;
+		font-size: 24px;
+	}
+	#dial .center:hover{
+		color: #ff0;
+	}
+</style>
+<div id="dial">
+	<div class="center">启动</div>
+	<div class="ball"><b>1</b></div>
+	<div class="ball"><b>2</b></div>
+	<div class="ball"><b>3</b></div>
+	<div class="ball"><b>4</b></div>
+	<div class="ball"><b>5</b></div>
+	<div class="ball"><b>6</b></div>
+	<div class="ball"><b>7</b></div>
+	<div class="ball"><b>8</b></div>
+	<div class="ball"><b>9</b></div>
+	<div class="ball"><b>10</b></div>
+</div>
+<script>
+	var dial = document.querySelector('#dial');
+	var balls = dial.querySelectorAll('.ball');
+	var center = dial.querySelector('.center');
+	var total = balls.length;
+	var r = dial.offsetWidth/2;
+	var startAngle = 90;
+	var endAngle = 360;
+	var gap = (endAngle - startAngle)/(total-1);	
+	var moved = false;
+	balls = Array.prototype.slice.call(balls);
+	function move(){
+		balls.forEach(function(item,index){
+			var myAngle = (startAngle+gap*index)*Math.PI/180;
+			var x = r + r * Math.cos(myAngle);
+			var y = r + r * Math.sin(myAngle);
+			if (moved) {
+				item.style.left = '';
+				item.style.top = '';
+			} else{
+				item.style.left = x+'px';
+				item.style.top = y+'px';
+			};
+		});
+		if (!moved) {
+			dial.className = 'show';
+			center.innerHTML = '关闭';
+		} else{
+			dial.className = '';
+			center.innerHTML = '启动';
+		};
+		moved = !moved;
+	}
+	center.onclick = move;
+</script>
