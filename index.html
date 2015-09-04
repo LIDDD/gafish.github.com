@@ -2,20 +2,30 @@
 layout: index
 title: 徐辉的Blog
 ---
-<h2>{{ page.title }}</h2>
-<p>徐辉：花名圆影，杭州，淘宝UED，前端开发，JS开发经验分享QQ群 194237222</p>
 <h4>最新文章</h4>
 <ul>
 {% for post in site.posts %}
     <li>{{ post.date | date: "%Y-%m-%d" }} &raquo; <a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
-<h4>学习资源</h4>
-<ul>
-    <li><a href="http://msdn.microsoft.com/zh-cn/library/d1et7k7c(v=vs.94).aspx" target="_blank">JavaScript 语言参考</a></li>
-</ul>
-<h4>朋友们</h4>
-<ul>
-    <li><a href="https://github.com/v10258" target="_blank">陈景辉</a></li>
-    <li><a href="https://github.com/lifesinger" target="_blank">王保平（玉伯）</a></li>
-</ul>
+
+<div class="main">
+  <div class="column">
+    <h3>作品展示</h3>
+    <ul>
+      <li><a href="">测试作品</a></li>
+    </ul>
+  </div>
+  <div class="column">
+    <h3>文章列表</h3>
+    <ul>
+      <li><a href="">测试文章</a></li>
+    </ul>
+  </div>
+  <div class="column">
+    <h3>收藏资源</h3>
+    <ul>
+      <li><a href="">测试收藏</a></li>
+    </ul>
+  </div>
+</div>
