@@ -2,30 +2,91 @@
 layout: index
 title: 徐辉的Blog
 ---
-<h4>最新文章</h4>
-<ul>
-{% for post in site.posts %}
-    <li>{{ post.date | date: "%Y-%m-%d" }} &raquo; <a href="{{ post.url }}" target="_blank">{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+<style>
+    @font-face {
+        font-family: 'webfont';
+        src: url('//at.alicdn.com/t/69pfrgjwan12a9k9.eot'); /* IE9*/
+        src: url('//at.alicdn.com/t/69pfrgjwan12a9k9.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('//at.alicdn.com/t/69pfrgjwan12a9k9.woff') format('woff'), /* chrome、firefox */
+        url('//at.alicdn.com/t/69pfrgjwan12a9k9.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+        url('//at.alicdn.com/t/69pfrgjwan12a9k9.svg#思源黑体-极细') format('svg'); /* iOS 4.1- */
+    }
 
-<div class="main">
-  <div class="column">
-    <h3>作品展示</h3>
-    <ul>
-      <li><a href="">测试作品</a></li>
-    </ul>
-  </div>
+    *{
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+    }
+    ul,li{
+        list-style: none;
+    }
+    body{
+        font-family: 'webfont';
+        color: #3aa588;
+    }
+    .clearfix:after{
+        display: block;
+        visibility: hidden;
+        font-size: 0;
+        height: 0;
+        content: '';
+        clear: both;
+    }
+    .main{}
+    .column{
+        width: 33%;
+        float: left;
+    }
+    .column:last-child{
+        width: 34%;
+    }
+    .column h3{
+        font-size: 24px;
+        padding: 10px 0;
+        border-bottom: 1px solid #3aa588;
+        margin-bottom: 10px;
+    }
+    .column ul{
+    }
+    .column li{
+        line-height: 1.5;
+        font-size: 14px;
+    }
+    .column li a{
+        color: #3aa588;
+        text-decoration: none;
+    }
+    .column li a:hover{
+        text-indent: 1em;
+        color: #000;
+    }
+    .column li span{
+        font-size: 12px;
+        color: #ddd;
+    }
+</style>
+
+<div class="main clearfix">
   <div class="column">
     <h3>文章列表</h3>
     <ul>
-      <li><a href="">测试文章</a></li>
+    {% for post in site.posts %}
+        <li><a href="{{ post.url }}" target="_blank">{{ post.title }}</a><span>({{ post.date | date: "%Y-%m-%d" }})</span></li>
+    {% endfor %}
+    </ul>
+  </div>
+  <div class="column">
+    <h3>作品展示</h3>
+    <ul>
+      <li><a href="https://github.com/gafish/nodejs-pictures" target="_blank">Nodejs - 本地图片预览</a></li>
     </ul>
   </div>
   <div class="column">
     <h3>收藏资源</h3>
     <ul>
-      <li><a href="">测试收藏</a></li>
+      <li><a href="http://jsfiddle.net/" target="_blank">jsfiddle 在线代码演示</a></li>
+      <li><a href="http://jquery.cuishifeng.cn/" target="_blank">jQuery API 1.11.3 速查表</a></li>
+      <li><a href="http://nodejs.cn/api/" target="_blank">NodeJS API文档</a></li>
     </ul>
   </div>
 </div>
