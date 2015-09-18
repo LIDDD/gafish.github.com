@@ -34,11 +34,8 @@ title: 徐辉的Blog
     }
     .main{}
     .column{
-        width: 33%;
+        width: 25%;
         float: left;
-    }
-    .column:last-child{
-        width: 34%;
     }
     .column h3{
         font-size: 24px;
@@ -69,6 +66,12 @@ title: 徐辉的Blog
 <div class="main clearfix">
   <div class="column">
     <h3>文章列表</h3>
+    <ul>
+        <li><a href="https://github.com/gafish/gafish.github.com/issues/1" target="_blank">github搭建博客入门教程</a></li>
+    </ul>
+  </div>
+  <div class="column">
+    <h3>DEMO演示</h3>
     <ul>
     {% for post in site.posts %}
         <li><a href="{{ post.url }}" target="_blank">{{ post.title }}</a><span>({{ post.date | date: "%Y-%m-%d" }})</span></li>
