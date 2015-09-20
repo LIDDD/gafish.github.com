@@ -57,19 +57,20 @@ footer{
 }
 .column li{
     font-family: 'siyuanhei';
-    line-height: 1.5;
-    font-size: 14px;
+    line-height: 2;
 }
 .column li a{
     color: #3aa588;
+    font-size: 14px;
     text-decoration: none;
     display: inline-block;
+    transition: all 200ms;
 }
 .column li a:hover{
     text-indent: 1em;
     color: #000;
+    transform: skewX(180deg);
 }
 .column li span{
-    font-size: 12px;
     color: #ddd;
 }
