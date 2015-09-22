@@ -1,0 +1,39 @@
+<div class="classify-title">
+    <span goback></span>
+
+    <a href="javascript:;" class="titRight settingBtn"><span class="icon setting"></span>设置</a>
+    <h1>修改密码</h1>
+</div>
+
+<div class="minePage loginRegister upPass">
+    <form name="upPass" form-vaildate>
+        <div class="set-info-main up-pass-lay error-right">
+            <div class="info-lay">
+                <label class="info-name error-label">
+                    <input type="password" name="oldPassword" ng-model="postData.oldPassword" placeholder="旧密码"
+                       validate="{required:请输入您的密码,minlength:密码最少6位,maxlength:密码最多18位}"
+                       ng-pattern="pattern" placeholder="6-18位字母、数字组合"  ng-minlength="6" maxlength="18" required />
+                </label>
+            </div>
+            <div class="info-lay">
+                <label class="info-name error-label">
+                    <input type="password" name="newPassword" ng-model="postData.newPassword" placeholder="新密码" id="userPassword"
+                       validate="{required:请输入您的新密码,minlength:密码最少6位,maxlength:密码最多18位}"
+                       ng-pattern="pattern" placeholder="6-18位字母、数字组合"  ng-minlength="6" maxlength="18" required  />
+                </label>
+            </div>
+            <div class="info-lay">
+                <label class="info-name error-label">
+                    <input type="password" name="repeatPassword" ng-model="postData.repeatPassword" placeholder="再次输入新密码"
+                       validate-type="repeat" repeat="userPassword" validate="{required:请输入确认密码,repeatMessage:两处密码不正确}"
+                       ng-pattern="pattern" placeholder="请确认密码"  maxlength="18" required />
+                </label>
+            </div>
+        </div>
+
+        <div class="base-input-lay user-login-lay">
+            <button form-submit="submit()" class="submit submit-margin">确定修改</button>
+        </div>
+    </form>
+
+</div>

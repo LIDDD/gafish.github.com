@@ -1,0 +1,33 @@
+<div class="classify-title">
+    <span goback></span>
+
+    <a href="#/mine/setUp" class="titRight settingBtn {{userData.userName?'show':'hide'}}" ><span class="icon setting"></span>设置</a>
+    <h1>我的海蜇头</h1>
+</div>
+
+<div class="minePage">
+    <div class="mine-banner">
+        <div class="mine-header">
+            <!--<img ng-src="./pic/header.jpg" alt="" />-->
+            <img ng-src="{{userData.userAvatar}}" alt="" />
+        </div>
+        <div class="mine-name {{userData.userName?'show':'hide'}}">{{userData.userName}}</div>
+        <a href="/#/mine/login" class="mine-login {{!userData.userName?'show':'hide'}}" >登录/注册</a>
+    </div>
+    <div class="mine-more">
+        <div class="part">
+            <div class="item">
+                <a href="#/mine/aboutUs" class="right">
+                    <span class="icon icon-right"></span>
+                </a>
+                <a href="#/mine/aboutUs" class="strong">关于我们</a>
+            </div>
+            <div class="item {{userData.userName?'show':'hide'}}">
+                <a href="#/mine/feedback" class="right">
+                    <span class="icon icon-right"></span>
+                </a>
+                <a href="#/mine/feedback" class="strong">意见和反馈</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+@charset "utf-8";
+/* CSS Document */
+
+html, body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, input, label, textarea, p {
+    margin: 0;
+    padding: 0;
+    -webkit-text-siz-adjust: none;
+}
+
+input[type = text],input[type = radio], input[type = password], input[type = number], input[type = email], input[type = search], input[type = tel], input[type = checkbox] {
+    outline: 0;
+    -webkit-appearance:none;
+    -webkit-user-select:text
+}
+
+select, textarea {
+    outline: 0;
+    -webkit-appearance:none
+}
+textarea{-webkit-user-select:text;font-family: "microsoft yahei";}
+table{border-collapse:collapse;border-spacing:0}
+*{-webkit-user-select:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-touch-callout:none;/*-webkit-box-sizing:border-box;box-sizing:border-box*/}:before,:after{-webkit-box-sizing:border-box;box-sizing:border-box}body{-webkit-text-size-adjust: none}
+
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+body,html{
+    width: 100%;
+    font-size: 20px;
+    min-height: 100%;
+    overflow-x: hidden;
+    background-color: #eee;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue',Helvetica,'microsoft yahei',Arial,sans-serif;
+}
+body{
+    line-height: 1em;
+    position: relative;
+    color: #333;
+    font-family: "microsoft yahei";
+}
+
+.body-max-height,
+.body-max-height .app{overflow-y: hidden;position: relative;}
+
+a,div{
+    color:rgb(51,51,51);
+    text-decoration: none;
+}
+a:hover,a:focus,a:link{
+    text-decoration:none;
+    color: #333;
+}
+
+a:-webkit-any-link {
+    color: #333;
+    cursor: auto;
+}
+
+ul,ol{
+    list-style:none;
+}
+.cf:before, .cf:after {content:"";display:table;}
+.cf:after {clear:both;}
+.cf {zoom:1;}
+.clear{width:0;height:0;clear:both;overflow:hidden;}
+
+img{
+    border: none;
+    font-size: 0;
+    display: block;
+}
+p{word-break: break-all;}
+.hidden{display: none !important;}
+
+em{font-style: normal;}
+i{font-style: normal;}
+
+[nav-view-transition="ios"][nav-view-direction="forward"], [nav-view-transition="ios"][nav-view-direction="back"]{background: none;}
+
+
+::-webkit-scrollbar
+{
+    width:0px;
+    height:0px;
+    background-color: #fff;
+}
+
+button{cursor: pointer;font-family: "microsoft yahei";}
+.app button.submit:disabled{  background: rgb(235,235,235);color: rgb(200,200,200);border-color: rgb(235,235,235);}
+
+[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}
+ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-animate-anchor{position:absolute;}

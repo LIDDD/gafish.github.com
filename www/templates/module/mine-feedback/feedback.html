@@ -1,0 +1,17 @@
+<div class="classify-title">
+    <span goback></span>
+    <h1>意见与反馈</h1>
+</div>
+
+<div class="minePage innerPage feedbackPage">
+    <form class="base-input-lay feed-form" name="myform" form-vaildate>
+        <label>
+            <textarea class="feed-texrarea" ng-model="postData.desc" name="feedTexrarea"
+                placeholder="为了您更好的使用海蜇头，有什么意见或吐槽都可以发给我们，我们一定悉心采纳改进"
+                validate="{required:意见不能为空!,minlength:意见不能少于2位!}" ng-minlength="2" required ></textarea>
+        </label>
+        <input type="text" ng-model="postData.phone" name="contact" class="hidden">
+        <button class="submit" form-submit="submit()">提交</button>
+    </form>
+
+</div>

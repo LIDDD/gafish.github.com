@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-cn" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>海蜇头</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="initial-scale=1, width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1, user-scalable=no" media="(device-height: 568px)">
+    <meta name="renderer" content="webkit">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <meta name="description" content="专业的海淘比价平台" />
+
+    <link href="css/reset.css" rel="stylesheet" />
+    <link href="css/base.css" rel="stylesheet" />
+    <link href="css/angular-carousel.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/method/base.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular.min.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular-ui-router.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular-sanitize.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular.cookie.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular-date-binder.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/bindonce.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/fastclick.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular-touch.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular-carousel.js?a111"></script>
+    <script type="text/javascript" src="js/basicComponents/angular-lazy-img.js?a111"></script>
+
+
+    <script type="text/javascript" src="js/method/app.js?a111?=111"></script>
+    <script type="text/javascript" src="js/method/controllers.js?a111"></script>
+    <script type="text/javascript" src="js/method/directive.js?a111"></script>
+    <script type="text/javascript" src="js/method/factory.js?a111"></script>
+    <script type="text/javascript" src="js/method/filter.js?a111"></script>
+    <script type="text/javascript" src="js/method/service.js?a111"></script>
+
+</head>
+<body ng-controller="mainController">
+
+    <div class="wrap">
+        <div style="display: none;" id="pageTop">{{page.page}}</div>
+        <div ui-view="appState" class="app-state"></div>
+    </div>
+    <div class="fix-bottom">
+        <div class="fix-bottom-main">
+            <a href="#/index" class="{{page.page ==='index'?'on':''}}"> <span class="icon home"></span> 首页</a>
+            <a href="#/themePavilion" class="{{page.page ==='themePavilion'?'on':''}}"> <span class="icon ztg"></span> 主题馆 </a>
+            <a href="#/mine" class="{{page.page ==='mine'?'on':''}}"> <span class="icon me"></span> 我 </a>
+        </div>
+    </div>
+
+    <div class="loader-inner ball-clip-rotate {{backLoading != '' ? backLoading : ''}}" ng-if="loading && !isSelf">
+        <div></div>
+    </div>
+
+</body>
+</html>

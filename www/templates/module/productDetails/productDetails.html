@@ -1,0 +1,168 @@
+<div class="classify-title">
+    <span goback></span>
+    <h1>商品详情</h1>
+</div>
+
+<!-- 商品详情轮播模块 start -->
+<div class="slide-detailedPage">
+    <div class="carousel-lay" rn-carousel rn-carousel-index="0" rn-carousel-auto-slide>
+        <ul class="carousel-course index-carousel" style="height: 13.6rem;">
+            <li bindonce ng-repeat="item in details.images track by $index">
+                <a href="javascript:;">
+                    <img ng-src="{{item}}">
+                </a>
+            </li>
+        </ul>
+        <div class="carousel-page" rn-carousel-indicators ng-show="indexData.posterList.length > 1"
+             slides="indexData.posterList" rn-carousel-index="posterListIndex"></div>
+    </div>
+
+    <div class="product-info">{{details.title}}</div>
+    <!--<div class="product-info">Lancome 兰蔻 奇迹香水女士香水 <span class="purple">30ml</span> 装 </div>-->
+    <span class="icon-graphic-details" ng-click="gotoDetails()">图文详情</span>
+    <span class="icon-soldOut {{details.status===-1?'show':'hide'}}"></span>
+</div>
+
+<!-- 商品详情轮播模块 end -->
+
+<!-- 价格比较 start -->
+<div class="price-competition">
+    <span class="modelTips"></span>
+    <div class="price-competition-inner cf">
+        <div class="left-nav">
+            <ul>
+                <li ng-repeat="item in details.items" class="{{selectedShops.index===$index?'on':''}}" ng-click="selectShops($index,item)">
+                    <span class="max-logo"><img ng-src="{{item.logoImage}}" alt=""/></span>
+                    <span class="icon minimumPrice" ng-show="item.cheapest"></span>
+                </li>
+            </ul>
+        </div>
+        <div class="right-cont">
+            <div class="merchant-item {{selectedShops.index===$index?'on':''}}" ng-repeat="item in details.items" >
+                <div class="firstItem item">
+                    <div class="price-theirPrice">
+                        <strong class="price-red"><span>￥</span>{{item.price}}</strong>
+                        <span class="red-SettlementPrice">到手价</span>
+                    </div>
+                    <div class="price-priceDetails">
+                        <div class="sign">=</div>
+                        <div class="fee-Type">
+                            <strong class="price-gray fee-num"><span>￥</span>{{item.salePrice}}</strong>
+                            <span class="fee-intro">售价</span>
+                        </div>
+                        <div class="sign">+</div>
+                        <div class="fee-Type">
+                            <strong class="price-gray fee-num"><span>￥</span>{{item.freight}}</strong>
+                            <span class="fee-intro">邮费</span>
+                        </div>
+
+                        <div class="sign">+</div>
+                        <div class="fee-Type">
+                            <strong class="price-gray fee-num"><span>￥</span>{{item.tariff}}</strong>
+                            <span class="fee-intro">关税</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <p>供应商： {{item.platformName}}</p>
+                    <p>发货地： {{item.shipmentInfo}}</p>
+                    <p>预计到货时间： {{item.deliveryInfo}}</p>
+                    <p>邮费： {{item.freightInfo}}</p>
+                    <p>关税： {{item.tariff}}</p>
+                </div>
+
+                <div class="item">
+                    <p>优惠信息： <span ng-show="!discountInfo.length">暂无</span></p>
+                    <p><span ng-repeat="info in discountInfo"></span></p>
+                </div>
+
+                <div class="item">
+                    <p>平台用户评价：</p>
+                    <div class="starLevel">
+                        <span class="grade" style="width:{{item.commentStar}}%"></span>
+                        <span class="star-layer"></span>
+                    </div>
+                    <p>{{item.commentStar|starFormat}}/5.0</p>
+                    <p>共{{item.volume}}个评价</p>
+                </div>
+            </div>
+        </div>
+        <div class="shopBar">
+            <a href="{{selectedShops.url}}" class="btn-gotoShop {{details.status===1?'goShop':'soldOut'}}">
+                <span class="icon-Cart"></span>
+                <span class="txt txt-fill {{details.status=== 1?'show':'hide'}}" >前往购买</span>
+                <span class="txt txt-none {{details.status===-1?'show':'hide'}}" >抢光了</span>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- 价格比较 end -->
+
+<!-- 更多型号 start -->
+<div class="moreModels">
+    <div class="moreModels-title">更多型号可选</div>
+    <div class="moreModels-cont">
+        <ul>
+            <li><a href="javascript:;">
+                <div class="pic"><img src="./pic/pic-img.png" alt=""/></div>
+                <div class="txt">60ml装</div>
+            </a></li>
+            <li><a href="javascript:;">
+                <div class="pic"><img src="./pic/pic-img.png" alt=""/></div>
+                <div class="txt">30ml装</div>
+            </a></li>
+            <li><a href="javascript:;">
+                <div class="pic"><img src="./pic/pic-img.png" alt=""/></div>
+                <div class="txt">30ml套装</div>
+            </a></li>
+            <li><a href="javascript:;">
+                <div class="pic"><img src="./pic/pic-img.png" alt=""/></div>
+                <div class="txt">30ml套装</div>
+            </a></li>
+            <li><a href="javascript:;">
+                <div class="pic"><img src="./pic/pic-img.png" alt=""/></div>
+                <div class="txt">30ml套装</div>
+            </a></li>
+        </ul>
+    </div>
+</div>
+<!-- 更多型号 end -->
+
+<!-- 图文详情 start -->
+<div class="graphic-details">
+    <span class="modelTips"></span>
+    <div class="title" id="graphic-details">
+        <div class="pic-info {{selectedInfo==='info'?'on':''}}" ng-click="selectInfo('info')">图片详情</div>
+        <div class="productParameter {{selectedInfo==='params'?'on':''}}" ng-click="selectInfo('params')">商品参数</div>
+    </div>
+    <div class="cont">
+        <div class="pic-info-cont" ng-if="selectedInfo==='info'">
+            <div ng-bind-html="description" ></div>
+            <!--<div compile-data template="{{description}}"></div>-->
+        </div>
+        <div class="productParameter-cont" ng-if="selectedInfo==='params'">
+            <ul>
+                <li ng-repeat="item in details.properties"><strong>{{item.name}}</strong> <p>{{item.value}}</p></li>
+                <!--
+                <li><strong>品牌</strong> <p>大王</p></li>
+                <li><strong>商品名称</strong> <p>大王VE纸尿裤量贩装 L68（新旧版随机发)</p></li>
+                <li><strong>商品分类</strong> <p>纸尿裤拉拉裤</p></li>
+                <li><strong>产地</strong> <p>日本</p></li>
+                <li><strong>材质</strong> <p>不织布、高分子吸收体、吸收纸</p></li>
+                <li><strong>配件/备注</strong> <p>xxx</p></li>
+                <li><strong>商品规格(cm)</strong> <p>31*43*13.5 重量(kg):2.1kg </p></li>
+                <li><strong>生产日期</strong> <p>2014.01-2015.06之间 </p></li>
+                <li><strong>保质期</strong> <p>三年</p></li>
+                -->
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- 图文详情 end -->
+
+
+<!-- 没有更多了 -->
+<div class="noProduct"></div>
+<!-- 没有更多了 -->
+<span go-top></span>

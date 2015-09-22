@@ -1,0 +1,20 @@
+<div class="classify-title">
+    <span goback></span>
+    <h1>修改密码</h1>
+</div>
+
+<div class="minePage loginRegister upPass">
+    <form class="base-input-lay user-login-lay" name="userRegForm" form-vaildate>
+        <div class="user-login">
+            <div class="info-lay">
+                <label class="error-right">
+                    <i class="iconzfl icon-shouji"></i>
+                    <div class="user-input-lay">
+                        <input type="text" ng-model="userReg.mobile" name="phone" validate-type="phone" validate="{required:请输入您的手机号码,phone:手机格式不正确}" placeholder="请输入您的手机号码"  maxlength="11" required  >
+                    </div>
+                </label>
+            </div>
+        </div>
+        <button class="submit submit-margin" form-submit="nextPage()">注册</button>
+    </form>
+</div>

@@ -1,0 +1,87 @@
+
+<div class="header">
+    <h1>海蜇头</h1>
+</div>
+
+<!-- banner start -->
+
+<div class="carousel-lay" rn-carousel rn-carousel-index="0" rn-carousel-auto-slide=3>
+    <ul class="carousel-course index-carousel" ng-style="bannerHeight">
+        <li bindonce ng-repeat="item in topBanners track by $index">
+            <a href="javascript:;">
+                <img ng-src="{{item.image}}">
+            </a>
+        </li>
+    </ul>
+    <div class="carousel-page" rn-carousel-indicators ng-show="topBanners.length > 1"
+         slides="topBanners" rn-carousel-index="0"></div>
+</div>
+<!-- banner end -->
+
+<!-- 推荐产品 start -->
+<div class="top-products">
+    <span class="modelTips"></span>
+    <div class="item" bindonce ng-repeat="item in hotProduct.items">
+        <div class="item-title">
+            <h2>#{{item.subtitle}}#</h2>
+        </div>
+        <div class="item-pic"><a href="#/productDetails/{{item.id}}"><img lazy-img="{{item.image}}" alt="" /></a></div>
+        <div class="item-cont">
+            <h3><a href="#/productDetails/{{item.id}}">{{item.title}}</a></h3>
+            <p><a href="#/productDetails/{{item.id}}">{{item.longComment}}</a></p>
+            <div class="item-price">
+                <ul class="cf"{{item.items.length}}>
+                    <li ng-repeat="itemPrice in item.items" style=" width:24%; ">
+                        <!--style=" width:{{72/item.items.length}}%;-->
+                        <span class="products-logo"><img src="{{itemPrice.logoImage}}" /></span>
+                        <strong class="{{itemPrice.cheapest?'price-red':'price-gray'}}"><span>￥</span>{{itemPrice.price}}</strong>
+                    </li>
+                    <li>
+                        <a href="#/productDetails/{{item.id}}" class="moreResults">查看更多比价</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <span class="top {{item.order>3?'secondly':''}}">TOP{{item.order}}</span>
+    </div>
+</div>
+<!-- 推荐产品 end -->
+
+<!-- 主题馆 start -->
+<div class="themePavilion cf">
+    <div class="tp-cont" ng-repeat="item in themePavilion">
+        <a href="#/themePavilionList/{{item.id}}"><img lazy-img="{{item.image}}" alt=""/></a>
+    </div>
+    <span class="modelTips"></span>
+</div>
+<!-- 主题馆 end -->
+
+<!-- 往期精品 start -->
+<div class="pastCollectibles pastCollectiblesModule">
+    <div class="item" ng-repeat="item in pastCollectibles.items">
+        <div class="item-pic">
+            <a href="#/productDetails/{{item.id}}"><img lazy-img="{{item.image}}" alt=""/></a>
+            <span class="{{item.flag?'tips':''}}"></span>
+        </div>
+        <div class="item-cont">
+            <h3><a href="#/productDetails/{{item.id}}">{{item.title}}</a></h3>
+            <p><a href="#/productDetails/{{item.id}}">“{{item.shortComment}}”</a></p>
+            <div class="item-price">
+                <div class="spotPrice" style="width: 66%">
+                    <span class="products-logo"><img src="{{item.items[0].logoImage}}" /></span>
+                    <strong class="price-red"><span>￥</span>{{item.items[0].price}}</strong>
+                    <span class="price-oldPrice">￥{{item.items[0].originalPrice}}</span>
+                    <div class="price-discount">{{item.items[0].discount}}折</div>
+                </div>
+                <a href="#/productDetails/{{item.id}}" class="moreResults">查看更多比价</a>
+            </div>
+        </div>
+    </div>
+    <span class="modelTips"></span>
+</div>
+<!-- 往期精品 end -->
+
+<!-- 没有更多了 -->
+<div class="noProduct"></div>
+<!-- 没有更多了 -->
+<span go-top></span>
