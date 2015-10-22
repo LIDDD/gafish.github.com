@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FrameCartoon Demo</title>
+  <script src="frameCartoon.js"></script>
+</head>
+<body>
+  <h3>水平动画演示</h3>
+  <div id="demo1"></div>
+  <pre>
+    var frameCartoon1 = new FrameCartoon({
+      el: '#demo1',
+      frameNum: 8,
+      framerate: 24,
+      url: 'static/demo1.jpg',
+      direction: 'horizontal',
+      iteration: 'infinite'
+    });
+    frameCartoon1.start();
+  </pre>
+  <script>
+    var frameCartoon1 = new FrameCartoon({
+      el: '#demo1',
+      frameNum: 8,
+      framerate: 24,
+      url: 'static/demo1.jpg',
+      direction: 'horizontal',
+      iteration: 'infinite'
+    });
+    frameCartoon1.start();
+  </script>
+
+  <h3>垂直动画演示</h3>
+  <div id="demo2"></div>
+  <pre>
+    var frameCartoon2 = new FrameCartoon({
+      el: '#demo2',
+      frameNum: 10,
+      framerate: 24,
+      url: 'static/demo2.png',
+      direction: 'vertical',
+      iteration: 'infinite'
+    });
+    frameCartoon2.start();
+  </pre>
+  <script>
+    var frameCartoon2 = new FrameCartoon({
+      el: '#demo2',
+      frameNum: 10,
+      framerate: 24,
+      url: 'static/demo2.png',
+      direction: 'vertical',
+      iteration: 'infinite'
+    });
+    frameCartoon2.start();
+  </script>
+
+  <h3>控制动画演示</h3>
+  <div id="demo3"></div>
+  <button id="start">开始</button>
+  <button id="stop">停止</button>
+  <pre>
+    var frameCartoon3 = new FrameCartoon({
+      el: '#demo3',
+      frameNum: 8,
+      framerate: 24,
+      url: 'static/demo3.jpg',
+      direction: 'vertical',
+      iteration: 'infinite'
+    });
+  </pre>
+  <script>
+    var frameCartoon3 = new FrameCartoon({
+      el: '#demo3',
+      frameNum: 8,
+      framerate: 24,
+      url: 'static/demo3.jpg',
+      direction: 'vertical',
+      iteration: 'infinite'
+    });
+
+    document.querySelector('#start').onclick = function(){
+      frameCartoon3.start();
+    }
+
+    document.querySelector('#stop').onclick = function(){
+      frameCartoon3.stop();
+    }
+  </script>
+
+  <h3>限制循环次数动画演示</h3>
+  <div id="demo4"></div>
+  <pre>
+    var frameCartoon4 = new FrameCartoon({
+      el: '#demo4',
+      frameNum: 8,
+      framerate: 24,
+      url: 'static/demo4.png',
+      direction: 'vertical',
+      iteration: 10
+    });
+  </pre>
+  <script>
+    var frameCartoon4 = new FrameCartoon({
+      el: '#demo4',
+      frameNum: 8,
+      framerate: 24,
+      url: 'static/demo4.png',
+      direction: 'vertical',
+      iteration: 10
+    });
+    frameCartoon4.start();
+  </script>
+</body>
+</html>
