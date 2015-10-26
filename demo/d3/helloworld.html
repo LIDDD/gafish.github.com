@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello D3</title>
+  <script src="d3.js"></script>
+  <style>
+    .red{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    var div = d3.select('body').append('div');
+    div.text('Hello World!').attr('class','red').attr('style','font-size:48px;')
+  </script>
+</body>
+</html>
