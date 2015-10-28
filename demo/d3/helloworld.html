@@ -8,12 +8,45 @@
     .red{
       color: red;
     }
+    .blue{
+      color: blue;
+    }
   </style>
 </head>
 <body>
+  <div></div>
+  <div></div>
+  <div></div>
   <script>
-    var div = d3.select('body').append('div');
-    div.text('Hello World!').attr('class','red').attr('style','font-size:48px;')
+    // 1
+    d3.select('body').append('div')
+      .text('Hello World!')
+      .attr('class','red')
+      .attr('style','font-size:48px;')
+      .classed('blue',true)
+      .classed('red',false)
+      .classed('blue',function() {
+        return false
+      })
+      .style('font-size', '100px')
+      .style('font-size', function() {
+        return '20px';
+      })
+    // 2
+    d3.selectAll('div')
+      .classed('red',true)
+      .text('Hello')
+      .each(function(d, i){
+        d3.select(this).append('h1').text(i);
+      })
+    // 3
+    d3.select('body')
+      .append('section')
+      .append('div')
+      .append('p')
+      .text('dynamic box')
+    // 4
+    d3.select('body div')[0][0].innerHTML = '001';
   </script>
 </body>
 </html>
