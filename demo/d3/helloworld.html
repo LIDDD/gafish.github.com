@@ -47,6 +47,19 @@
       .text('dynamic box')
     // 4
     d3.select('body div')[0][0].innerHTML = '001';
+    // 5
+    d3.select('body').append('section')
+      .attr('id','section1')
+      .append('div')
+      .attr('class','blue')
+      .append('p')
+      .text('dynamic bule box')
+    d3.select('body').append('section')
+      .attr('id','section')
+      .append('div')
+      .attr('class','red')
+      .append('p')
+      .text('dynamic red box')
   </script>
 </body>
 </html>
