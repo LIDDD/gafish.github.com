@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello D3</title>
+  <script src="d3.js"></script>
+  <style>
+    div{
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    var data = [1,3,6,9];
+    var body = d3.select('body');
+
+    var linear = d3.scale.linear()
+      .domain([0,1])
+      .range([0,20]);
+    body.selectAll('.linear')
+      .data(data)
+      .enter()
+      .append('div')
+        .classed('linear',true)
+      .append('span')
+    body.selectAll('.linear')
+      .select('span')
+        .text(function(d,i) {
+          return linear(d);
+        })
+    body.selectAll('.linear')
+      .data(data)
+      .exit()
+      .remove()
+
+    var time = d3.time.scale()
+      .domain([new Date(),new Date(2020,11,11)])
+      .rangeRound([0, 500]);
+    body.append('div')
+      .style('background','#ddd')
+      .style('width',time(new Date(2011,1,1))+'px')
+      .text(d3.time.format('%x %X')(new Date(2011,1,1)))
+    body.append('div')
+      .style('background','#ddd')
+      .style('width',time(new Date(2019,1,1))+'px')
+      .text(d3.time.format('%x %X')(new Date(2019,1,1)))
+    body.append('div')
+      .style('background','#ddd')
+      .style('width',time(new Date(2022,1,1))+'px')
+      .text(d3.time.format('%x %X')(new Date(2022,1,1)))
+
+    var color = d3.scale.ordinal()
+      .domain([0,1,2])
+      .range(['#ff0','#f00','#f0f'])
+    var i = Math.round(Math.random()*2);
+    body.append('div')
+      .style('background',color(i))
+      .text('test')
+    console.log(i)
+    console.log(color(i))
+  </script>
+</body>
+</html>
