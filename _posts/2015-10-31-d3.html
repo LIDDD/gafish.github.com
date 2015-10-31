@@ -1,0 +1,113 @@
+---
+layout: default
+title: D3 DEMO
+---
+<style>
+  #container{
+    position: relative;
+    width: 600px;
+    height: 120px;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+  }
+  #container div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 28px;
+    height: 0;
+    background: #295;
+    text-align: center;
+    color: #000;
+  }
+  #container span{
+    display: inline-block;
+    font-size: 12px;
+    line-height: 20px;
+    margin-top: -20px;
+  }
+</style>
+
+<div id="container"></div>
+
+<script src="http://cdn.bootcss.com/d3/3.5.6/d3.js"></script>
+<script>
+  var id = 0;
+  var data = [];
+  var container = d3.select('#container');
+
+  function render(){
+    var selection = container
+      .selectAll('div')
+      .data(data, function(d,i) {
+        return d.id;
+      });
+
+    selection
+      .enter()
+      .append('div')
+      .style('left', function(d,i) {
+        return barLeft(i+1);
+      })
+      .append('span')
+
+    selection
+      .style('background',function(d,i) {
+        return barBg(d);
+      })
+      .transition()
+      .duration(300)
+      .style('height',function(d,i) {
+        return barHeight(d)+'px';
+      })
+      .style('left', function(d,i) {
+        return barLeft(i);
+      })
+      .select('span')
+      .text(function(d,i) {
+        return d.value;
+      })
+
+    selection
+      .exit()
+      .transition()
+      .duration(200)
+      .style('width',0)
+      .style('height',0)
+      .style('left', function(d,i) {
+        return barLeft(-1);
+      })
+      .remove()
+  }
+
+  function barLeft(i) {
+    return i * (28+2)+'px';
+  }
+
+  function barHeight(d) {
+    var linear = d3.scale.linear().domain([0,1000]).range([0,100])
+    return d3.round(linear(d.value));
+  }
+
+  function barBg(d) {
+    var linear = d3.scale.linear().domain([0,1000]).range(['#cfc','#295']);
+    return linear(d.value);
+  }
+
+  function push() {
+    data.push({
+      id: ++id,
+      value: Math.floor(Math.random()*1000)
+    });
+  }
+
+  for (var i = 0; i < 20; i++) {
+    push();
+  };
+
+  setInterval(function() {
+    data.shift();
+    push();
+    render()
+  }, 1000);
+</script>
