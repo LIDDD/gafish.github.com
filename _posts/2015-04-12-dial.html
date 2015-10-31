@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 小转盘动效
+title: js 小转盘动效
 ---
 <style type="text/css">
 	#dial{
@@ -80,7 +80,7 @@ title: 小转盘动效
 	var r = dial.offsetWidth/2;
 	var startAngle = 90;
 	var endAngle = 360;
-	var gap = (endAngle - startAngle)/(total-1);	
+	var gap = (endAngle - startAngle)/(total-1);
 	var moved = false;
 	balls = Array.prototype.slice.call(balls);
 	function move(){

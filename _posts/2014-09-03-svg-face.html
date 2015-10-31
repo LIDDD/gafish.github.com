@@ -1,16 +1,16 @@
 ---
 layout: default
-title:  SVG表情
+title:  svg 表情
 ---
-<!-- 
+<!--
 <svg width=200 height=200 viewBox="0 0 200 200" id="svgElement" stroke-width=3 fill=none stroke=green>
   <defs>
     <filter id="dropshadow" height="130%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/> 
-      <feOffset dx="2" dy="2" result="offsetblur"/> 
-      <feMerge> 
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2" result="offsetblur"/>
+      <feMerge>
         <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/> 
+        <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
@@ -20,15 +20,15 @@ title:  SVG表情
     <polyline points="120 80, 130 70, 140 80" />
     <polyline points="90 120, 100 130, 110 120" />
 </svg>
- --> 
+ -->
 <script type="text/javascript" src="http://g.alicdn.com/kissy/k/1.4.7/seed-min.js"></script>
-<style type="text/css"> 
+<style type="text/css">
     #demo {
         overflow: hidden;
     }
     #demo div{
         float: left;
-    } 
+    }
     circle{
         /*-webkit-svg-shadow: 0 0 7px #53BE12;*/
     }
@@ -145,7 +145,7 @@ function createFace(cfg){
         animate.setAttribute('dur','.5s');
         return animate;
     }
-    /*计算表情颜色*/ 
+    /*计算表情颜色*/
     /**
      * r:212 g:89 b:84
      * r:255 g:153 b:0
