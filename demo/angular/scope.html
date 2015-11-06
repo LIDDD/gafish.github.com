@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello AngularJS</title>
+  <script src="angular1.2.29.js"></script>
+</head>
+<body>
+
+<!--<div ng-app="myApp1">Hello {{name}}</div>-->
+<div ng-app="myApp2">
+  <div ng-controller="MyController">Hello {{name}}</div>
+</div>
+
+<script>
+//  angular.module('myApp1',[]).run(function($rootScope){
+//    $rootScope.name = 'world';
+//  });
+  angular.module('myApp2',[]).controller('MyController',function($scope){
+    $scope.name = 'haha';
+  })
+</script>
+</body>
+</html>
