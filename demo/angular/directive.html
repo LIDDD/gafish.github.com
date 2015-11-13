@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" ng-app="myAPp">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello AngularJS</title>
+  <script src="angular1.2.29.js"></script>
+</head>
+<body>
+<my-directive></my-directive>
+<script>
+  angular.module('myAPp', [])
+      .directive('myDirective',function(){
+        return {
+          restrict: 'E',
+          template: '<a href="http://taobao.com">Click me</a>',
+          replace: true
+        }
+      });
+</script>
+
+</body>
+</html>
