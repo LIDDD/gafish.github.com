@@ -1,16 +1,19 @@
 ---
 layout: default
-title: D3 可视化滚动图表
+<!--title: D3 可视化图表-->
 ---
+<script src="http://cdn.bootcss.com/d3/3.5.6/d3.js"></script>
+
+<!--柱状图-->
 <style>
-  #container{
+  #barChart{
     position: relative;
     width: 600px;
     height: 120px;
     border-bottom: 1px solid #000;
     overflow: hidden;
   }
-  #container div{
+  #barChart div{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -20,7 +23,7 @@ title: D3 可视化滚动图表
     text-align: center;
     color: #000;
   }
-  #container span{
+  #barChart span{
     display: inline-block;
     font-size: 12px;
     line-height: 20px;
@@ -28,18 +31,19 @@ title: D3 可视化滚动图表
   }
 </style>
 
-<div id="container"></div>
+<h2>柱状图</h2>
 
-<script src="http://cdn.bootcss.com/d3/3.5.6/d3.js"></script>
+<div id="barChart"></div>
+
 <script>
   var id = 0;
-  var data = [];
-  var container = d3.select('#container');
+  var barData = [];
+  var container = d3.select('#barChart');
 
   function render(){
     var selection = container
       .selectAll('div')
-      .data(data, function(d,i) {
+      .data(barData, function(d,i) {
         return d.id;
       });
 
@@ -95,7 +99,7 @@ title: D3 可视化滚动图表
   }
 
   function push() {
-    data.push({
+    barData.push({
       id: ++id,
       value: Math.floor(Math.random()*1000)
     });
@@ -103,11 +107,210 @@ title: D3 可视化滚动图表
 
   for (var i = 0; i < 20; i++) {
     push();
-  };
+  }
 
   setInterval(function() {
-    data.shift();
+    barData.shift();
     push();
     render()
   }, 1000);
+</script>
+
+<!--折线图-->
+<style>
+  #lineChart{}
+  #lineChart path{
+    fill: none;
+    stroke-width: 1px;
+    stroke: #000;
+  }
+  #lineChart line{
+    stroke: #000;
+    stroke-width: 1px;
+  }
+  #lineChart text{
+    font-size: 12px;
+    /*transform: rotate(-45deg);*/
+  }
+</style>
+
+<h2>折线图</h2>
+
+<div id="lineChart"></div>
+<button onclick="update()">update</button>
+
+<script>
+  function LineChart(){
+    var _lineChart = {};
+    var _width = 500;
+    var _height = 300;
+    var _margin = {
+      top: 50,
+      right: 50,
+      bottom: 50,
+      left: 50
+    };
+    var _data = [];
+    var _x;
+    var _y;
+    var _svg;
+    var _bodyG;
+    var _axesG;
+
+    function renderAxes(){
+      if(!_axesG){
+        _axesG = _svg.append('g')
+            .classed('axes',true)
+            .attr('transform','translate('+ _margin.left +','+ _margin.top +')');
+      }
+      renderXAxes();
+      renderYAxes();
+    }
+
+    function renderXAxes(){
+      var xAxes = _axesG.append('g')
+          .classed('aAxes',true)
+          .attr('transform','translate(0,'+_height+')')
+      var axis = d3.svg.axis()
+          .innerTickSize(10)
+          .orient('bottom')
+          .outerTickSize(10)
+          .scale(_x)
+          .tickPadding(10)
+          .ticks(d3.time.month)
+          .tickFormat(d3.time.format("%m-%d"))
+      xAxes.call(axis);
+    }
+
+    function renderYAxes(){
+      var yAxes = _axesG.append('g')
+          .classed('yAxes',true)
+      var yaxis = d3.svg.axis()
+          .scale(_y)
+          .orient('left')
+      yAxes.call(yaxis);
+    }
+
+    function renderBody(){
+      if(!_bodyG){
+        _bodyG = _svg.append('g')
+            .classed('body',true)
+            .attr('transform','translate('+ _margin.left +','+ _margin.top +')');
+      }
+      renderLines();
+      renderDots();
+    }
+
+    function renderLines(){
+      var _line = d3.svg.line()
+          .x(function(d){return _x(d.date)})
+          .y(function(d){return _y(d.total)});
+
+      var linePath = _bodyG.selectAll('path.line')
+          .data(_data);
+
+      linePath
+          .enter()
+          .append('path')
+          .attr('fill','none')
+          .classed('line',true)
+
+      linePath
+          .transition()
+          .duration(300)
+          .attr('d', function(d){
+            return _line(d);
+          })
+    }
+
+
+    function renderDots(){
+      _data.forEach(function(d,i){
+        var dotCircle = _bodyG.selectAll('circle.dot'+i).data(d);
+
+        dotCircle
+            .enter()
+            .append('circle')
+            .classed('dot'+i,true)
+
+        dotCircle
+            .transition()
+            .attr('cx', function(d){
+              return _x(d.date);
+            })
+            .attr('cy', function (d) {
+              return _y(d.total);
+            })
+            .attr('r',4.5)
+      })
+    }
+
+    _lineChart.render = function(){
+      if(!_svg){
+        _svg = d3.select('#lineChart').append('svg')
+            .attr('width',_width+_margin.left+_margin.right)
+            .attr('height',_height+_margin.top+_margin.bottom);
+        renderAxes(_svg);
+      }
+      renderBody();
+      return _lineChart;
+    }
+
+    _lineChart.addSeries = function(d){
+      _data.push(d);
+      return _lineChart;
+    }
+
+    _lineChart.x = function(x){
+      _x = x.range([0,_width]);
+      return _lineChart;
+    }
+
+    _lineChart.y = function(y){
+      _y = y.range([_height,0]);
+      return _lineChart;
+    }
+
+    return _lineChart;
+  }
+
+
+  function update() {
+    for (var i = 0; i < data.length; ++i) {
+      for (var j = 0; j < 10; ++j){
+        data[i][j].total = Math.floor(Math.random() * 100);
+      }
+    }
+
+    linechart.render();
+  }
+
+  var linechart = LineChart();
+  var data = [];
+  for (var i = 0; i < 2; ++i) {
+    var _d = [];
+    for (var j = 0; j < 10; ++j) {
+      var date = d3.time.format('%Y-%m-%d').parse("2015-" + j + "-10");
+      _d.push({
+        "date": date, "total": Math.floor(Math.random() * 100)
+      })
+    }
+    data.push(_d);
+  }
+
+
+  var xDomain = d3.extent(data[0], function(d){
+    return d.date;
+  });
+
+  linechart
+      .x(d3.time.scale().domain(xDomain).nice())
+      .y(d3.scale.linear().domain([0,100]).nice());
+
+  data.forEach(function(d,i){
+    linechart.addSeries(d);
+  })
+
+  linechart.render();
+
 </script>
