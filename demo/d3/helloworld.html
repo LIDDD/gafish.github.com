@@ -4,87 +4,40 @@
   <meta charset="UTF-8">
   <title>Hello D3</title>
   <script src="d3.js"></script>
-  <style>
-    .red{
-      color: red;
-    }
-    .blue{
-      color: blue;
-    }
-  </style>
 </head>
 <body>
-  <p>
-    <b></b>
-    <b></b>
-    <em></em>
-  </p>
-  <div></div>
-  <div></div>
-  <div></div>
-  <script>
-    var matrix = [
-      [11975,  5871, 8916, 2868],
-      [ 1951, 10048, 2060, 6171],
-      [ 8010, 16145, 8090, 8045],
-      [ 1013,   990,  940, 6907]
-    ];
+<script>
+  function render(data){
+    var demo = d3.select('body')
+        .selectAll('p')
+        .data(data, function (d) {
+          return d;
+        });
+    demo.enter()
+        .append('p')
+        .style('width', 0+'px')
+        .style('background', '#eee')
+    demo
+        .text(function (d) {
+          return d;
+        })
+        .transition()
+        .duration(1000)
+        .style('width', function (d) {
+          return d+'px';
+        })
+    demo.exit()
+        .transition()
+        .duration(1000)
+        .style('width', 0+'px')
+        .remove();
+  }
 
-    var tr = d3.select("body").append("table").selectAll("tr")
-        .data(matrix)
-        .enter().append("tr");
-    console.log(d3.select("body").data())
+  render([100,300,500]);
 
-    var td = tr.selectAll("td")
-        .data(function(d) { return d; })
-        .enter().append("td")
-        .text(function(d) { return d; });
-    td.on('mousedown',function(d,i){
-      console.log(d3.mouse(this))
-      console.log(d3.selection())
-    })
-    // 1
-    d3.select('body').append('div')
-      .text('Hello World!')
-      .attr('class','red')
-      .attr('style','font-size:48px;')
-      .classed('blue',true)
-      .classed('red',false)
-      .classed('blue',function() {
-        return false
-      })
-      .style('font-size', '100px')
-      .style('font-size', function() {
-        return '20px';
-      })
-    // 2
-    d3.selectAll('div')
-      .classed('red',true)
-      .text('Hello')
-      .each(function(d, i){
-        d3.select(this).append('h1').text(i);
-      })
-    // 3
-    d3.select('body')
-      .append('section')
-      .append('div')
-      .append('p')
-      .text('dynamic box')
-    // 4
-    d3.select('body div')[0][0].innerHTML = '001';
-    // 5
-    d3.select('body').append('section')
-      .attr('id','section1')
-      .append('div')
-      .attr('class','blue')
-      .append('p')
-      .text('dynamic bule box')
-    d3.select('body').append('section')
-      .attr('id','section')
-      .append('div')
-      .attr('class','red')
-      .append('p')
-      .text('dynamic red box')
-  </script>
+  setTimeout(function(){
+    render([300,500,1000]);
+  },1000)
+</script>
 </body>
 </html>
