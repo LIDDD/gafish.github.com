@@ -98,6 +98,30 @@
   var symbolChart = svg.selectAll('path').data(data).enter().append('path');
   symbolChart.attr('transform',function(d,i){var t = i*20+10;return 'translate('+ t +','+ t +')'}).attr('d',function(d){return symbol(d)}).style({fill:'none',stroke:'#000'});
 
+
+
+
+//  坐标轴：
+
+  var body = d3.select('body');
+  var svg = body.append('svg').attr('width',200).attr('height',200);
+  var axisx = d3.svg.axis().scale(d3.scale.linear().domain([0,100]).range([0,140])).ticks(5);
+  var axisxChart = svg.append('g').attr('transform','translate(30,170)').call(axisx).style({fill:'none','stroke-width':1,stroke:'#000','font-size':12});
+  var axisy = d3.svg.axis().scale(d3.scale.linear().domain([0,100]).range([140,0])).ticks(5).orient('left');
+  var axisyChart = svg.append('g').attr('transform','translate(30,30)').call(axisy).style({fill:'none','stroke-width':1,stroke:'#000','font-size':12});
+
+
+
+//  brush：
+
+  var body = d3.select('body');
+  var svg = body.append('svg').attr('width',200).attr('height',200).style('background','#eee');
+  var linear = d3.scale.linear().domain([0,100]).range([0,200]);
+  var brush = d3.svg.brush().x(linear).on('brush',function(){
+    console.log(brush.extent());
+  });
+  var g = svg.append('g').call(brush).selectAll('rect').attr('height',200);
+
 </script>
 </body>
 </html>
