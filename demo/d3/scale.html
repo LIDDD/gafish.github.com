@@ -40,17 +40,25 @@
   svg.append('g').call(d3.svg.axis().ticks(5).scale(identity));
 </script>
 
-<h2>d3.scale.quantize().domain([0,10,20,30]).range([0,100,200,300,400,500,600,700]);</h2>
+<h2>d3.scale.quantize().domain([0,10]).range([0,10,20,30,40,50,60,70]);</h2>
 <div id="demo5"></div>
 <script >
-  var demo = d3.select('#demo5');
-  var svg = demo.append('svg').attr('width',800).attr('height',100);
-  var quantize = d3.scale.quantize().domain([0,10,20,30]).range([0,100,200,300,400,500,600,700]);
-  svg.append('g').call(d3.svg.axis().ticks(5).scale(quantize));
-  console.log(quantize(0))
-  console.log(quantize(5))
-  console.log(quantize(20))
-  console.log(quantize(35))
+  var demo = document.getElementById('demo5');
+  var quantize = d3.scale.quantize().domain([0,10]).range([0,10,20,30,40,50,60,70]);
+  var div = document.createElement('div');
+  div.innerHTML = ''+
+    'quantize(0) ==> '+quantize(0)+'<br>'+
+    'quantize(1) ==> '+quantize(1)+'<br>'+
+    'quantize(2) ==> '+quantize(2)+'<br>'+
+    'quantize(3) ==> '+quantize(3)+'<br>'+
+    'quantize(4) ==> '+quantize(4)+'<br>'+
+    'quantize(5) ==> '+quantize(5)+'<br>'+
+    'quantize(6) ==> '+quantize(6)+'<br>'+
+    'quantize(7) ==> '+quantize(7)+'<br>'+
+    'quantize(8) ==> '+quantize(8)+'<br>'+
+    'quantize(9) ==> '+quantize(9)+'<br>'+
+    'quantize(10) ==> '+quantize(10)
+  demo.appendChild(div);
 </script>
 
 <h2>d3.scale.quantile().domain([0,10,20,30,40,50,60,70]).range([0,100,200,300,400,500,700]);</h2>
