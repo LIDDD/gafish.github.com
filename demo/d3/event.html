@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello D3</title>
+  <script src="d3.js"></script>
+  <style>
+    svg{
+      background: #eee;
+      border: 1px solid #ccc;
+    }
+    svg circle{
+      stroke: #fff;
+      stroke-width: 1px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+
+  var width = 500;
+  var height = 500;
+
+  /**
+   * 生成min-max区间的随机数
+   */
+  function random(min,max){
+    return Math.random() * (max - min) + min;
+  }
+
+  /**
+   * 创建随机数据
+   */
+  function createData(n){
+    var data = [];
+    for (var i = 0; i < n; i++) {
+      data.push({
+        cx: random(50,width-50),
+        cy: random(100,height-50),
+        r: random(10,50)
+      })
+    };
+    return data;
+  }
+
+  var color = d3.scale.category20();
+
+  /**
+   * svg1
+   */
+  var svg1 = d3.select('body')
+    .append('svg')
+    .attr({
+      width: width,
+      height: height
+    });
+
+  var dataset = createData(20);
+
+  var text1 = svg1.append('text')
+    .text('用鼠标在任意圆上拖动')
+    .attr({
+      x: 10,
+      y: 20
+    })
+
+  // 创建拖动行为
+  var drag = d3.behavior.drag()
+    .on("drag", function(d,i) {
+      // 监听拖拽事件
+      var e = d3.event;
+      var t = d3.select(this)
+      t.attr({
+        cx: e.x,
+        cy: e.y
+      });
+    });
+
+  var circle1 = svg1.selectAll('circle')
+    .data(dataset)
+    .enter()
+    .append('circle')
+    .attr({
+      cx: function(d,i){
+        return d.cx;
+      },
+      cy: function(d,i){
+        return d.cy;
+      },
+      r: function(d,i){
+        return d.r;
+      },
+      fill: function(d,i){
+        return d.fill = color(i);
+      }
+    })
+    .on({
+      mouseenter: function(d,i) {
+        var e = d3.event;
+        var t = d3.select(this)
+        t.attr('fill','#000');
+        text1.text('当前圆半径：'+ d.r +'px');
+      },
+      mouseleave: function(d,i) {
+        var t = d3.select(this);
+        t.attr('fill',d.fill);
+      },
+      click: function(d,i) {
+        var t = d3.select(this);
+        t.on('click',null).remove();
+      }
+    })
+    .call(drag)
+
+
+  /**
+   * svg2
+   */
+  var svg2 = d3.select('body')
+    .append('svg')
+    .attr({
+      width: width,
+      height: height
+    });
+  var text2 = svg2.append('text')
+    .text('在圆上缩放或双击')
+    .attr({
+      x: 10,
+      y: 20
+    })
+  // 创建缩放行为
+  var zoom = d3.behavior.zoom()
+    .on("zoom", function(){
+      // 监听缩放事件
+      circle2.attr('transform',"translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    });
+
+  var circle2 = svg2.append('circle')
+    .attr({
+      cx: random(50,width-50),
+      cy: random(50,height-50),
+      r: random(50,200),
+      fill: color(1)
+    })
+    .call(zoom)
+
+
+</script>
+
+</body>
