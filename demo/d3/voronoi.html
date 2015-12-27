@@ -11,21 +11,23 @@
 
 <script>
 
+  var dataset = [[18,162], [114,403], [261,98] ];//假设这是三家便利店
+
+
   var width = 500;
   var height = 500;
 
-  var dataset = [[18,162], [114,403], [261,98] ];
-
-  var voronoi = d3.geom.voronoi().clipExtent([[0, 0], [width, height]]);
+  var voronoi = d3.geom.voronoi()
+    .clipExtent([[0, 0], [width, height]]);//从画面左上角到右下角为显示区间
 
   var data = voronoi(dataset);
   console.log(data)
 
-  var color = d3.scale.category10();
-
   var svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
+
+  var color = d3.scale.category10();
 
   svg.append("g").selectAll("path")
     .data(data)
