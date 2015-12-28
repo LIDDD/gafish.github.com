@@ -37,6 +37,7 @@
       return color(i);
     })
     .attr("d", function(d,i){
+      // 通过d.join("L")方法将每个顶点连接起来
       return "M" + d.join("L") + "Z";
     });
 
