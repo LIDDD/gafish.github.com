@@ -13,6 +13,7 @@
             cursor: pointer;
             stroke: #3182bd;
             stroke-width: 0.5px;
+            fill: #c6dbef;
         }
 
         .node text {
@@ -34,75 +35,54 @@
     var base = 5000;
 
     // 原始数据
-    var dataset = {
-        "name": "小二工作台",
-        "count": 20000,
-        "children": [{
-            "name": "功能操作区",
-            "count": 15000,
-            "children": [{
-                "name": "TAB1",
-                "count": 12000,
-                "children": [{
-                    "name": "A区",
-                    "count": 8000
-                }, {
-                    "name": "B区",
-                    "count": 2000
-                }, {
-                    "name": "C区",
-                    "count": 500
-                }, {
-                    "name": "D区",
-                    "count": 1500
-                }]
-            }, {
-                "name": "TAB2",
-                "count": 1000,
-                "children": [{
-                    "name": "E区",
-                    "count": 1000
-                }, {
-                    "name": "F区",
-                    "count": 100
-                }, {
-                    "name": "G区",
-                    "count": 500
-                }, {
-                    "name": "H区",
-                    "count": 100
-                }, {
-                    "name": "I区",
-                    "count": 300
-                }]
-            }, {
-                "name": "TAB3",
-                "count": 2000,
-                "children": [{
-                    "name": "G区",
-                    "count": 100
-                }, {
-                    "name": "K区",
-                    "count": 1900
-                }]
-            }]
-        }]
+    var nodes = {
+        "0": {name: "小二工作台", value: 20000 },
+        "1": {name: "功能操作区", value: 15000 },
+        "3": {name: "TAB1", value: 12000 },
+        "4": {name: "A区", value: 8000 },
+        "5": {name: "B区", value: 2000 },
+        "6": {name: "C区", value: 500 },
+        "7": {name: "D区", value: 1500 },
+        "8": {name: "TAB2", value: 1000 },
+        "9": {name: "E区", value: 100 },
+        "10": {name: "F区", value: 300 },
+        "11": {name: "G区", value: 50 },
+        "12": {name: "H区", value: 500 },
+        "13": {name: "I区", value: 50 },
+        "14": {name: "TAB3", value: 3000 },
+        "15": {name: "J区", value: 2000 },
+        "16": {name: "K区", value: 1000 }
     };
+    var links = [
+        {source: 0, target: 1, value: 0},
+        {source: 1, target: 3, value: 0},
+        {source: 3, target: 4, value: 0},
+        {source: 3, target: 5, value: 0},
+        {source: 3, target: 6, value: 0},
+        {source: 3, target: 7, value: 0},
+        {source: 1, target: 8, value: 0},
+        {source: 8, target: 9, value: 0},
+        {source: 8, target: 10, value: 0},
+        {source: 8, target: 11, value: 0},
+        {source: 8, target: 12, value: 0},
+        {source: 8, target: 13, value: 0},
+        {source: 1, target: 14, value: 0},
+        {source: 14, target: 15, value: 0},
+        {source: 14, target: 16, value: 0},
+        {source: 15, target: 1, value: 0},
+        {source: 16, target: 8, value: 0}
+    ]
 
     // 数据处理
-    var nodes = function() {
-        var datas = [],
-            i = 0;
-
-        function recurse(node) {
-            if (node.children) node.children.forEach(recurse);
-            if (!node.id) node.id = ++i;
-            datas.push(node);
-        }
-        recurse(dataset);
-        return datas;
-    }();
-    var links = d3.layout.tree().links(nodes);
+    links.forEach(function(link){
+        link.source = nodes[link.source] || {};
+        link.target = nodes[link.target] || {};
+        // 模拟数据
+        link.value = Math.floor(Math.random()*10000+10);
+    });
+    nodes = d3.values(nodes);
+    console.log(links)
+    console.log(nodes)
 
     // 力图初始化
     var width = 800;
@@ -143,19 +123,17 @@
 
     //添加连线
     var link = svg.selectAll(".link")
-        .data(links, function(d) {
-            return d.target.id;
-        });
+        .data(links);
     link.exit().remove();
-    link.enter().insert("line", ".node")
+    link.enter()
+        .insert("line", ".node")
         .attr("class", "link")
         .attr('stroke-width', function(d) {
-            return (Math.max(Math.sqrt(d.target.count) / 10,1)) + 'px';
+            return (Math.max(Math.sqrt(d.value) / 10,1)) + 'px';
         })
         .attr('stroke', function(d) {
-            var percent = Math.max(1-d.target.count/base,0);
-            var color = Math.min(255*percent,150);
-            console.log(color)
+            var percent = Math.max(1-d.value/base,0);
+            var color = Math.floor(Math.min(255*percent,150));
             return 'rgb(255,'+ color +','+ 150 +')';
         })
 
@@ -163,7 +141,7 @@
     // var color = d3.scale.category20();
     var node = svg.selectAll(".node")
         .data(nodes, function(d) {
-            return d.id;
+            return d.index;
         });
     node.exit().remove();
 
@@ -172,16 +150,12 @@
         .call(force.drag); //使得节点能够拖动
     nodeEnter.append("circle")
         .attr("r", function(d) {
-            return Math.max(Math.sqrt(d.count) / 10,5);
-        });
+            return Math.max(Math.sqrt(d.value) / 10,5);
+        })
     nodeEnter.append("text")
         .attr("dy", "3em")
         .text(function(d) {
             return d.name;
-        });
-    node.select("circle")
-        .style("fill", function(d) {
-            return d.children ? '#fd8d3c':'#c6dbef';
         });
 </script>
 
