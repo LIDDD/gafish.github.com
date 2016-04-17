@@ -117,10 +117,13 @@
   var body = d3.select('body');
   var svg = body.append('svg').attr('width',200).attr('height',200).style('background','#eee');
   var linear = d3.scale.linear().domain([0,100]).range([0,200]);
-  var brush = d3.svg.brush().x(linear).on('brush',function(){
-    console.log(brush.extent());
-  });
-  var g = svg.append('g').call(brush).selectAll('rect').attr('height',200);
+  var brush = d3.svg.brush()
+    .x(linear)
+    .y(linear)
+    .on('brush',function(){
+      console.log(brush.extent());
+    });
+  var g = svg.append('g').call(brush);
 
 </script>
 </body>

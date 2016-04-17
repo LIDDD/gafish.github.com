@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Hello D3</title>
   <script src="d3.js"></script>
   <style>
@@ -13,10 +14,124 @@
       stroke: #fff;
       stroke-width: 1px;
     }
+    #htmlDemo1,
+    #htmlDemo2{
+      width: 100px;
+      height: 100px;
+      background: #eee;
+      line-height: 100px;
+      text-align: center;
+    }
+    #htmlDemo2{
+      margin-left: 100px;
+      background: #ddd;
+    }
+
+    #spanDemo{
+      display: inline-block;
+      margin: 10px;
+      padding: 50px;
+      background: #999;
+    }
   </style>
 </head>
 <body>
-
+<div>
+  <button id="dispatch1">dispatch1</button>
+</div>
+<script>
+  var dispatch = d3.dispatch('test','mock');
+  dispatch.on('test', function(text){
+    alert(text)
+  })
+  d3.select('#dispatch1').on('click', function(){
+    dispatch.test('this is test event');
+  })
+</script>
+<div>
+  <button id="xhr1">xhr1</button>
+  <button id="xhr2">xhr2</button>
+</div>
+<script>
+  d3.select('#xhr1').on('click', function(){
+    d3.xhr('./data.json','application/json',function(d){
+      console.log(d)
+      console.log(d.response)
+    })
+  })
+  d3.select('#xhr2').on('click', function(){
+    d3.xhr('./data.json')
+      .mimeType('application/json')
+      .header('header-name','test')
+      .response(function(request){
+        return request.responseText;
+      })
+      .on('beforesend',function(d){
+        console.log('beforesend===>')
+        console.log(d)
+      })
+      .on('progress',function(d){
+        console.log('progress===>')
+        console.log(d)
+      })
+      .on('load',function(d){
+        console.log('load===>')
+        console.log(d)
+      })
+      .on('error',function(d){
+        console.log('error===>')
+        console.log(d)
+      })
+      // .get(function(error,d){
+      //   console.log(d)
+      // })
+      // .post('a=b',function(error,d){
+      //   console.log(d)
+      // })
+      // .send('get',function(error,d){
+      //   console.log(d)
+      // })
+      .send('get')
+  })
+</script>
+<span id="spanDemo">spanDemo</span>
+<script>
+  d3.select('#spanDemo').on('click', function(){
+    console.log(d3.mouse(this));
+  })
+</script>
+<div id="htmlDemo1">htmlDemo1</div>
+<div id="htmlDemo2">htmlDemo2</div>
+<script>
+  d3.select('#htmlDemo2').on('click', function(){
+    console.log(d3.mouse(this));
+    console.log(d3.mouse(d3.select('#htmlDemo1')[0][0]))
+    console.log('=====')
+    console.log(d3.touch(this))
+  })
+  d3.select('#htmlDemo2').on('touchstart', function(){
+    alert(d3.touches(this));
+    alert(d3.touch(this, d3.event.touches[0].indetifier));
+  })
+</script>
+<svg id="svgDemo1" width=200 height=200>
+  <circle cx=0 cy=0 r=50></circle>
+</svg>
+<svg id="svgDemo2" width=200 height=200>
+  <g transform="translate(100,100)">
+    <circle cx=0 cy=0 r=50 fill='#ccc'></circle>
+  </g>
+</svg>
+<br>
+<script>
+  d3.select('#svgDemo2 circle').on('click', function(){
+    console.log(d3.mouse(this));
+    console.log(d3.mouse(d3.select('#svgDemo2 circle')[0][0]));
+    console.log(d3.select('#svgDemo2 circle')[0][0]===this)
+    console.log(d3.mouse(d3.select('#svgDemo2 g')[0][0]));
+    console.log(d3.mouse(d3.select('#svgDemo1')[0][0]))
+  })
+</script>
 <script>
 
   var width = 500;
@@ -67,7 +182,7 @@
 
   // 创建拖动行为
   var drag = d3.behavior.drag()
-    .on("drag", function(d,i) {
+    .on("drag", function() {
       // 监听拖拽事件
       var e = d3.event;
       var t = d3.select(this)
@@ -107,6 +222,11 @@
         t.attr('fill',d.fill);
       },
       click: function(d,i) {
+        console.log(d3.event)
+        // 相对于svg的x y坐标
+        console.log(d3.mouse(this))
+        // 相对于#htmlDemo1的x y坐标
+        console.log(d3.mouse(d3.select('#htmlDemo1')[0][0]))
         var t = d3.select(this);
         t.on('click',null).remove();
       }

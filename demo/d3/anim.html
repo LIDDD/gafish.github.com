@@ -39,8 +39,9 @@
   var index = data.length;
   var container = d3.select('#container');
 
+  var divs = container.selectAll('div')
   function render(){
-    var divs = container.selectAll('div').data(data, function(d,i) {return d;});
+    divs = divs.data(data, function(d,i) {return d;});
     divs
       .enter()
       .append('div')
