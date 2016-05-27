@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  svg 表情
+title:  SVG演示-表情
 ---
 <!--
 <svg width=200 height=200 viewBox="0 0 200 200" id="svgElement" stroke-width=3 fill=none stroke=green>
@@ -21,7 +21,7 @@ title:  svg 表情
     <polyline points="90 120, 100 130, 110 120" />
 </svg>
  -->
-<script type="text/javascript" src="http://g.alicdn.com/kissy/k/1.4.7/seed-min.js"></script>
+<script type="text/javascript" src="//g.alicdn.com/kissy/k/1.4.7/seed-min.js"></script>
 <style type="text/css">
     #demo {
         overflow: hidden;
@@ -50,7 +50,7 @@ function createFace(cfg){
     var height = cfg.height || 200;
 
     function createElementNS(nodeName){
-        return document.createElementNS('http://www.w3.org/2000/svg',nodeName);
+        return document.createElementNS('//www.w3.org/2000/svg',nodeName);
     }
     /*构建画面*/
     function createSVG(){

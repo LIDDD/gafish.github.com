@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  svg 滚轮效果
+title:  SVG演示-滚轮效果
 ---
 
 <svg width=600 height=200 viewBox="0 0 600 200" id="svgElement">
@@ -50,9 +50,9 @@ title:  svg 滚轮效果
         gear.index = i;
         gear.id = 'g'+i;
         gear.currentAngle = 0;
-        var g = document.createElementNS('http://www.w3.org/2000/svg','g');
+        var g = document.createElementNS('//www.w3.org/2000/svg','g');
         g.id = 'circle'+(i+1);
-        var circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        var circle = document.createElementNS('//www.w3.org/2000/svg','circle');
         circle.setAttribute('cx',gear.cx);
         circle.setAttribute('cy',gear.cy);
         circle.setAttribute('r',gear.r);
@@ -60,14 +60,14 @@ title:  svg 滚轮效果
         circle.setAttribute("stroke","#000");
         circle.setAttribute("stroke-dasharray","10");
         g.appendChild(circle);
-        var line1 = document.createElementNS('http://www.w3.org/2000/svg','line');
+        var line1 = document.createElementNS('//www.w3.org/2000/svg','line');
         line1.setAttribute('x1',gear.cx-gear.r);
         line1.setAttribute('y1',gear.cy);
         line1.setAttribute('x2',gear.cx+gear.r);
         line1.setAttribute('y2',gear.cy);
         line1.setAttribute('stroke','#fff');
         g.appendChild(line1);
-        var line2 = document.createElementNS('http://www.w3.org/2000/svg','line');
+        var line2 = document.createElementNS('//www.w3.org/2000/svg','line');
         line2.setAttribute('x1',gear.cx);
         line2.setAttribute('y1',gear.cy-gear.r);
         line2.setAttribute('x2',gear.cx);
