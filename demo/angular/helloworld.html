@@ -19,10 +19,8 @@
     }
     var updateClock = function(){
       $scope.clock.now = new Date().getTime();
+      $timeout(updateClock,1000)
     }
-    setInterval(function(){
-      $scope.$apply(updateClock);
-    },1000);
     updateClock();
   }
 </script>

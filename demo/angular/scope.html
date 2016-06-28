@@ -10,11 +10,12 @@
 <!--<div ng-app="myApp1">Hello {{name}}</div>-->
 <div ng-app="myApp2">
   <div ng-controller="MyController">
+    <div>nick== {{nick}}</div>
     <div>lowercase== {{name | lowercase}}</div>
     <div>uppercase== {{name | uppercase}}</div>
     <div>currency== {{price | currency }}</div>
     <div>number== {{price | number:3 }}</div>
-    <div>=={{today}}</div>
+    <div>date=={{today}}</div>
     <div>date== {{today | date }}</div>
     <div>date:'medium'== {{today | date:'medium' }}</div>
     <div>date:'short'== {{today | date:'short' }}</div>
@@ -59,8 +60,9 @@
 //    $rootScope.name = 'world';
 //  });
   angular.module('myApp2',[])
-      .controller('MyController',function($scope){
+      .controller('MyController',function($scope, $filter){
         $scope.name = 'haHA';
+        $scope.nick = $filter('uppercase')('gafish');
         $scope.price = 1244332.479333;
         $scope.today = new Date();
         $scope.filter = ['a','ab','bc','de','zz'];
