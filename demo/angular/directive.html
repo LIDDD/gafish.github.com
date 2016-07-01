@@ -6,6 +6,7 @@
   <script src="angular1.2.29.js"></script>
 </head>
 <body>
+  <!--
 <my-directive></my-directive>
 <script>
   angular.module('myAPP', [])
@@ -16,6 +17,35 @@
           replace: true
         }
       });
+</script>
+ -->
+
+<!--
+<div my-directive></div>
+<script>
+  angular.module('myAPP', [])
+    .directive('myDirective', function(){
+      return {
+        restrict: 'A',
+        template: '<span>test</span>'
+      }
+    })
+</script>
+ -->
+
+<!--  -->
+<div my-directive my-name="gafish"></div>
+<script>
+  angular.module('myAPP', [])
+    .directive('myDirective', function(){
+      return {
+        restrict: 'A',
+        scope: {
+          myName: '@'
+        },
+        template: '<span>{{myName}}</span>'
+      }
+    })
 </script>
 
 </body>
