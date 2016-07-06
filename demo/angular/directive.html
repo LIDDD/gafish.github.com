@@ -33,7 +33,7 @@
 </script>
  -->
 
-<!--  -->
+<!--
 <div my-directive my-name="gafish"></div>
 <script>
   angular.module('myAPP', [])
@@ -45,6 +45,142 @@
         },
         template: '<span>{{myName}}</span>'
       }
+    })
+</script>
+ -->
+<div ng-controller="myController">
+  <div>
+    ng-disabled/ng-model:
+    <input type="text" ng-model="disabled">
+    <input type="text" ng-disabled="disabled">
+  </div>
+  <div>
+    ng-readonly:
+    <input type="text" ng-model="readonly">
+    <input type="text" ng-readonly="readonly">
+  </div>
+  <div>
+    ng-checked:
+    <input type="text" ng-model="checked">
+    <input type="checkbox" ng-checked="checked">
+  </div>
+  <div>
+    ng-selected:
+    <input type="text" ng-model="selected">
+    <select name="">
+      <option value="" ng-selected="selected">yoyo</option>
+      <option value="" ng-selected="selected">gafish</option>
+    </select>
+  </div>
+  <div>
+    ng-href:
+    <a ng-href="{{href}}">{{href}}</a>
+  </div>
+  <div>
+    ng-src:
+    <img ng-src="{{src}}" />
+  </div>
+  <div>
+    ng-include/ng-init:
+    <div ng-include="'include_tpl.html'" ng-init="name='gafish'"></div>
+  </div>
+  <div>
+    ng-switch:
+    <input type="text" ng-model="name">
+    <div ng-switch on="name">
+      <p ng-switch-default>Your name is:{{name}}</p>
+      <h2 ng-switch-when="yoyo">{{name}} is good baby</h2>
+    </div>
+  </div>
+  <div>
+    ng-repeat/ng-style:
+    <div ng-repeat="p in people" ng-style="{'background':!$even?'#ccc':'#eee','color':$first?'#f0f':$last?'#f00':'#000'}">{{$index}}:{{p.name}}</div>
+  </div>
+  <div>
+    ng-bind:
+    <div ng-init="name='gafish'">
+      {{name}} : <span ng-bind="name">test</span>
+    </div>
+  </div>
+  <div>
+    ng-cloak:
+    <div ng-init="name='gafish'">
+      {{name}} : <span ng-cloak>{{name}}</span>
+    </div>
+  </div>
+  <div>
+    ng-bind-template:
+    <div ng-init="name='gafish';age=10">
+      <span ng-bind-template="{{name}}:{{age}}">test</span>
+    </div>
+  </div>
+  <div>
+    ng-show/ng-hide:
+    <div ng-show="name=='gafish'">yes, i am gafish</div>
+    <div ng-hide="name=='gafish'">no, i am not gafish</div>
+  </div>
+  <div>
+    ng-change:
+    <input type="text" ng-change="changeValue(this)" ng-model="name">
+  </div>
+  <div>
+    ng-form\ng-submit:
+    <form action="" ng-submit="submitFn()" >
+      <div ng-form="form_name">
+        <input type="text" name="myname" ng-required="true" ng-model="name">
+        {{form_name.myname.$invalid}}
+        <div ng-show="form_name.myname.$invalid">this is required</div>
+      </div>
+      <input type="submit" value="提交">
+    </form>
+  </div>
+  <div>
+    ng-click:
+    <button ng-click="clickFn()">点击</button>
+  </div>
+  <div>
+    ng-select(形式名):
+    <select ng-model="city" ng-options="city for city in cities">
+      <option value="">Choose City</option>
+    </select>
+    {{city}}
+  </div>
+  <div>
+    ng-class:
+    <span ng-class="{red: age>5}" ng-init="age=30">class test</span>
+  </div>
+  <div>
+    ng-attr-{suffix}(在chrome下可不用):
+    <svg width=50 height=50 ng-init="cx=30;color='red'">
+      <circle ng-attr-cx='{{cx}}' ng-attr-cy='{{cx}}' r=20 ng-attr-fill='{{color}}'></circle>
+    </svg>
+  </div>
+</div>
+<style>
+  .red{
+    color: red;
+  }
+</style>
+<script>
+  angular.module('myAPP', [])
+    .controller('myController', function($scope, $timeout){
+      $scope.href = Math.random()>.5?'http://taobao.com/':'http://qq.com'
+      $scope.src = Math.random()>.5?'https://img.alicdn.com/tps/TB1u5kgKFXXXXbrXXXXXXXXXXXX-520-280.jpg':'https://img.alicdn.com/tps/TB18gL2KFXXXXaCXXXXXXXXXXXX-520-280.jpg'
+      $scope.people = [
+        {name: 'Ari'},
+        {name: 'Erik'},
+        {name: 'Gafish'},
+        {name: 'YOYO'}
+      ]
+      $timeout(function(){
+        $scope.name = 'YOYO';
+      },1000)
+      $scope.changeValue = function(d){
+        console.log(d)
+      }
+      $scope.submitFn = function(){alert('it\'s work')}
+      $scope.clickFn = function(){alert('it\'s work yet')}
+      $scope.cities = ['beijing','shanghai','chengdu','lijiang']
     })
 </script>
 
