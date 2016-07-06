@@ -6,6 +6,7 @@
   <script src="angular1.2.29.js"></script>
 </head>
 <body>
+
   <!--
 <my-directive></my-directive>
 <script>
@@ -48,6 +49,8 @@
     })
 </script>
  -->
+
+ <!--
 <div ng-controller="myController">
   <div>
     ng-disabled/ng-model:
@@ -183,6 +186,43 @@
       $scope.cities = ['beijing','shanghai','chengdu','lijiang']
     })
 </script>
+ -->
+
+<script>
+var myModule = angular.module('myAPP', []);
+
+myModule.directive('myDirective1', function() {
+    return {
+        priority: 1,
+        terminal: false,
+        compile: function() {
+            console.log("I'm myDirective1");
+        }
+    }
+});
+
+myModule.directive('myDirective2', function() {
+    return {
+        priority: 10,
+        terminal: false,
+        compile: function() {
+            console.log("I'm myDirective2");
+        }
+    }
+});
+
+myModule.directive('myDirective3', function() {
+    return {
+        priority: 100,
+        terminal: false,
+        compile: function() {
+            console.log("I'm myDirective3");
+        }
+    }
+});
+</script>
+
+<div my-directive1 my-directive2 my-directive3></div>
 
 </body>
 </html>
