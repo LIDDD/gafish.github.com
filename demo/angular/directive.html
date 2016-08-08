@@ -188,6 +188,7 @@
 </script>
  -->
 
+<!--
 <script>
 var myModule = angular.module('myAPP', []);
 
@@ -223,6 +224,41 @@ myModule.directive('myDirective3', function() {
 </script>
 
 <div my-directive1 my-directive2 my-directive3></div>
+ -->
+
+<div ng-controller="MyController">
+  <div ng-init="age=30">
+    <div my-directive1></div>
+    <div my-directive2></div>
+    <div my-directive3></div>
+  </div>
+</div>
+
+<script>
+var myModule = angular.module('myAPP', []);
+myModule.controller('MyController', function(){})
+myModule.directive('myDirective1', function(){
+  return {
+    restrict: 'A',
+    scope: true,
+    template: 'my age is {{age}}'
+  }
+})
+myModule.directive('myDirective2', function(){
+  return {
+    restrict: 'A',
+    scope: false,
+    template: 'my age is {{age}}'
+  }
+})
+myModule.directive('myDirective3', function(){
+  return {
+    restrict: 'A',
+    scope: {},
+    template: 'my age is {{age}}'
+  }
+})
+</script>
 
 </body>
 </html>
