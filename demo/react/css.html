@@ -12,22 +12,29 @@
   <div id="container"></div>
   <script type="text/babel">
     var container = document.querySelector('#container');
-    var HelloWorld = React.createClass({
+    var Letter = React.createClass({
       render: function(){
+        var letterStyle = {
+          fontSize: 20,
+          color:  this.props.color || '#fff',
+          padding: 20,
+          margin: 20,
+          background: '#000'
+        }
         return (
-          <p>Hello,{this.props.name}! {this.props.children}</p>
+          <div style={letterStyle}>
+            {this.props.children}
+          </div>
         )
       }
     });
     ReactDOM.render(
       <div>
-        <HelloWorld name="gafish"/>
-        <HelloWorld name="yoyo">let us play</HelloWorld>
-        <HelloWorld name="benben">
-          <i>let us sing</i>
-        </HelloWorld>
+        <Letter>A</Letter>
+        <Letter color="#ff0">B</Letter>
+        <Letter color="#f0f">C</Letter>
       </div>
-      ,container
+      , container
     );
   </script>
 

@@ -12,20 +12,32 @@
   <div id="container"></div>
   <script type="text/babel">
     var container = document.querySelector('#container');
-    var HelloWorld = React.createClass({
+    var Display = React.createClass({
       render: function(){
         return (
-          <p>Hello,{this.props.name}! {this.props.children}</p>
+          <p>{this.props.name}</p>
+          <p>{this.props.age}</p>
+          <p>{this.props.sex}</p>
+        )
+      }
+    });
+    var Label = React.createClass({
+      render: function(){
+        return (
+          <Display {...this.props}/>
+        )
+      }
+    });
+    var Shirt = React.createClass({
+      render: function(){
+        return (
+          <Label {...this.props}/>
         )
       }
     });
     ReactDOM.render(
       <div>
-        <HelloWorld name="gafish"/>
-        <HelloWorld name="yoyo">let us play</HelloWorld>
-        <HelloWorld name="benben">
-          <i>let us sing</i>
-        </HelloWorld>
+        <Shirt />
       </div>
       ,container
     );
