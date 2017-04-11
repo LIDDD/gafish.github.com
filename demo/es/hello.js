@@ -48,3 +48,4 @@ const aa = 123;
 console.log(aa)
 console.log(window.aa)
 
+console.log(new Set([1, 2, 3, 3, 4]))

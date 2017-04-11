@@ -14,12 +14,18 @@
 <body>
   <div id="container"></div>
   <script type="text/babel">
-    var num = Math.random();
-    var container = document.querySelector('#container');
-    var Module = React.createClass({
-      handleClick: function(){
-        alert(this.props.name)
+    var InitState = {
+      getInitialState: function(){
+        return {
+          age: 35
+        };
       },
+      handleClick: function(){
+        alert(this.props.name +'===='+ this.state.age)
+      },
+    };
+    var Module1 = React.createClass({
+      mixins: [InitState],
       render: function(){
         return (
           <div onClick={this.handleClick}>
@@ -28,18 +34,22 @@
         );
       }
     });
+    var Module2 = React.createClass({
+      mixins: [InitState],
+      render: function(){
+        return (
+          <div onClick={this.handleClick}>
+            click too
+          </div>
+        );
+      }
+    });
+
+    var container = document.querySelector('#container');
     ReactDOM.render(
       <div>
-        <h1>Gafish</h1>
-        <span>{num}</span>
-        {
-          num > 0.5 && (
-            <div>
-              this is {num}
-            </div>
-          )
-        }
-        <Module name="haha" />
+        <Module1 name="haha" />
+        <Module2 name="gafish" />
       </div>,
       container
     );
