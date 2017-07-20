@@ -19,6 +19,7 @@ ul,li{
 }
 body{
     color: #000080;
+    background: #eee;
 }
 footer{
     padding: 20px;
@@ -43,12 +44,13 @@ footer{
     border: 1px solid #000080;
     border-radius: 5px;
     margin: 1%;
+    background: #fff;
 }
 .column h3{
     font-family: 'ruiboti';
     font-size: 24px;
     line-height: 50px;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #eee;
     margin-bottom: 10px;
 }
 .column ul{
