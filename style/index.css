@@ -45,6 +45,8 @@ footer{
 .column{
     width: 25%;
     float: left;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .column h3{
     font-family: 'ruiboti';
@@ -60,7 +62,7 @@ footer{
     line-height: 2;
 }
 .column li a{
-    color: #3aa588;
+    color: #333;
     font-size: 14px;
     text-decoration: none;
     display: inline-block;
