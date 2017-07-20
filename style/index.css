@@ -24,7 +24,7 @@ body{
 footer{
     padding-top: 50px;
     text-align: center;
-    opcity: 0.5;
+    opacity: 0.3;
 }
 .clearfix:after{
     display: block;
