@@ -1,3 +1,3 @@
 ## gafish.github.com
 
-    DEMO展示平台
+    徐辉用来瞎折腾的平台
