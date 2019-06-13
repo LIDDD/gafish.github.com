@@ -85,22 +85,22 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 
 |||||
 |-|-|-|-|
-| a | - | em | - |
-| strong | - | small | - |
-| s | - | cite | - |
-| q | - | dfn | - |
-| abbr | - | ruby | - |
-| rb | - | rt | - |
-| rtc | - | rp | - |
-| data | - | time | - |
-| code | - | var | - |
-| samp | - | kbd | - |
-| su | - | sup | - |
-| i | - | b | - |
-| u | - | mark | - |
-| bdi | - | bdo | - |
-| span | - | br | - |
-| wbr | - |
+| [a] | 定义超链接，用于从一个页面链接到另一个页面 | [em] | 标记出需要用户着重阅读的内容 |
+| [strong] | 表示文本十分重要 | [small] | 表示边注释和附属细则 |
+| [s] | 表示不再相关，或者不再准确的事情 | [cite] | 表示一个作品的引用 |
+| [q] | 表示一个封闭的并且是短的行内引用的文本 | [dfn] | 表示术语的一个定义 |
+| [abbr] | 用于展示缩写 | [ruby] | 用来展示东亚文字注音或字符注释 |
+| [rb] | 用于分隔`<ruby>`注释的基本文本组件 | [rt] | 包含字符的发音 |
+| [rtc] | 包含 `<ruby>` 元素中文字的语义注解 | [rp] | 用于为那些不能使用 `<ruby>` 元素展示 ruby 注解的浏览器 |
+| [data] | 将一个指定内容和机器可读的翻译联系在一起 | [time] | 用来表示24小时制时间或者公历日期 |
+| [code] | 呈现一段计算机代码 | [var] | 表示变量的名称，或者由用户提供的值 |
+| [samp] | 用于标识计算机程序输出 | [kbd] | 表示用户输入 |
+| [sub] | 定义了一个下标文本区域 | [sup] | 定义了一个上标文本区域 |
+| [i] | 用于表现因某些原因需要区分普通文本的一系列文本 | [b] | 用于吸引读者的注意到该元素的内容上 |
+| [u] | 表示具有未标注的文本跨度，显示渲染，非文本注释 | [mark] | 用来表示上下文的关联性的而突出显示的文字 |
+| [bdi] | 隔离可能以不同方向进行格式化的外部文本 | [bdo] | 用于覆盖当前文本的朝向 |
+| [span] | 短语内容的通用行内容器，并没有任何特殊语义 | [br] | 在文本中生成一个换行（回车）符号 |
+| [wbr] | 一个文本中的位置，其中浏览器可以选择来换行 |
 
 ### 修改记录
 
@@ -220,7 +220,7 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 [var]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/var
 [samp]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/samp
 [kbd]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/kbd
-[su]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/su
+[sub]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sub
 [sup]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sup
 [i]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/i
 [b]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b
