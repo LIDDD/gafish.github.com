@@ -152,9 +152,9 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 
 |||||
 |-|-|-|-|
-| script | - | noscript | - |
-| template | - | canvas | - |
-| slot | - |
+| [script]* | 用于嵌入或引用可执行脚本    | [noscript] | 定义脚本未被执行时的替代内容 |
+| [template] | 用于保存客户端内容机制，该内容在加载页面时不会呈现 | [canvas] | 用来通过脚本（通常是JavaScript）绘制图形 |
+| [slot] | 是 Web Components 技术套件的一部分，是Web组件内的一个占位符 |
 
 ## 符合语义化的基本布局
 
