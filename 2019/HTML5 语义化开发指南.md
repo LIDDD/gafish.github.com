@@ -112,23 +112,22 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 
 |||||
 |-|-|-|-|
-| picture | - | source | - |
-| img | - | iframe | - |
-| embed | - | object | - |
-| param | - | video | - |
-| audio | - | track | - |
-| map | - | area | - |
-| math | - | svg | - |
+| [picture] | 通过包含零或多个 `<source>` 元素和一个 `<img>` 元素来为不同的显示/设备场景提供图像版本 | [source] | 为 `<picture>`, `<audio>` 或者 `<video>` 元素指定多个媒体资源 |
+| [img]* | 代表文档中的一个图像 | [iframe]* | 表示嵌套的浏览上下文，有效地将另一个HTML页面嵌入到当前页面中 |
+| [embed] | 将外部内容嵌入文档中的指定位置。此内容由外部应用程序或其他交互式内容源（如浏览器插件）提供 | [object] | 表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源 |
+| [param] | 为`<object>`元素定义参数 | [video]* | 用于支持文档内的视频播放 |
+| [audio]* | 用于在文档中表示音频内容 | [track]* | 指定计时字幕（或者基于时间的数据） |
+| [map] | 与 `<area>` 属性一起使用来定义一个图像映射(一个可点击的链接区域) | [area] | 在图片上定义一个热点区域，可以关联一个超链接 |
 
 ### 表格数据
 
 |||||
 |-|-|-|-|
-| table | - | caption | - |
-| colgroup | - | col | - |
-| tbody | - | thead | - |
-| tfoot | - | tr | - |
-| td | - | th | - |
+| [table]* | 表示表格数据 | [caption] | 展示一个表格的标题 |
+| [colgroup] | 用来定义表中的一组列表 | [col] | 定义表格中的列，并用于定义所有公共单元格上的公共语义 |
+| [tbody] | 表示它们包含表的主体 | [thead] | 定义了一组定义表格的列头的行 |
+| [tfoot] | 定义了一组表格中各列的汇总行 | [tr] | 定义表格中的行 |
+| [td] | 定义包含数据的表格的单元格 | [th]* | 定义表格内的表头单元格 |
 
 ### 表单
 
@@ -245,8 +244,6 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 [track]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track
 [map]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/map
 [area]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area
-[math]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/math
-[svg]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/svg
 [table]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table
 [caption]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/caption
 [colgroup]: https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup
