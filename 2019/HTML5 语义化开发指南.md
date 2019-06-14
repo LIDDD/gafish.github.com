@@ -133,13 +133,13 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 
 |||||
 |-|-|-|-|
-| form | - | label | - |
-| input | - | button | - |
-| select | - | datalist | - |
-| optgroup | - | option | - |
-| textarea | - | output | - |
-| progress | - | meter | - |
-| fieldset | - | legend | - |
+| [form]* | 示了文档中的一个区域，这个区域包含有交互控制元件 | [label] | 表示用户界面中某个元素的说明 |
+| [input]* | 用于为基于Web的表单创建交互式控件，以便接受来自用户的数据 | [button]* | 表示一个可点击的按钮 |
+| [select] | 表示一个控件，提供一个选项菜单 | [datalist]* | 包含了一组`<option>`元素，这些元素表示其它表单控件可选值 |
+| [optgroup] | 创建包含在一个 `<select>` 元素中的一组选项 | [option] | 用于定义在`<select>`,  `<optgroup>` 或`<datalist>` 元素中包含的项 |
+| [textarea]* | 表示一个多行纯文本编辑控件 | [output] | 表示计算或用户操作的结果 |
+| [progress] | 用来显示一项任务的完成进度 | [meter]* | 用来显示已知范围的标量值或者分数值 |
+| [fieldset] | 用来对表单中的控制元素进行分组 | [legend] | 用于表示它的父元素`<fieldset>`的内容的标题 |
 
 ### 交互元素
 
