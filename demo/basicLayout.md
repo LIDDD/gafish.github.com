@@ -1,4 +1,6 @@
-
+---
+layout: demo
+---
 <html>
     <head>
         <title>示例页面</title>
