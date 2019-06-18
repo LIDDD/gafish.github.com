@@ -50,7 +50,7 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 ### 文档元素
 
 | 元素 ||
-|-|-|-|-|
+|-|-|
 | [html] | HTML 文档中最外层的元素，也可称为根元素。 |
 
 ### 文档元数据
@@ -222,7 +222,7 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
     </body>
 </html>
 ```
-[查看示例](http://gafish.github.io/2019/demo/basicLayout.html)
+[查看示例](http://gafish.github.io/demo/basicLayout.html)
 
 ## article 、 section 、 div 的用法区别
 
@@ -230,7 +230,7 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 - 如果内容中的几个部分是互相独立的，应该使用 `<article>` 嵌套，几个部分的内容之间是关联的应该使用 `<section>`。
 - 不要把 `<section>` 元素作为一个普通的容器来使用，这是本应该是`<div>`的用法（特别是当片段仅仅是为了美化样式的时候）。
 
-MacOs VoiceOver 读屏软件对3个元素的朗读方式没有区别，都是直接读取内部的内容。[查看示例](http://gafish.github.io/2019/demo/articleSectionDiv.html)
+MacOs VoiceOver 读屏软件对3个元素的朗读方式没有区别，都是直接读取内部的内容。[查看示例](http://gafish.github.io/demo/articleSectionDiv.html)
 
 ## section 、 figure 的用法区别
 
@@ -239,7 +239,7 @@ section 和 figure 有相似的地方，都可以表示一个区域，结构上�
 - section 的内容跟上下文结构存在关联关系，figure 的内容是独立存在的一部分，把 figure 移除不影响主体内容的表达；
 - section 中存在标题只能在开始的位置，figure 中的标题可以在开头也可以在结尾；
 
-MacOs VoiceOver 读屏软件会把 section 的标题说成“标题”，但对 figure 的标题会说成“文本”。[查看示例](http://gafish.github.io/2019/demo/sectionFigure.html)
+MacOs VoiceOver 读屏软件会把 section 的标题说成“标题”，但对 figure 的标题会说成“文本”。[查看示例](http://gafish.github.io/demo/sectionFigure.html)
 
 ## header 、footer 不止表示页头页尾
 
@@ -254,19 +254,19 @@ MacOs VoiceOver 读屏软件会把 section 的标题说成“标题”，但对 
 ```
 但以上这种 header 中只有一个 h2 的场景中 header 是可以忽略的。
 
-MacOs VoiceOver 读屏软件对 div 中的 header 会说“横幅”，而对 article 、section 中的 header 会忽略，直接读内部的内容。[查看示例](http://gafish.github.io/2019/demo/headerFooter.html)
+MacOs VoiceOver 读屏软件对 div 中的 header 会说“横幅”，而对 article 、section 中的 header 会忽略，直接读内部的内容。[查看示例](http://gafish.github.io/demo/headerFooter.html)
 
 ## 不是所有的导航链接都需要 nav
 
 只用来将一些热门的链接放入 `<nav>` 导航栏，建议这些链接应该是跟当前页面或站点有较强的关联性。例如 `<footer>` 元素就常用来在页面底部包含一个不常用到，没必要加入 `<nav>` 的链接列表。
 
-MacOs VoiceOver 读屏软件遇到 nav 时会先说“导航“，下一步读取内部的内容，最后会说”导航的结尾“。[查看示例](http://gafish.github.io/2019/demo/nav.html)
+MacOs VoiceOver 读屏软件遇到 nav 时会先说“导航“，下一步读取内部的内容，最后会说”导航的结尾“。[查看示例](http://gafish.github.io/demo/nav.html)
 
 ## address 的内容不只是地址
 
 HTML `<address>` 元素 表示其中的内容提供了某个人或某个组织的联系信息，包括真实地址、URL、电子邮箱、电话号码、社交媒体账号、地理坐标等等，通过它会被放到 footer 里，但这并不是唯一的用法，在页头 header 中，article 或其它区块中需要显示联系信息的地方都可以使用 address。
 
-MacOs VoiceOver 读屏软件遇到 address 只是当作普通文本朗读。[查看示例](http://gafish.github.io/2019/demo/address.html)
+MacOs VoiceOver 读屏软件遇到 address 只是当作普通文本朗读。[查看示例](http://gafish.github.io/demo/address.html)
 
 ## em 、 strong 、 b 、 i 、 mark 的用法区别
 
@@ -278,7 +278,7 @@ MacOs VoiceOver 读屏软件遇到 address 只是当作普通文本朗读。[查
 - i 强调的是一段文本中，某些部分需要跟周边的文本做一些视觉上区别，但不一定是吸引人的；
 - mark 强调的是上下文的关联性，如搜索关键字；
 
-MacOs VoiceOver 读屏软件遇到这5个元素时只是当作普通文本朗读。[查看示例](http://gafish.github.io/2019/demo/emStrongBIMark.html)
+MacOs VoiceOver 读屏软件遇到这5个元素时只是当作普通文本朗读。[查看示例](http://gafish.github.io/demo/emStrongBIMark.html)
 
 ## small 、 s 、 u 还能用吗
 
@@ -290,7 +290,7 @@ MacOs VoiceOver 读屏软件遇到这5个元素时只是当作普通文本朗读
 
 建议在除了上面提到的几个特殊用途之外，不再使用这三个元素；
 
-MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。[查看示例](http://gafish.github.io/2019/demo/smallSU.html)
+MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。[查看示例](http://gafish.github.io/demo/smallSU.html)
 
 ## blockquote 、 q 、 cite 都表示引用，如何区分
 
@@ -298,7 +298,7 @@ MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读
 - q 引用的是短文本；
 - cite 引用的是一个作品的名称或链接；
 
-MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。[查看示例](http://gafish.github.io/2019/demo/blockquoteQCite.html)
+MacOs VoiceOver 读屏软件遇到这3个元素时只是当作普通文本朗读。[查看示例](http://gafish.github.io/demo/blockquoteQCite.html)
 
 ## 什么时候使用 div
 
