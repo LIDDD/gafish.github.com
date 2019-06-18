@@ -72,10 +72,10 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 
 |||||
 |-|-|-|-|
-| [p] | 表示文本的一个段落 | [address] | 表示其中的 HTML 提供了某个人或某个组织（等等）的联系信息 |
+| [p] | 表示文本的一个段落 | [address] | 表示其中的内容提供了某个人或某个组织（等等）的联系信息 |
 | [hr] | 表示段落级元素之间的主题转换 | [pre] | 表示预定义格式文本 |
-| [blockquote] | 表示其中的文字是引用内容 | [ol] | 表示多个有序列表项 |
-| [ul] | 表示一个内可含多个元素的无序列表或项目符号列表 | [li] | 表示列表里的条目 |
+| [blockquote] | 表示其中的文字是引用内容 | [ol] | 表示多个元素的有序列表 |
+| [ul] | 表示多个元素的无序列表 | [li] | 表示列表里的条目 |
 | [dl] | 表示一个包含术语定义以及描述的列表 | [dt] | 用于在一个定义列表中声明一个术语 |
 | [dd] | 用来指明一个描述列表元素中一个术语的描述 | [figure] | 代表一段独立的内容 |
 | [figcaption] | 与其相关联的图片的说明/标题 | [main] | 呈现了文档的 `<body>` 或应用的主体部分 |
@@ -156,15 +156,125 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 | [template] | 用于保存客户端内容机制，该内容在加载页面时不会呈现 | [canvas] | 用来通过脚本（通常是JavaScript）绘制图形 |
 | [slot] | 是 Web Components 技术套件的一部分，是Web组件内的一个占位符 |
 
-## 符合语义化的基本布局
+## 基本布局
 
+```HTML
+<html>
+    <head>
+        <title>示例页面</title>
+    </head>
+    <body>
+        <div>
+            <header>
+                <h1>我的网站</h1>
+                <nav>
+                    <a href="">首页</a>
+                    <a href="">文章</a>
+                    <a href="">留言</a>
+                </nav>
+                <aside>
+                    <img src="https://via.placeholder.com/30.png/09f/fff" alt="用户头像">
+                </aside>
+            </header>
+            <div>
+                <main>
+                    <article>
+                        <section>
+                            <h2>文章标题11111</h2>
+                            <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                        </section>
+                        <section>
+                            <h2>文章标题2222</h2>
+                            <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                        </section>
+                        <section>
+                            <h2>文章标题3333</h2>
+                            <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                        </section>
+                    </article>
+                    <ul>
+                        <a href="" title="第1页">1</a>
+                        <a href="" title="第2页">2</a>
+                        <a href="" title="第3页">3</a>
+                    </ul>
+                </main>
+                <aside>
+                    <section>
+                        <h2>作者介绍</h2>
+                        <p>巴拉巴拉巴拉巴拉巴拉巴拉巴拉</p>
+                    </section>
+                    <nav>
+                        <a href="">HTML</a>
+                        <a href="">JS</a>
+                        <a href="">CSS</a>
+                    </nav>
+                </aside>
+            </div>
+        </div>
+        <footer>
+            <address>
+                xxxx@xxx.com <br />
+                <a href="">https://twitter.com/home</a>
+            </address>
+        </footer>
+    </body>
+</html>
+```
+[查看示例](../demo/basicLayout.html)
 
-## 一个完整的符合语义化的页面结构
+## article 、 section 、 div 的用法区别
 
-## 常见错误用法
+- 如果元素内容可以分为几个部分的话，应该使用 `<article>` 而不是 `<section>`。
+- 如果内容中的几个部分是互相独立的，应该使用 `<article>` 嵌套，几个部分的内容之间是关联的应该使用 `<section>`。
+- 不要把 `<section>` 元素作为一个普通的容器来使用，这是本应该是`<div>`的用法（特别是当片段仅仅是为了美化样式的时候）。
+- MacOs VoiceOver 读屏软件对3个元素的朗读方式没有区别，都是直接读取内部的内容。[查看示例](../demo/articleSectionDiv.html)
+
+## section 、 figure 的用法区别
+
+section 和 figure 有相似的地方，都可以表示一个区域，结构上也相似，都可以有标题和内容，但两个元素的用法是完全不一样的。
+
+- section 的内容跟上下文结构存在关联关系，figure 的内容是独立存在的一部分，把 figure 移除不影响主体内容的表达；
+- section 中存在标题只能在开始的位置，figure 中的标题可以在开头也可以在结尾；
+- MacOs VoiceOver 读屏软件会把 section 的标题说成“标题”，但对 figure 的标题会说成“文本”。[查看示例](../demo/sectionFigure.html)
+
+## header 、footer 不止表示页头页尾
+
+通常的用法都是把一个页面的页头用header，页尾用footer来表示，但这并不是它们的唯一用法，根据元素的定义，它们表示的是章节或区块的头和尾，严格来说一个`<article>` 元素的头部需要用 header 来表示，如：
+```HTML
+<article>
+    <header>
+        <h2>我们是相亲相爱的一家人</h2>
+    </header>
+    <p>.....</p>
+</article>
+```
+但以上这种 header 中只有一个 h2 的场景中 header 是可以忽略的。
+
+MacOs VoiceOver 读屏软件对 div 中的 header 会说“横幅”，而对 article 、section 中的 header 会忽略，直接读内部的内容。[查看示例](../demo/headerFooter.html)
+
+## 不是所有的导航链接都需要 nav
+
+只用来将一些热门的链接放入 `<nav>` 导航栏，建议这些链接应该是跟当前页面或站点有较强的关联性。例如 `<footer>` 元素就常用来在页面底部包含一个不常用到，没必要加入 `<nav>` 的链接列表。
+
+MacOs VoiceOver 读屏软件遇到 nav 时会先说“导航“，下一步读取内部的内容，最后会说”导航的结尾“。[查看示例](../demo/nav.html)
+
+## address 的内容不只是地址
+
+HTML `<address>` 元素 表示其中的内容提供了某个人或某个组织的联系信息，包括真实地址、URL、电子邮箱、电话号码、社交媒体账号、地理坐标等等，通过它会被放到 footer 里，但这并不是唯一的用法，在页头 header 中，article 或其它区块中需要显示联系信息的地方都可以使用 address。
+
+MacOs VoiceOver 读屏软件遇到 address 只是当作普通文本朗读。[查看示例](../demo/address.html)
+
+## 什么时候使用 div
+
+根据元素的定义，只有在所有 html5 标签都不适用于你想表达的语义时，这时候才使用终极大法 div，从这个角度来说，目前对 div 元素的滥用其实是程序员偷懒的一种表现，反正有 div 兜底，也就懒得去思考那些语义元素的区别。
+
+在追求开发效率和做不完的需求面前，使用 div 兜底也是很多人无奈的选择，我觉得这个是可以理解，某种程度上也可以接受的，但进一步去想一想，你的产品面向的用户也有可能会是存在各种行为障碍的视障、残障人群，他们无法像正常人那样使用你开发的功能，而需要借助类似于屏幕阅读器这样的辅助工具，这时候才是真正考验你的产品是否合格的时候。
+
+我们做语义化开发，很大程度上就是在帮助更多人的人正常的使用我们的产品，同时也会让你离专业的程序员更进一步。
 
 ## 参考资料
 
+- https://www.w3.org/TR/html53/
 - https://www.w3cschool.cn/html5/
 - https://juejin.im/post/5cb1a7af5188251b0c653736
 
@@ -284,4 +394,3 @@ HTML5的主要进步之一是引入了一组标准化的语义元素。
 
 不要为了减小标题的字体而使用低级别的标题， 而是使用 CSS font-size 属性。
 避免跳过某级标题：始终要从 `<h1>` 开始，接下来依次使用 `<h2>` 等等。
-使用 `<section>` 元素时，为了方便起见，你应该考虑避免在同一个页面上重复使用 `<h1>`，`<h1>` 应被用于表示页面的标题，其他的标题当从 `<h2>` 开始。在使用 section 时，应当为每个 section 都使用一个 `<h2>`。详情请参考 Defining sections in Using HTML sections and outlines。
