@@ -28,7 +28,7 @@ language  -  extlang       -  script  -  region  -  variant  -  extension  -  pr
 - extlang：[ISO639-3] 每个由3字母组成
 - script：[ISO15924] 的4字母书写文字代码
 - region：[ISO3166-1_alpha-2] 的2字母地区代码(通常大写)，或[UNM.49]的3数字地理区代码
-- variant：[IANA语言子标签注册表](language-subtag-registry) 每个为5至8个字母，或者4字母后跟1个数字
+- variant：[IANA语言子标签注册表] 每个为5至8个字母，或者4字母后跟1个数字
 - extension：暂未知
 - privateuse：暂未知
 
@@ -48,7 +48,7 @@ language  -  extlang       -  script  -  region  -  variant  -  extension  -  pr
 
 2009年9月发布 [RFC5646] ，引入了3字符码的 [ISO639-3] 与 [ISO639-5] 作为语言子标签，其中 [ISO639-3] 认定汉语文（`zho`）是一个大语文（macrolanguage），包含14种语文，`cdo` – 闽东语，`cjy` – 晋语，`cmn` – 普通话或國語，`cpx` – 莆仙语，`czh` – 徽语，`czo` – 闽中语，`gan` – 赣语，`hak` – 客家话，`hsn` – 湘语，`mnp` – 闽北语，`nan` – 闽南语，`wuu` – 吴语，`yue` – 粤语，`lzh` - 文言文。
 
-2009年9月发布的 [BCP47] 整合了 [RFC4647] 和 [RFC5646] 形成语言标签最佳实践，仍然使用 `zh` 作为大语文（macrolanguage）标签， [ISO639-3] 中引入的另外13种语文标签作为方言扩展标签，但推荐方言扩展标签直接作为主语言标签，因此赣语的标签以 `zh-gan` 或 `gan` 开头、粤语的以 `zh-yue` 或 `yue` 开头、普通话的以 `zh-cmn` 或 `cmn` 开头，[BCP47] 规范建议优先选择后者，但关于这点目前在业界是有争议的，普遍的观点是希望保留 `zh` 作为主语言标签，这样能更好的向后兼容。
+2009年9月发布的 [BCP47] 整合了 [RFC4647] 和 [RFC5646] 形成语言标签最佳实践，仍然使用 `zh` 作为大语文（macrolanguage）标签， [ISO639-3] 中引入的另外14种语文标签作为方言扩展标签，但推荐方言扩展标签直接作为主语言标签，因此赣语的标签以 `zh-gan` 或 `gan` 开头、粤语的以 `zh-yue` 或 `yue` 开头、普通话的以 `zh-cmn` 或 `cmn` 开头，[BCP47] 规范建议优先选择后者，但关于这点目前在业界是有争议的，普遍的观点是希望保留 `zh` 作为主语言标签，这样能更好的向前兼容。
 
 ## IANA 语言子标签注册表
 
@@ -58,7 +58,7 @@ language  -  extlang       -  script  -  region  -  variant  -  extension  -  pr
 language - extlang - script - region - variant - extension - privateuse
 ```
 
-在这些子标签中 **推荐** 使用 [IANA语言子标签注册表](language-subtag-registry) 中的子标签格式，这些格式通常是来源于各种 ISO 标准中的通用约定。
+在这些子标签中 **推荐** 使用 [IANA语言子标签注册表] 中的子标签格式，这些格式通常是来源于各种 ISO 标准中的通用约定。
 
 示例1：region 的取值 CN（中国）
 
@@ -84,7 +84,7 @@ Added: 2005-10-16
 
 ## 中文子标签一览
 
-IANA 语言子标签注册表中，以下 `extlang` 中的方言同时也被归类到了 `language` 中，[BCP47] 规范是建议将下面的 `extlang` 直接作为主语言使用，而我个人的建议是主语言仍然使用 `zh`，而 `extlang` 作为扩展方言使用。
+[IANA语言子标签注册表]中，以下 `extlang` 中的方言同时也被归类到了 `language` 中，[BCP47] 规范是建议将下面的 `extlang` 直接作为主语言使用，而我个人的建议是主语言仍然使用 `zh`，而 `extlang` 作为扩展方言使用。
 
 ### language
 
@@ -175,7 +175,7 @@ IANA 语言子标签注册表中，以下 `extlang` 中的方言同时也被归�
 [ISO639-2]: https://www.loc.gov/standards/iso639-2/php/code_list.php
 [ISO639-3]: https://iso639-3.sil.org/code_tables/639/data
 [ISO639-5]: https://www.loc.gov/standards/iso639-5/id.php
-[language-subtag-registry]: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+[IANA语言子标签注册表]: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 [RFC3066]: https://tools.ietf.org/rfc/rfc3066.txt
 [RFC4646]: https://tools.ietf.org/rfc/rfc4646.txt
 [RFC1766]: https://tools.ietf.org/rfc/rfc1766.txt
