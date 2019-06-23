@@ -22,31 +22,31 @@
 #### 开启点按
 
 进入 `系统偏好配置` - `触控板` ，在 `光标与点按` 中勾选 `轻点来点按` ，通过轻轻一点就可以触发点击操作，提高效率；
-![](../images/WX20190622-154317@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-154317@2x.png)
 
 #### 开启拖移
 
 进入 `系统偏好配置` - `辅助功能` ，点击 `鼠标与触控板` ，点击 `触控板选项` ，勾选 `启动拖移`，确保后面选中的是 `三指拖移` ，通过三个手指可以实现鼠标拖动效果，用于窗口拖动，文字拖选等，可大幅降低对鼠标的依赖；
-![](../images/WX20190622-154126@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-154126@2x.png)
 
 ### Dock(程序坞)配置
 
 #### 移除工作中不常用的软件
 
 如 `Facetime` `照片` `通讯录` `地图` `信息` ，在软件上两指轻点，点击 `选项` `从程序坞中移除`；
-![](../images/WX20190622-155744@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-155744@2x.png)
 
 #### 启用放大
 
 在分隔线上两指轻点，点击 `启用放大`，好处在于，通过另外设置Dock的软件图标变小，可以容纳更多的软件；
-![](../images/WX20190622-161446@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-161446@2x.png)
 
 ### Terminal(命令行)配置
 
 #### 配色
 
 默认情况下的命令行界面长这样的，单调乏味，不易读，我们需要点给它点颜色
-![](../images/WX20190622-162853@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-162853@2x.png)
 
 在命令行中输入 `touch ~/.bash_profile && open ~/.bash_profile` ，生成一个 `.bash_profile` 文件，并默认用文本编辑器打开它，添加以下内容并保存
 
@@ -63,11 +63,11 @@ export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 export TERM=xterm-256color
 ```
 
-![](../images/WX20190622-163839@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-163839@2x.png)
 
 关闭当前命令行窗口，重新打开就会看到配色效果
 
-![](../images/WX20190622-164145@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-164145@2x.png)
 
 如果觉得这里推荐的配色效果不满意，想继续自己折腾下，推荐看这篇文章 [【Linux Bash 提示符的一些骚操作】](https://linux.cn/article-8711-1.html)
 
@@ -103,7 +103,7 @@ export TERM=xterm-256color
 
 如果公司网络没有内建梯`_`子，那强烈建议大家自己搭一个，或买一个SS账号，通过这个来上网
 
-![](../images/WX20190622-170227@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-170227@2x.png)
 
 由于这部分内容比较敏感，点到为止，以下软件安装部分可能会需要开启此功能
 
@@ -172,7 +172,7 @@ source ~/.git-completion.bash
 # git 自动补全 end
 ```
 
-![](../images/WX20190623-132859@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190623-132859@2x.png)
 
 重启终端后应该就可以愉快的使用tab来自动补全了。
 
