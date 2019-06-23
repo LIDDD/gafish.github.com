@@ -7,7 +7,7 @@
 - 常用触控板手势配置；
 - Dock(程序坞)配置；
 - Terminal(命令行)添加常规配色；
-- 梯`_`子(你懂的)；
+- 网络加速(你懂的)；
 - 安装常用软件：Chrome、iTerm2、VSCode、Git、Sourcetree、NodeJS；
 - 常用软件配置；
 
@@ -99,13 +99,44 @@ export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\] \[\03
 export TERM=xterm-256color
 ```
 
-## 梯`_`子
+## 网络加速
+
+### 梯`_`子
 
 如果公司网络没有内建梯`_`子，那强烈建议大家自己搭一个，或买一个SS账号，通过这个来上网
 
 ![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-170227@2x.png)
 
 由于这部分内容比较敏感，点到为止，以下软件安装部分可能会需要开启此功能
+
+#### github 加速
+
+虽然国内访问github基本上是没问题的，但当你 `git clone` 的时候，那龟速会让你抓狂，通过接下来的代理配置可以让速度明显提升，以下是配置代理前后速度对比图
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190623-221232@2x.png)
+
+##### https访问
+
+```
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1086
+```
+其中1086是socks5的监听端口, 这个可以配置的, 每个人不同, 在macOS上一般为1086.
+
+设置完成后, `~/.gitconfig` 文件中会增加以下条目:
+
+```
+[http "https://github.com"]
+    proxy = socks5://127.0.0.1:1086
+```
+
+##### ssh访问
+
+需要修改 `~/.ssh/config` 文件, 没有的话新建一个. 同样仅为github.com设置代理:
+
+```
+Host github.com
+    User git
+    ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+```    
 
 ## 常用软件安装及配置
 
