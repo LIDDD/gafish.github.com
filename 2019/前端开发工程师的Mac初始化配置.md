@@ -111,6 +111,8 @@ export TERM=xterm-256color
 
 #### github 加速
 
+**确保梯子可正常使用**
+
 虽然国内访问github基本上是没问题的，但当你 `git clone` 的时候，那龟速会让你抓狂，通过接下来的代理配置可以让速度明显提升，以下是配置代理前后速度对比图
 ![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190623-221232@2x.png)
 
@@ -128,8 +130,7 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:1086
     proxy = socks5://127.0.0.1:1086
 ```
 
-如果因为设置代理导致有些情况下 `curl` 下载失败，可以考虑取消代理(*在后面的 `nvm` 安装过程中我遇到过*)
-
+如果不想用梯子正常访问，可以考虑取消代理设置
 ```
 git config --global --unset http.https://github.com.proxy
 ```
