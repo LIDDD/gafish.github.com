@@ -164,6 +164,12 @@ Host github.com
 - `open-in-browser`：在默认浏览器中预览html文件
 - `Prettier`：将整个 JS 和 CSS 文档快速格式化为统一的代码样式
 
+#### 在PATH中安装code命令
+
+按 `fn + F1` 或 `Command + Shift + P` ，打开命令面板，搜索 `PATH`，选择在 `PATH中安装code命令`，然后在命令行就可以通过 `code` 命令直接打开用 VSCode 打开文件夹或文件。
+
+![](../images/WX20190624-154809@2x.png)
+
 ### Git
 
 - [官方下载地址](https://git-scm.com/)
