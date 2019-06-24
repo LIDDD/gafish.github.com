@@ -128,6 +128,12 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:1086
     proxy = socks5://127.0.0.1:1086
 ```
 
+如果因为设置代理导致有些情况下 `curl` 下载失败，可以考虑取消代理(*在后面的 `nvm` 安装过程中我遇到过*)
+
+```
+git config --global --unset http.https://github.com.proxy
+```
+
 ##### ssh访问
 
 需要修改 `~/.ssh/config` 文件, 没有的话新建一个. 同样仅为github.com设置代理:
@@ -166,9 +172,9 @@ Host github.com
 
 #### 在PATH中安装code命令
 
-按 `fn + F1` 或 `Command + Shift + P` ，打开命令面板，搜索 `PATH`，选择在 `PATH中安装code命令`，然后在命令行就可以通过 `code` 命令直接打开用 VSCode 打开文件夹或文件。
+按 `fn + F1` 或 `Command + Shift + P`，打开命令面板，搜索 `PATH`，选择在 `PATH中安装code命令`，然后在命令行就可以通过 `code` 命令直接打开用 VSCode 打开文件夹或文件。
 
-![](../images/WX20190624-154809@2x.png)
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190624-154809@2x.png)
 
 ### Git
 
@@ -219,7 +225,31 @@ source ~/.git-completion.bash
 
 ### NodeJS
 
-- [官方下载地址](https://nodejs.org/en/)
+- [官方下载地址](https://nodejs.org/en/) (推荐使用nvm来安装)
+
+#### 安装 nvm
+
+用于同时安装多个不同版本的 `Nodejs` 
+
+命令行执行下载
+```
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+```
+安装成功默认将会在用户文件夹中生成一个隐藏的 `.nvm` 文件，同时自动会在 `~/.bash_profile` 文件中添加如下配置
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+nvm 常用命令
+
+- `nvm install xxx` 　　　　       //安装xxx版本号
+- `nvm use xxx` 　　　　　　        //设置使用xxx版本号
+- `nvm ls` 　　　　　　　　          //所有已安装的node版本号
+- `nvm alias default v10.16.0`    //nvm设置默认node版本号
+
+![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190624-215703@2x.png)
 
 #### 在Mac下卸载NodeJS
 
