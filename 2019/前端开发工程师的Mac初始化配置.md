@@ -230,7 +230,7 @@ source ~/.git-completion.bash
 
 #### 安装 nvm
 
-用于同时安装多个不同版本的 `Nodejs` 
+> 用于同时安装多个不同版本的 `Nodejs` 
 
 命令行执行下载
 ```
@@ -259,4 +259,12 @@ nvm 常用命令
 在终端输入以下命令：
 ```
 sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*/node.*}
+```
+
+#### http-server
+
+> 零配置在本地开启http服务器
+
+```
+npm install -g http-server
 ```
