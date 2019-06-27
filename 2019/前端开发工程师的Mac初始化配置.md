@@ -43,7 +43,33 @@
 
 ### Terminal(命令行)配置
 
-#### 配色
+#### on-my-zsh(推荐首选)
+
+> mac 预装了 `zsh`，直接使用 `zsh` ，配置非常复杂，幸好有开源的 `on-my-zsh`，感谢掘金网友 [@背着行囊独自流浪](https://juejin.im/user/5bc6971df265da0ac55e7caf) 的推荐
+
+将 `zsh` 设置为默认shell
+```shell
+chsh -s /bin/zsh
+```
+
+下载 `oh-my-zsh` 并初始化 `~/.zshrc` 文件
+```
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+```
+
+重启命令行客户端，如果不生效可以试试执行
+```shell
+source ~/.zshrc
+```
+
+`on-my-zsh` 默认自带配色，自带 `git` 插件，相比 `bash` 的配置简单很多
+
+更多配置详情可看 [这篇文章](https://segmentfault.com/a/1190000013612471)
+
+#### bash
+
+##### 配色
 
 默认情况下的命令行界面长这样的，单调乏味，不易读，我们需要点给它点颜色
 ![](https://raw.githubusercontent.com/gafish/gafish.github.com/master/images/WX20190622-162853@2x.png)
@@ -71,7 +97,7 @@ export TERM=xterm-256color
 
 如果觉得这里推荐的配色效果不满意，想继续自己折腾下，推荐看这篇文章 [【Linux Bash 提示符的一些骚操作】](https://linux.cn/article-8711-1.html)
 
-#### 显示git分支名
+##### 显示git分支名
 
 如果想在命令行中显示 `git` 分支名，则需要在 `.bash_profile` 文件中额外添加一些获取分支名称的逻辑
 
