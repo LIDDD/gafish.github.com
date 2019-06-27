@@ -294,3 +294,13 @@ sudo rm -rf /usr/local/{bin/{node,npm},lib/node_modules/npm,lib/node,share/man/*
 ```
 npm install -g http-server
 ```
+
+#### 截图
+
+> 推荐使用腾讯出品的 截图 for Mac
+
+- [官方下载地址](https://mac.qq.com/)
+
+## 其它参考配置
+
+- [vscode & iterm2 & Chrome 配置等](https://juejin.im/post/5d0e532d6fb9a07eec59d3bb)
