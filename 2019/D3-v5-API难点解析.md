@@ -107,6 +107,51 @@ d3.bisectLeft([3, 2, 1, 7, 4, 5].sort(d3.ascending), 7, 3, 4); // 输出： 4
 d3.bisectLeft([3, 2, 1, 7, 4, 5].sort(d3.ascending), 7); // 对比输出： 5
 ```
 
+### d3.bisector
+
+`d3.bisector` 可以看做是 `bisect` 的补充，它可以根据指定的 函数 返回一个新的二分查找对象，这个方法可以被用来二等分对象数组, 而不会仅仅局限于基本的数组
+
+在[老版本](https://github.com/d3/d3/wiki/%E6%95%B0%E7%BB%84#d3_bisector)中，函数的第2个参数是数组中用于排序的下一项，而在 v5 版本中是查找项
+```js
+var bisect = d3.bisector(function(d, x) { return d.date - x; }).right;
+bisect.left([3, 5, 9, 11, 15], 20);
+```
+这里的 x 就是上面所说的查找项 `20`，至于它有什么用，我还没弄的很明白，可能在某些特殊场景需要用到
+
+一般情况下，我们只是用它来在对象数组中选择需要查找的字段
+
+示例代码
+```js
+var data = [ { value: 11 }, { value: 33 }, { value: 22 }, { value: 55 }];
+var bisect = d3.bisector(function(d) { return d.value; });
+var result = bisect.left(data.sort((a, b) => {
+    return a.value < b.value ? -1 : a.value > b.value ? 1 : a.value >= b.value ? 0 : NaN;
+}), 33)
+```
+
+### d3.ticks && d3.tickIncrement && d3.tickStep
+
+在早期的版本中，`d3.ticks` 使用的是 `d3.tickStep` 来计算 step，但因为 IEEE 754 浮点数的存储原因, 返回的值可能不精确，从 `d3-array 1.2.0` 开始改为使用 `d3.tickIncrement`。
+
+`d3.tickIncrement` 的值永远为整数，在 start 大于 step 时输出的是为负整数，这主要是为了在 `d3.ticks` 中使用，正常情况下还是建议使用 `d3.tickStep`。
+
+示例代码
+```js
+d3.tickStep(1, 100, 6); // 输出： 20
+d3.tickStep(1, 2, 6); // 输出： 0.2
+d3.tickIncrement(1, 100, 6); // 输出： 20
+d3.tickIncrement(1, 2, 6); // 输出： -5
+```
+
+### d3.transpose && d3.zip
+
+事实上，`d3.zip` 只是一种调用 `d3.transpose` 的方法。唯一的区别在于它们的语法：其中 `d3.zip` 接收n个数组作为独立参数，`d3.transpose` 接收数组数组（矩阵）作为其唯一参数。
+
+```js
+d3.zip([1, 2], [3, 4]); // 输出： [[1,3],[2,4]]
+d3.transpose([[1, 2], [3, 4]]); // 输出： [[1,3],[2,4]]
+```
+
 ## 参考资料
 
 - https://www.jb51.net/article/160968.htm
