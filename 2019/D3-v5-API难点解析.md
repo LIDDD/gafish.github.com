@@ -6,7 +6,7 @@
 
 > API 文档：https://d3js.org.cn/document/d3-array/
 
-### d3.quantile && d3.median
+### d3.quantile & d3.median
 
 `d3.quantile` 的定义：返回指定 有序数组 的 p-分位数, `p` 是 [0, 1] 之间的小数。
 
@@ -31,7 +31,7 @@ d3.quantile([4, 2, 7, 3, 5, 1, 6].sort(d3.ascending), 0.25); // 输出： 2.5
 d3.quantile([4, 2, 7, 3, 5, 1, 6].sort(d3.descending), 0.25); // 输出： 5.5
 ```
 
-### d3.variance && d3.deviation
+### d3.variance & d3.deviation
 
 `d3.variance` 的定义是求样本方差，`d3.deviation` 的定义是求标准差，其中*方差是实际值与期望值之差平方的平均值，而标准差是方差算术平方根*。
 
@@ -75,7 +75,7 @@ Math.sqrt(1538) = 39.21734310225516
 d3.deviation([1, 2, 3, 4, 5, 99]); 输出 39.21734310225516
 ```
 
-### d3.bisectLeft && d3.bisectRight && d3.bisect
+### d3.bisectLeft & d3.bisectRight & d3.bisect
 
 `d3.bisectLeft` 的定义是：对一个 排序的数组 进行二分查找，获取某数组项左边的位置索引，`d3.bisectRight` 取右边的位置索引，`d3.bisect` 等同于 `d3.bisectRight`
 
@@ -129,7 +129,7 @@ var result = bisect.left(data.sort((a, b) => {
 }), 33)
 ```
 
-### d3.ticks && d3.tickIncrement && d3.tickStep
+### d3.ticks & d3.tickIncrement & d3.tickStep
 
 在早期的版本中，`d3.ticks` 使用的是 `d3.tickStep` 来计算 step，但因为 IEEE 754 浮点数的存储原因, 返回的值可能不精确，从 `d3-array 1.2.0` 开始改为使用 `d3.tickIncrement`。
 
@@ -143,13 +143,47 @@ d3.tickIncrement(1, 100, 6); // 输出： 20
 d3.tickIncrement(1, 2, 6); // 输出： -5
 ```
 
-### d3.transpose && d3.zip
+### d3.transpose & d3.zip
 
 事实上，`d3.zip` 只是一种调用 `d3.transpose` 的方法。唯一的区别在于它们的语法：其中 `d3.zip` 接收n个数组作为独立参数，`d3.transpose` 接收数组数组（矩阵）作为其唯一参数。
 
+示例代码
 ```js
 d3.zip([1, 2], [3, 4]); // 输出： [[1,3],[2,4]]
 d3.transpose([[1, 2], [3, 4]]); // 输出： [[1,3],[2,4]]
+```
+
+### d3.histogram
+
+`d3.histogram` 用于构建一个新的直方图生成器，关于直方图解释可参见[百科](https://baike.baidu.com/item/%E7%9B%B4%E6%96%B9%E5%9B%BE)，`d3.histogram()(data)` 通过直方图生成器生成的直方图对象数组，也叫分箱数组，每个分箱包含4种数据
+
+- 被分配到该分箱的一组来自 data 的数据；
+- `length` 属性，用来表示当前分箱的数据数；
+- `x0` 当前分箱的最小值(包含);
+- `x1` 当前分箱的最大值(不包含, 除非是最后一个分箱)；
+
+直方图生成器有3个方法
+
+- `value` 用于指定要计算的值；
+- `domain` 设置当前直方图生成器的输入区间；
+- `thresholds` 设置阈值区间数组或阈值数量；
+
+示例代码
+```js
+const histogram = d3.histogram();
+histogram
+    .value(d => d.value)
+    .domain([0, 150])
+    // .thresholds(30) // 阈值数量
+    .thresholds([5, 10, 20, 30, 40, 50, 80, 90, 100]); // 阈值区间数组
+const data = [];
+for (let i = 0; i < 100; i++) {
+    data.push({ value: Math.round(Math.random() * 100) });
+}
+const result = histogram(data);
+
+result.length; // 输出 10
+result[0]; // 输出第1条数据：[{"value":1},{"value":3},{"value":2},{"value":3},{"value":4}] | length: 5 | x0: 0 | x1: 5
 ```
 
 ## 参考资料
