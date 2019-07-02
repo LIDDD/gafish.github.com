@@ -186,6 +186,12 @@ result.length; // 输出 10
 result[0]; // 输出第1条数据：[{"value":1},{"value":3},{"value":2},{"value":3},{"value":4}] | length: 5 | x0: 0 | x1: 5
 ```
 
+## d3-axis
+
+### axis.tickSize & axis.tickSizeInner & axis.tickSizeOuter
+
+`axis.tickSize` 是内外侧刻度使用相同的值，`axis.tickSizeOuter` 外侧的刻度会跟 `axis.tickSizeInner` 的头尾刻度重合，所以当设置的外侧刻度比内侧刻度小时会感觉不起效果，最佳实践是内外侧设置一样的刻度，或者外侧比内侧大。
+
 ## 参考资料
 
 - https://www.jb51.net/article/160968.htm
