@@ -17,7 +17,7 @@ d3.quantile([4, 2, 7, 3, 5, 1, 6].sort(d3.ascending), 0.25); // 输出： 2.5
 
 `p-分位数` 的意思是把数组的看成是 [0, 1] 的区间，取 `p` 位置通过计算得到的对应数值
 
-![](../images/Jietu20190627-112504@2x.jpg)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190627-112504@2x.jpg)
 
 `d3.median` 赞同于 `p = 0.5`，它取的值叫中位数，意思是在这组数据中，有一半的数据比他大，有一半的数据比他小
 

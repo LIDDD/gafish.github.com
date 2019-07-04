@@ -4,7 +4,8 @@
 
 ## 动效原型
 
-![](../images/loading.gif)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/loading.gif)
+
 
 ## 观察细节
 
@@ -47,7 +48,7 @@
 }
 ```
 
-![](../images/Jietu20190704-074955.jpg)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-074955.jpg)
 
 ### 2、实现波浪效果
 
@@ -90,7 +91,7 @@
 }
 ```
 
-![](../images/Jietu20190704-091232.gif)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-091232.gif)
 
 ### 3、设置不同的高度
 
@@ -102,7 +103,7 @@ loadingAnim4 >>设置>> 40% { height: 38px; }
 loadingAnim5 >>设置>> 50% { height: 20px; }
 ```
 
-![](../images/Jietu20190704-090944.gif)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-090944.gif)
 
 ### 4、设置动画结束时间间隔
 
@@ -116,7 +117,7 @@ loadingAnim4 >>设置>> 90% { height: 10px; }
 loadingAnim5 >>设置>> 100% { height: 10px; }
 ```
 
-![](../images/Jietu20190704-091934.gif)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-091934.gif)
 
 ### 5、结束后的并排停留的效果
 
@@ -197,6 +198,6 @@ loadingAnim5 >>设置>> 90% { height: 10px; }
 
 ## 最终效果展示
 
-![](../images/Jietu20190704-093059.gif)
+![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-093059.gif)
 
 [查看在线Demo](http://gafish.github.io/demo/loading.html)
