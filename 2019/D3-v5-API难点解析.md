@@ -192,6 +192,31 @@ result[0]; // 输出第1条数据：[{"value":1},{"value":3},{"value":2},{"value
 
 `axis.tickSize` 是内外侧刻度使用相同的值，`axis.tickSizeOuter` 外侧的刻度会跟 `axis.tickSizeInner` 的头尾刻度重合，所以当设置的外侧刻度比内侧刻度小时会感觉不起效果，最佳实践是内外侧设置一样的刻度，或者外侧比内侧大。
 
+## d3-force
+
+### simulation.alphaDecay & simulation.velocityDecay
+
+`alphaDecay` 是 alpha 衰减系数，影响的是运行时间，`velocityDecay` 是摩擦阻力系数，影响的是运行速度
+
+### 5种力学模型
+
+- Centering: `center` force (中心力) 可以将所有的节点的中心一致的向指定的位置 ⟨x,y⟩ 移动 
+- Collision: `collision` 力模型将节点视为具有一定 radius 的圆，而不是点，并且阻止节点之间的重叠 
+- Links: `link` froce(弹簧模型) 可以根据 link distance 将有关联的两个节点拉近或者推远 
+- Many-Body: `charge` (N-body问题，译为电荷力比较容易理解) 在所有的节点之间相互作用 
+- Positioning: `x` 和 `y` 定位力模型可以将节点沿着指定的维度进行排列
+
+用法示例
+```js
+d3.forceSimulation(nodes)
+    .force("center", d3.forceCenter(300, 150))
+    .force("collision", d3.forceCollide(30))
+    .force("link", d3.forceLink(links).id(d => d.id))
+    .force("charge", d3.forceManyBody())
+    .force("x", d3.forceX(300))
+    .force("y", d3.forceY(100))
+```
+
 ## 参考资料
 
 - https://www.jb51.net/article/160968.htm
