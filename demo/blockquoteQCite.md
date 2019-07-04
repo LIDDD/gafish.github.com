@@ -1,7 +1,6 @@
 ---
 layout: demo
 ---
-<!DOCTYPE html>
 <html lang="cmn-Hans">
 <head>
     <title>blockquote 、 q 、 cite 都表示引用，如何区分</title>

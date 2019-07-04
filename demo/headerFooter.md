@@ -1,7 +1,6 @@
 ---
 layout: demo
 ---
-<!DOCTYPE html>
 <html lang="cmn-Hans">
 <head>
     <title>header 、footer 不止表示页头页尾</title>

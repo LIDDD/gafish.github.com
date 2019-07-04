@@ -1,7 +1,6 @@
 ---
 layout: demo
 ---
-<!DOCTYPE html>
 <html lang="cmn-Hans">
 <head>
     <title>small 、 s 、 u 还能用吗</title>

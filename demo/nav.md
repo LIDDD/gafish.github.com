@@ -1,7 +1,6 @@
 ---
 layout: demo
 ---
-<!DOCTYPE html>
 <html lang="cmn-Hans">
 <head>
     <title>不是所有的导航链接都需要 nav</title>

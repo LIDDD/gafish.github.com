@@ -1,7 +1,6 @@
 ---
 layout: demo
 ---
-<!DOCTYPE html>
 <html lang="cmn-Hans">
 <head>
     <title>address 的内容不只是地址</title>

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+---
+layout: demo
+---
 <html lang="en">
 <head>
     <meta charset="UTF-8">
