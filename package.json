@@ -1,9 +1,9 @@
 {
-  "name": "gafish Blog",
+  "name": "gafish_Blog",
   "version": "1.0.0",
   "description": "gafish 博客",
   "scripts": {
-    "copy": "for F in demo/*.html; do cp $F ${F%.html}.md; done"
+    "copy": "for F in demo/*.html; do cp $F ${F%.html}.md; done;"
   },
   "repository": {
     "type": "git",
