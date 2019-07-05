@@ -198,13 +198,17 @@ result[0]; // 输出第1条数据：[{"value":1},{"value":3},{"value":2},{"value
 
 `alphaDecay` 是 alpha 衰减系数，影响的是运行时间，`velocityDecay` 是摩擦阻力系数，影响的是运行速度
 
-### 5种力学模型
+### 力学模型
 
 - Centering: `center` force (中心力) 可以将所有的节点的中心一致的向指定的位置 ⟨x,y⟩ 移动 
 - Collision: `collision` 力模型将节点视为具有一定 radius 的圆，而不是点，并且阻止节点之间的重叠 
 - Links: `link` froce(弹簧模型) 可以根据 link distance 将有关联的两个节点拉近或者推远 
 - Many-Body: `charge` (N-body问题，译为电荷力比较容易理解) 在所有的节点之间相互作用 
 - Positioning: `x` 和 `y` 定位力模型可以将节点沿着指定的维度进行排列
+
+官方文档中只列了以上5种，但还有一种
+
+- forceRadial：`r` 创建一沿着指定 radius、圆心坐标在 ⟨x,y⟩ 的圆环的环形布局。如果没有指定 x 和 y 则默认为 ⟨0,0⟩.
 
 用法示例
 ```js
@@ -215,7 +219,12 @@ d3.forceSimulation(nodes)
     .force("charge", d3.forceManyBody())
     .force("x", d3.forceX(300))
     .force("y", d3.forceY(100))
+    .force("r", d3.forceRadial(100, 300, 150))
 ```
+
+### manyBody.theta
+
+查了一些资料，但还是似懂非懂，大概意思就是，默认值是0.9，值越大，本来靠近中心点的节点，距离会越远，还需要继续查资料
 
 ## 参考资料
 
