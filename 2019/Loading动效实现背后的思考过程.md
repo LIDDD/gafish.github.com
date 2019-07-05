@@ -1,5 +1,7 @@
 # Loading动效实现背后的思考过程
 
+> 本着严肃认真的态度，听取了大家的一些意见，对动画流畅度做了优化
+
 有一个制作Loading动效的需求，设计师从AE导出了动画JSON数据，但需要加载 [lottie-web](https://github.com/airbnb/lottie-web) 才能播放，考虑到这种小动效并不是业务中的常见需求，所以我不打算引入 `lottie-web`，而是直接根据动画效果自己用CSS写一个，记录动效实现的思考过程。
 
 ## 动效原型
@@ -23,7 +25,6 @@
 ```css
 .loading,
 .loading > span {
-    position: relative;
     box-sizing: border-box;
 }
 .loading {
@@ -31,18 +32,24 @@
     margin: auto;
     position: absolute;
     top: 0; left: 0; bottom: 0; right: 0;
-    width: 100px;
+    width: 110px;
     height: 75px;
     line-height: 75px;
-
+    text-align: center;
 }
 
 .loading > span {
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin: 0 6px;
-    border-radius: 4px;
+    width: 22px;
+    height: 75px;
+}
+
+.loading > span::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     vertical-align: middle;
     background-image: linear-gradient(0deg, #00F4AA 0%, #0E85FF 100%);
 }
@@ -65,29 +72,29 @@
 * Animation
 */
 @keyframes loadingAnim1 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     10% { height: 75px; }
-    100% { height: 10px; }
+    100% { height: 8px; }
 }
 @keyframes loadingAnim2 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     20% { height: 75px; }
-    100% { height: 10px; }
+    100% { height: 8px; }
 }
 @keyframes loadingAnim3 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     30% { height: 75px; }
-    100% { height: 10px; }
+    100% { height: 8px; }
 }
 @keyframes loadingAnim4 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     40% { height: 75px; }
-    100% { height: 10px; }
+    100% { height: 8px; }
 }
 @keyframes loadingAnim5 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     50% { height: 75px; }
-    100% { height: 10px; }
+    100% { height: 8px; }
 }
 ```
 
@@ -110,11 +117,11 @@ loadingAnim5 >>设置>> 50% { height: 20px; }
 每根竖线间隔 `1/5秒` 的时间结束动画。
 
 ```
-loadingAnim1 >>设置>> 60% { height: 10px; }
-loadingAnim2 >>设置>> 70% { height: 10px; }
-loadingAnim3 >>设置>> 80% { height: 10px; }
-loadingAnim4 >>设置>> 90% { height: 10px; }
-loadingAnim5 >>设置>> 100% { height: 10px; }
+loadingAnim1 >>设置>> 60% { height: 8px; }
+loadingAnim2 >>设置>> 70% { height: 8px; }
+loadingAnim3 >>设置>> 80% { height: 8px; }
+loadingAnim4 >>设置>> 90% { height: 8px; }
+loadingAnim5 >>设置>> 100% { height: 8px; }
 ```
 
 ![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-091934.gif)
@@ -124,11 +131,11 @@ loadingAnim5 >>设置>> 100% { height: 10px; }
 要实现这种效果，只要让所有动画结束时间提前0.1秒，这样它会保持0.1秒的静止效果。
 
 ```
-loadingAnim1 >>设置>> 50% { height: 10px; }
-loadingAnim2 >>设置>> 60% { height: 10px; }
-loadingAnim3 >>设置>> 70% { height: 10px; }
-loadingAnim4 >>设置>> 80% { height: 10px; }
-loadingAnim5 >>设置>> 90% { height: 10px; }
+loadingAnim1 >>设置>> 50% { height: 8px; }
+loadingAnim2 >>设置>> 60% { height: 8px; }
+loadingAnim3 >>设置>> 70% { height: 8px; }
+loadingAnim4 >>设置>> 80% { height: 8px; }
+loadingAnim5 >>设置>> 90% { height: 8px; }
 ```
 
 ### 6、最终样式
@@ -170,17 +177,17 @@ loadingAnim5 >>设置>> 90% { height: 10px; }
 * Animation
 */
 @keyframes loadingAnim1 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     10% { height: 20px; }
-    50% { height: 10px; }
+    50% { height: 8px; }
 }
 @keyframes loadingAnim2 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     20% { height: 38px; }
-    60% { height: 10px; }
+    60% { height: 8px; }
 }
 @keyframes loadingAnim3 {
-    0% { height: 10px; }
+    0% { height: 8px; }
     30% { height: 75px; }
     70% { height: 10px; }
 }
