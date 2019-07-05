@@ -1,3 +1,3 @@
 # 作品演示
 
-- [关系图谱](../demo/network_graph.md)
+- [关系图谱](http://gafish.github.io/demo/network_graph.html)
