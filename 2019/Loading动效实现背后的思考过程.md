@@ -209,5 +209,5 @@
 
 ![](https://github.com/gafish/gafish.github.com/raw/master/images/Jietu20190704-093059.gif)
 
-- [查看之前的在线Demo](http://gafish.github.io/demo/loading.html)
-- [查看优化后的在线Demo](http://gafish.github.io/demo/loading2.html)
+- [查看第一版的在线Demo](http://gafish.github.io/demo/loading.html)
+- [查看第二版优化后的在线Demo](http://gafish.github.io/demo/loading2.html)
