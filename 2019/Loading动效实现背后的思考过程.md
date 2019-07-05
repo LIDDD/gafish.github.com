@@ -61,42 +61,42 @@
 
 ### 2、实现波浪效果
 
-一般的波浪效果实现上都是通过 `animate-delay` 让每根竖线延迟开始动画，但这里动画从开始到结束是一个整体，所以这里我们通过为每个竖线独立设置动画进度来实现，从后往前依次提前15%的时间结束，达到最高高度的时间点在开始和结束中间。
+一般的波浪效果实现上都是通过 `animate-delay` 让每根竖线延迟开始动画，但这里动画从开始到结束是一个整体，所以这里我们通过为每个竖线独立设置动画进度来实现，达到最高点的时间从前往后依次推迟10%，结束时间从后往前依次提前10%。
 
 ```css
-.loading > span:nth-child(1)::after { animation: loadingAnim1 1s infinite; }
-.loading > span:nth-child(2)::after { animation: loadingAnim2 1s infinite; }
-.loading > span:nth-child(3)::after { animation: loadingAnim3 1s infinite; }
-.loading > span:nth-child(4)::after { animation: loadingAnim4 1s infinite; }
-.loading > span:nth-child(5)::after { animation: loadingAnim5 1s infinite; }
+.loading > span:nth-child(1)::after { animation: loadingAnim1 1s infinite ease; }
+.loading > span:nth-child(2)::after { animation: loadingAnim2 1s infinite ease; }
+.loading > span:nth-child(3)::after { animation: loadingAnim3 1s infinite ease; }
+.loading > span:nth-child(4)::after { animation: loadingAnim4 1s infinite ease; }
+.loading > span:nth-child(5)::after { animation: loadingAnim5 1s infinite ease; }
 
 /*
 * Animation
 */
 @keyframes loadingAnim1 {
     0% { height: 10px; }
-    20% { height: 75px; }
-    40% { height: 10px; }
+    10% { height: 75px; }
+    50% { height: 10px; }
 }
 @keyframes loadingAnim2 {
     0% { height: 10px; }
-    22.5% { height: 75px; }
-    55% { height: 10px; }
+    20% { height: 75px; }
+    60% { height: 10px; }
 }
 @keyframes loadingAnim3 {
     0% { height: 10px; }
-    35% { height: 75px; }
+    30% { height: 75px; }
     70% { height: 10px; }
 }
 @keyframes loadingAnim4 {
     0% { height: 10px; }
-    42.5% { height: 75px; }
-    85% { height: 10px; }
+    40% { height: 75px; }
+    80% { height: 10px; }
 }
 @keyframes loadingAnim5 {
     0% { height: 10px; }
     50% { height: 75px; }
-    100% { height: 10px; }
+    90% { height: 10px; }
 }
 ```
 
@@ -109,28 +109,28 @@
 ```css
 @keyframes loadingAnim1 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    20% { height: 20px; width: 8px; border-radius: 4px; }
-    40% { height: 10px; width: 10px; border-radius: 5px; }
+    10% { height: 20px; width: 8px; border-radius: 4px; }
+    50% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim2 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    22.5% { height: 38px; width: 8px; border-radius: 4px; }
-    55% { height: 10px; width: 10px; border-radius: 5px; }
+    20% { height: 38px; width: 8px; border-radius: 4px; }
+    60% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim3 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    35% { height: 75px; width: 8px; border-radius: 4px; }
+    30% { height: 75px; width: 8px; border-radius: 4px; }
     70% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim4 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    42.5% { height: 38px; width: 8px; border-radius: 4px; }
-    85% { height: 10px; width: 10px; border-radius: 5px; }
+    40% { height: 38px; width: 8px; border-radius: 4px; }
+    80% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim5 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
     50% { height: 20px; width: 8px; border-radius: 4px; }
-    100% { height: 10px; width: 10px; border-radius: 5px; }
+    90% { height: 10px; width: 10px; border-radius: 5px; }
 }
 ```
 
@@ -180,28 +180,28 @@
 */
 @keyframes loadingAnim1 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    20% { height: 20px; width: 8px; border-radius: 4px; }
-    40% { height: 10px; width: 10px; border-radius: 5px; }
+    10% { height: 20px; width: 8px; border-radius: 4px; }
+    50% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim2 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    22.5% { height: 38px; width: 8px; border-radius: 4px; }
-    55% { height: 10px; width: 10px; border-radius: 5px; }
+    20% { height: 38px; width: 8px; border-radius: 4px; }
+    60% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim3 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    35% { height: 75px; width: 8px; border-radius: 4px; }
+    30% { height: 75px; width: 8px; border-radius: 4px; }
     70% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim4 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
-    42.5% { height: 38px; width: 8px; border-radius: 4px; }
-    85% { height: 10px; width: 10px; border-radius: 5px; }
+    40% { height: 38px; width: 8px; border-radius: 4px; }
+    80% { height: 10px; width: 10px; border-radius: 5px; }
 }
 @keyframes loadingAnim5 {
     0% { height: 10px; width: 10px; border-radius: 5px; }
     50% { height: 20px; width: 8px; border-radius: 4px; }
-    100% { height: 10px; width: 10px; border-radius: 5px; }
+    90% { height: 10px; width: 10px; border-radius: 5px; }
 }
 ```
 
