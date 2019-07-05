@@ -44,29 +44,29 @@ layout: demo
         * Animation
         */
         @keyframes loadingAnim1 {
-            0% { height: 10px; }
+            0% { height: 8px; }
             10% { height: 20px; }
-            50% { height: 10px; }
+            50% { height: 8px; }
         }
         @keyframes loadingAnim2 {
-            0% { height: 10px; }
+            0% { height: 8px; }
             20% { height: 38px; }
-            60% { height: 10px; }
+            60% { height: 8px; }
         }
         @keyframes loadingAnim3 {
-            0% { height: 10px; }
+            0% { height: 8px; }
             30% { height: 75px; }
-            70% { height: 10px; }
+            70% { height: 8px; }
         }
         @keyframes loadingAnim4 {
-            0% { height: 10px; }
+            0% { height: 8px; }
             40% { height: 38px; }
-            80% { height: 10px; }
+            80% { height: 8px; }
         }
         @keyframes loadingAnim5 {
-            0% { height: 10px; }
+            0% { height: 8px; }
             50% { height: 20px; }
-            90% { height: 10px; }
+            90% { height: 8px; }
         }
     
     </style>
