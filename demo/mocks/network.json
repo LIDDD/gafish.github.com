@@ -1,0 +1,126 @@
+{
+  "nodes": [
+    {
+      "type": 2,
+      "label": "手机",
+      "id": "11"
+    },
+    {
+      "type": 2,
+      "label": "手机",
+      "id": "22"
+    },
+    {
+      "type": 4,
+      "label": "身份证",
+      "id": "33"
+    },
+    {
+      "type": 0,
+      "label": "订单b",
+      "id": "44"
+    },
+    {
+      "type": 4,
+      "label": "身份证",
+      "id": "55"
+    },
+    {
+      "type": 4,
+      "label": "身份证",
+      "id": "66"
+    },
+    {
+      "type": 0,
+      "label": "订单c",
+      "id": "9634185072"
+    },
+    {
+      "type": 4,
+      "label": "身份证",
+      "id": "77"
+    },
+    {
+      "type": 0,
+      "label": "订单a",
+      "id": "88"
+    },
+    {
+      "type": 0,
+      "label": "订单a",
+      "id": "99"
+    },
+    {
+      "type": 0,
+      "label": "订单c",
+      "id": "100"
+    }
+  ],
+  "links": [
+    {
+      "source": "44",
+      "label": "订单b_身份证",
+      "target": "77"
+    },
+    {
+      "source": "99",
+      "label": "订单a_身份证",
+      "target": "77"
+    },
+    {
+      "source": "44",
+      "label": "订单b_身份证",
+      "target": "77"
+    },
+    {
+      "source": "100",
+      "label": "订单c_手机",
+      "target": "22"
+    },
+    {
+      "source": "99",
+      "label": "订单a_身份证",
+      "target": "77"
+    },
+    {
+      "source": "44",
+      "label": "订单b_身份证",
+      "target": "77"
+    },
+    {
+      "source": "100",
+      "label": "订单c_身份证",
+      "target": "77"
+    },
+    {
+      "source": "44",
+      "label": "订单b_身份证",
+      "target": "77"
+    },
+    {
+      "source": "100",
+      "label": "订单c_身份证",
+      "target": "77"
+    },
+    {
+      "source": "100",
+      "label": "订单c_身份证",
+      "target": "77"
+    },
+    {
+      "source": "100",
+      "label": "订单c_手机",
+      "target": "22"
+    },
+    {
+      "source": "44",
+      "label": "订单b_身份证",
+      "target": "77"
+    },
+    {
+      "source": "44",
+      "label": "订单b_身份证",
+      "target": "77"
+    }
+  ]
+}
