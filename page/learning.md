@@ -43,3 +43,15 @@
 - [d3.forceRadial(radius[, x][, y])](https://codepen.io/gafish/pen/zVLmWN)
     - [radial.strength([strength])](https://codepen.io/gafish/pen/rErqRy)
     - [radial.radius([radius]) & radial.x([x]) & radial.y([y])](https://codepen.io/gafish/pen/xoJQKY)
+
+### d3-zoom
+
+- [d3.zoom()](https://codepen.io/gafish/pen/vqVLqy)
+    - [zoom.transform(selection, transform)](https://codepen.io/gafish/pen/OeBQeB)
+    - [zoom.translateBy(selection, x, y)](https://codepen.io/gafish/pen/OeaZyL)
+    - [zoom.translateTo(selection, x, y)](https://codepen.io/gafish/pen/RzqyYN)
+    - [zoom.scaleBy(selection, k)](https://codepen.io/gafish/pen/xoQjeB)
+    - [zoom.scaleTo(selection, k)](https://codepen.io/gafish/pen/NZEMZg)
+    - [zoom.constrain([constrain])](https://codepen.io/gafish/pen/RzqJbr)
+    - [zoom.filter([filter])](https://codepen.io/gafish/pen/vqQrxX)
+    - [zoom.touchable([touchable])](https://codepen.io/gafish/pen/QXJxOx)
