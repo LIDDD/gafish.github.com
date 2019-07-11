@@ -59,7 +59,8 @@ layout: demo
         const width = 1200;
         const height = 600;
         let dataSorce, svgRoot, svgRootG, simulation,
-            graphNode, graphNodeG, graphLink, graphLinkG;
+            graphNode, graphNodeG, graphLink, graphLinkG,
+            graphLabel, graphLabelG;
         let nodeDatas = [], linkDatas = [], step = 200;
         const radius = d3.scaleLinear()
             .domain([0, 500])
@@ -106,7 +107,7 @@ layout: demo
                 .nodes(nodeDatas)
                 // .alpha(0.5)
                 // .alphaMin(0.3)
-                .alphaTarget(0.3)
+                // .alphaTarget(0)
                 // .alphaDecay(0.3)
                 // .velocityDecay(0.4)
                 .restart();
@@ -134,6 +135,21 @@ layout: demo
                 .exit()
                 .remove();
 
+            // label
+            graphLabel.data(nodeDatas, d => d.id);
+            graphLabel
+                .enter()
+                .append("text")
+                .merge(graphLabel)
+                .style("fill","#000")
+                .attr("dominant-baseline","middle")
+                .attr("text-anchor", "middle")
+                .attr("font-size", "12")
+                .text(d => d.label);
+            graphLabel
+                .exit()
+                .remove();
+
             // node
             graphNode.data(nodeDatas, d => d.id);
             graphNode
@@ -158,6 +174,7 @@ layout: demo
             svgRootG = svgRoot.append('g');
             graphLinkG = svgRootG.append('g');
             graphNodeG = svgRootG.append('g');
+            graphLabelG = svgRootG.append('g');
 
             svgRootG
                 .append("marker")
@@ -198,9 +215,18 @@ layout: demo
                 })
                 .attr("marker-end", "url(#resolved)");
 
+            graphLabel = graphLabelG.selectAll('text')
+                .data(nodeDatas, d => d.id)
+                .enter()
+                .append("text")
+                .style("fill","#000")
+                .attr("dominant-baseline","middle")
+                .attr("text-anchor", "middle")
+                .text(d => d.label);
+
             const distance = d3.scaleLinear()
-                .domain([100, 500])
-                .range([200, 50])
+                .domain([1, 50, 500])
+                .range([200, 80, 50])
                 .clamp(true);
             simulation = d3.forceSimulation()
                 .force("collision", d3.forceCollide(d => radius(d.value)*2).strength(1).iterations(1))
@@ -243,6 +269,9 @@ layout: demo
                     graphNode
                         .attr('cx', d => d.x)
                         .attr('cy', d => d.y);
+                    graphLabel
+                        .attr('x', d => d.x)
+                        .attr('y', d => d.y);
                 });
                 // .force("r", d3.forceRadial(height/2, width/2, height/2).strength(1));
                 
@@ -326,9 +355,9 @@ layout: demo
             const nodes = [];
             const links = [];
             for (let index = 0; index < max; index++) {
-                const sourceId = Math.floor(Math.random()*(max*10)+0);
-                const targetId = Math.floor(Math.random()*max+0);
-                const linkId = Math.floor(Math.random()*10000);
+                const sourceId = Math.floor(d3.randomLogNormal()()*max);
+                const targetId = Math.floor(d3.randomLogNormal()()*max/2);
+                const linkId = Math.floor(d3.randomLogNormal()()*10000);
                 const node = { "type": Math.floor(Math.random()*9), "label": "手机", "id": sourceId };
                 nodes.push(node);
                 const link = { "source": sourceId, "label": "订单_身份证", "id": linkId, "target": targetId };
