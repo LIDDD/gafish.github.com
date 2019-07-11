@@ -47,12 +47,44 @@ layout: demo
         const height = 600;
         let dataSorce, svgRoot, svgRootG, simulation,
             graphNode, graphNodeG, graphLink, graphLinkG;
-        let nodeDatas = [], linkDatas = [];
+        let nodeDatas = [], linkDatas = [], dataSorceNodesMap = {};
         const radius = d3.scaleLinear()
             .domain([0, 500])
             .range([2, 30]);
 
+        const clickCircle = (d, i) => {
+            d3.event.stopPropagation();
+            nodeDatas.forEach(item => {
+                item.focus = item.id === d.id;
+            });
+            updateNetwork();
+        };
+
+        const clickSvg = (d, i) => {
+            nodeDatas.forEach(item => {
+                item.focus = undefined;
+            });
+            updateNetwork();
+        };
+
         const updateNetwork = () => {
+            // link
+            graphLink = graphLinkG.selectAll('line')
+                .data(linkDatas, d => d.id);
+            graphLink
+                .enter()
+                .append('line')
+                .attr('stroke', d => d3.schemePaired[d.source.type] || '#666');
+                // .attr('stroke', '#666');
+            graphLink
+                .attr('stroke', (d, i) => {
+                    if (d.source.focus === false) return '#eee';
+                    return d3.schemePaired[d.source.type] || '#666';
+                });
+            graphLink
+                .exit()
+                .remove();
+
             // node
             graphNode = graphNodeG.selectAll('circle')
                 .data(nodeDatas, d => d.id);
@@ -60,27 +92,23 @@ layout: demo
                 .enter()
                 .append('circle')
                 .attr('r', d => radius(d.value))
-                .attr('fill', (d, i) => d3.schemePaired[d.type] || '#000');
+                .attr('fill', (d, i) => d3.schemePaired[d.type] || '#000')
+                .on('mousedown', clickCircle);
+            graphNode
+                .attr('fill', (d, i) => {
+                    if (d.focus === false) return '#eee';
+                    return d3.schemePaired[d.type] || '#000';
+                });
             graphNode
                 .exit()
                 .remove();
 
-            // link
-            graphLink = graphLinkG.selectAll('line')
-                .data(linkDatas, d => d.id);
-            graphLink
-                .enter()
-                .append('line')
-                .attr('stroke', '#666');
-            graphLink
-                .exit()
-                .remove();
-
             simulation
-                .stop()
+                // .stop()
                 .nodes(nodeDatas)
-                .alphaTarget(1)
-                // .alpha(0.3)
+                .alpha(0.5)
+                .alphaTarget(0.3)
+                .velocityDecay(0.8)
                 .restart();
             simulation
                 .force('link')
@@ -94,18 +122,23 @@ layout: demo
             
             svgRoot = root.append('svg').attr('width', width).attr('height', height);
             svgRootG = svgRoot.append('g');
-            graphNodeG = svgRootG.append('g');
             graphLinkG = svgRootG.append('g');
+            graphNodeG = svgRootG.append('g');
+
+            svgRoot
+                .on('mousedown', clickSvg);
 
             simulation = d3.forceSimulation()
                 .force("collision", d3.forceCollide(d => radius(d.value)+5))
-                // .force("charge", d3.forceManyBody().distanceMax(100))
+                // .force("charge", d3.forceManyBody().distanceMax(500))
                 .force("charge", d3.forceManyBody())
                 // .force('link', d3.forceLink().id(d => d.id).distance(100))
                 .force('link', d3.forceLink().id(d => d.id))
                 .force("center", d3.forceCenter(width / 2, height / 2))
-                .force("y", d3.forceY(height / 2))
+                // .force("x", d3.forceX(width/2).strength(0.1))
                 .force("x", d3.forceX(width/2))
+                // .force("y", d3.forceY(height/2).strength(0.1))
+                .force("y", d3.forceY(height/2))
                 .on('tick', () => {
                     graphLinkG.selectAll('line')
                         .attr('x1', d => d.source.x)
@@ -145,7 +178,8 @@ layout: demo
                 });
 
             svgRoot
-                .call(zoom);
+                .call(zoom)
+                .on("dblclick.zoom", null);
             
             d3.select('#btns').attr('style', 'display: block');
 
@@ -159,12 +193,17 @@ layout: demo
                 d.value = Math.random() > 0.995 ? 
                     Math.floor(Math.random() * 200 + 300) : 
                     Math.floor(Math.random() * 100 + 0);
+                dataSorceNodesMap[d.id] = d;
             });
         };
 
         const generateData = () => {
             const tempNode = {};
-            const newDatas = dataSorce.nodes.splice(0, 2);
+            const newDatas = dataSorce.nodes.splice(0, 500);
+
+            nodeDatas.forEach(d => {
+                d.focus = null;
+            });
 
             newDatas.forEach(d => {
                 nodeDatas.push(d);
