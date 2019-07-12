@@ -31,9 +31,6 @@ layout: demo
     </style>
 </head>
 <body>
-    <!-- <svg width=1200 height=600>
-        <path d="M788,482 L285,111Z" />
-    </svg> -->
     <main>
         <div id="dataset">
             <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -59,8 +56,7 @@ layout: demo
         const width = 1200;
         const height = 600;
         let dataSorce, svgRoot, svgRootG, simulation,
-            graphNode, graphNodeG, graphLink, graphLinkG,
-            graphLabel, graphLabelG;
+            graphNode, graphNodeG, graphLink, graphLinkG;
         let nodeDatas = [], linkDatas = [], step = 200;
         const radius = d3.scaleLinear()
             .domain([0, 500])
@@ -135,33 +131,29 @@ layout: demo
                 .exit()
                 .remove();
 
-            // label
-            graphLabel.data(nodeDatas, d => d.id);
-            graphLabel
+            // node
+            graphNode.data(nodeDatas, d => d.id);
+            const ndoeG = graphNode
                 .enter()
+                .append('g')
+                .attr('class', 'circle');
+            ndoeG
+                .append('circle')
+                .merge(ndoeG)
+                .attr('r', d => radius(d.value))
+                .attr('fill', (d, i) => {
+                    if (d.focus === false) return '#eee';
+                    return d3.schemePaired[d.type] || '#000';
+                });
+            ndoeG
                 .append("text")
-                .merge(graphLabel)
+                .merge(ndoeG)
                 .style("fill","#000")
                 .attr("dominant-baseline","middle")
                 .attr("text-anchor", "middle")
                 .attr("font-size", "12")
                 .attr("transform", "translate(0 20)")
                 .text(d => d.label);
-            graphLabel
-                .exit()
-                .remove();
-
-            // node
-            graphNode.data(nodeDatas, d => d.id);
-            graphNode
-                .enter()
-                .append('circle')
-                .merge(graphNode)
-                .attr('r', d => radius(d.value))
-                .attr('fill', (d, i) => {
-                    if (d.focus === false) return '#eee';
-                    return d3.schemePaired[d.type] || '#000';
-                });
             graphNode
                 .exit()
                 .remove();
@@ -196,14 +188,28 @@ layout: demo
                 .on('mousedown', null)
                 .on('mousedown', clickSvg);
 
-            graphNode = graphNodeG.selectAll('circle')
+            graphNode = graphNodeG.selectAll('g.circle')
                 .data(nodeDatas, d => d.id)
                 .enter()
-                .append('circle')
-                .attr('r', d => radius(d.value))
-                .attr('fill', (d, i) => d3.schemePaired[d.type] || '#000')
+                .append('g')
+                .attr('class', 'circle')
                 .on('mousedown', clickCircle)
                 .call(drag());
+            graphNode
+                .append('circle')
+                .attr('r', d => radius(d.value))
+                .attr('fill', (d, i) => {
+                    if (d.focus === false) return '#eee';
+                    return d3.schemePaired[d.type] || '#000';
+                });
+            graphNode
+                .append("text")
+                .style("fill","#000")
+                .attr("dominant-baseline","middle")
+                .attr("text-anchor", "middle")
+                .attr("font-size", "12")
+                .attr("transform", "translate(0 20)")
+                .text(d => d.label);
 
             graphLink = graphLinkG.selectAll('path')
                 .data(linkDatas, d => d.id)
@@ -215,15 +221,6 @@ layout: demo
                     return d3.schemePaired[d.source.type] || '#666';
                 })
                 .attr("marker-end", "url(#resolved)");
-
-            graphLabel = graphLabelG.selectAll('text')
-                .data(nodeDatas, d => d.id)
-                .enter()
-                .append("text")
-                .style("fill","#000")
-                .attr("dominant-baseline","middle")
-                .attr("text-anchor", "middle")
-                .text(d => d.label);
 
             const distance = d3.scaleLinear()
                 .domain([1, 50, 500])
@@ -268,11 +265,7 @@ layout: demo
                             return path;
                         });
                     graphNode
-                        .attr('cx', d => d.x)
-                        .attr('cy', d => d.y);
-                    graphLabel
-                        .attr('x', d => d.x)
-                        .attr('y', d => d.y);
+                        .attr('transform', d => `translate(${d.x} ${d.y})`);
                 });
                 // .force("r", d3.forceRadial(height/2, width/2, height/2).strength(1));
                 
