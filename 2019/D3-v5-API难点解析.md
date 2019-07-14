@@ -226,6 +226,10 @@ d3.forceSimulation(nodes)
 
 查了一些资料，但还是似懂非懂，大概意思就是，默认值是0.9，值越大，本来靠近中心点的节点，距离会越远，还需要继续查资料
 
+## d3-zoom
+
+
+
 ## 参考资料
 
 - https://www.jb51.net/article/160968.htm
