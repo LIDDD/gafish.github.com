@@ -228,7 +228,23 @@ d3.forceSimulation(nodes)
 
 ## d3-zoom
 
+### d3.zoomTransform
 
+`d3.zoomTransform` 主要是用来对节点做自定义缩放和转换，它用来生成缩放结果，但不会直接作用在节点上，需要手动的为节点添加 `attr('transform', transform)` 才行，或者通过 `zoom.transform` 执行转换，会触发 `zoom` 事件。
+
+```js
+const transform = d3.zoomTransform(d3.select('#svg circle'))
+    .scale(1.5);
+const zoom = d3.zoom()
+    .on('zoom', () => {
+        circle.attr('transform', d3.event.transform);
+    });
+zoom.transform(circle, transform);
+```
+
+### d3.zoomIdentity
+
+`d3.zoomIdentity` 的作用是恢复默认缩放，相当于 `translate(0, 0) scale(1)`
 
 ## 参考资料
 
