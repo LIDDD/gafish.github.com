@@ -109,3 +109,18 @@
 - [d3.clientPoint(container, event)](https://codepen.io/gafish/pen/LKKqRy)
 - [d3.local()](https://codepen.io/gafish/pen/XLLOMd)
 - [d3.namespace(name) & d3.namespaces](https://codepen.io/gafish/pen/yddZzy)
+
+### d3-color
+
+- [d3.color(specifier)](https://codepen.io/gafish/pen/OKLQgv)
+    - [color.opacity](https://codepen.io/gafish/pen/ZgzrVY)
+    - [color.rgb()]()
+    - [color.brighter([k])]()
+    - [color.darker([k])]()
+    - [color.displayable()]()
+    - [color.toString()]()
+    - [d3.rgb(r, g, b[, opacity]) & d3.rgb(specifier) & d3.rgb(color)]()
+    - [d3.hsl(h, s, l[, opacity]) & d3.hsl(specifier) & d3.hsl(color)]()
+    - [d3.lab(l, a, b[, opacity]) & d3.lab(specifier) & d3.lab(color)]()
+    - [d3.hcl(h, c, l[, opacity]) & d3.hcl(specifier) & d3.hcl(color)]()
+    - [d3.cubehelix(h, s, l[, opacity]) & d3.cubehelix(specifier) & d3.cubehelix(color)]()
