@@ -124,3 +124,21 @@
     - [d3.lab(l, a, b[, opacity]) & d3.lab(specifier) & d3.lab(color)]()
     - [d3.hcl(h, c, l[, opacity]) & d3.hcl(specifier) & d3.hcl(color)]()
     - [d3.cubehelix(h, s, l[, opacity]) & d3.cubehelix(specifier) & d3.cubehelix(color)]()
+
+### d3-scale
+
+- [d3.scaleLinear()]()
+- [d3.scalePow()]()
+- [d3.scaleSqrt()]()
+- [d3.scaleLog()]()
+- [d3.scaleIdentity()]()
+- [d3.scaleTime()]()
+- [d3.scaleUtc()]()
+- [d3.scaleSequential(interpolator)]()
+- [d3.scaleDiverging(interpolator)]()
+- [d3.scaleQuantize()]()
+- [d3.scaleQuantile()]()
+- [d3.scaleThreshold()]()
+- [d3.scaleOrdinal([range])]()
+- [d3.scaleBand()]()
+- [d3.scalePoint()]()
