@@ -246,6 +246,71 @@ zoom.transform(circle, transform);
 
 `d3.zoomIdentity` 的作用是恢复默认缩放，相当于 `translate(0, 0) scale(1)`
 
+## d3.shape
+
+### arc.padRadius
+
+如果设置了 `arc.padRadius` ，就会和 `arc.padAngle` 一起计算出每个饼图的左右 padding 值，然后会均匀的分布在当前饼图的两端。如果没有指定，padAngle 会和设定的内外径一起计算出左右 padding。
+
+### arc.content
+
+如果想在 canvas 中使用，将 content 设置为 canvas 元素
+
+### pie(data[, arguments…])
+
+这里的 `arguments` 已经没有意义，传入的参数不会被使用
+
+## d3-array
+
+### d3.quantile(array, p[, accessor])
+
+返回指定 有序数组(自行做递增排序) 使用 R-7 方法返回数组的 p-分位数，p 是 [0, 1] 之间的小数. 例如 `d3.median` 相当于 p = 0.5, 使用 p = 0.25 计算第一个四分位数, p = 0.75 表示第三个四分位数
+
+### d3.median(array[, accessor])
+
+对指定的数组使用 R-7 方法返回数组的中位数，等同于 `d3.quantile` 中的 p = 0.5 
+
+中位数，又称中点数，中值。中位数是按顺序排列的一组数据中居于中间位置的数，即在这组数据中，有一半的数据比他大，有一半的数据比他小
+
+
+### d3.variance(array[, accessor])
+
+<p>返回给定数组的方差</p>
+<p><small>方差和标准方差用于度量随机变量和均值之间的偏离程度 https://www.jb51.net/article/160968.htm</small></p>
+<pre>
+    //定义数组
+    var numbers1 = [1,9,7,9,5,8,9,10]
+    console.log(d3.mean(numbers1))     //返回平均值7.25
+    console.log(d3.variance(numbers1))   //返回方差值 约8.79
+    console.log(d3.deviation(numbers1))   //返回标准差值 约2.96
+
+    var numbers2 = [7,8,6,7,7,8,8,7];
+    console.log(d3.mean(numbers2))     //返回平均值7.25
+    console.log(d3.variance(numbers2))   //返回方差值 约0.5
+    console.log(d3.deviation(numbers2))   //返回标准差值 约0.71
+
+    这段代码中，数组numbers1和numbers2的平均值都是7.25，但是前者的方差和标准差分别为8.79和2.96，后者的方差和标准差分别为0.50和0.71，表明数组numbers1中的值偏离平均值7.25的程度较大。
+</pre>
+
+
+### d3.bisectLeft(array, x[, lo[, hi]])
+
+<p>对一个排序的数组进行二分查找，获取某数组项左边的位置</p>
+<p><small>bisectLeft()所使用的数组<strong>必须经过递增排序</strong>。第二个参数用于指定查找项，如果此项在数组中存在，则返回此位置的左边。如果此项在数组中不存在，则返回第一个大于此项的值的左边</small></p>
+<p><small>https://www.jb51.net/article/160968.htm</small></p>
+
+
+### d3.bisector(accessor | comparator)
+
+<p>根据指定的 accessor 或 comparator 返回一个新的二分查找对象，这个方法可以被用来二等分对象数组, 而不会仅仅局限于基本的数组(基础数据类型组成的数组)，可以看做是 bisect 的补充</p>
+
+
+### d3.shuffle(array[, lo[, hi]])
+
+<p>使用 Fisher–Yates shuffle 算法将数组的顺序随机打乱</p>
+<p>Fisher–Yates shuffle 洗牌算法：https://gaohaoyang.github.io/2016/10/16/shuffle-algorithm/ </p>
+
+
 ## 参考资料
 
 - https://www.jb51.net/article/160968.htm
