@@ -288,3 +288,7 @@
 - [d3.zip(arrays…)](https://codepen.io/gafish/pen/RXYZme)
 - [d3.transpose(matrix)](https://codepen.io/gafish/pen/JgaygM)
 - [d3.histogram()](https://codepen.io/gafish/pen/jgvGEW)
+
+### d3-fetch
+
+- [DEMO](http://gafish.github.io/demo/d3_v5_fetch.html)
