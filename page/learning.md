@@ -296,3 +296,7 @@
 ### d3-axis
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_axis.html)
+
+### other
+
+- [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
