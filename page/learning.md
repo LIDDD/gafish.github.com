@@ -292,3 +292,7 @@
 ### d3-fetch
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_fetch.html)
+
+### d3-axis
+
+- [DEMO](http://gafish.github.io/demo/d3_v5_axis.html)
