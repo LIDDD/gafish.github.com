@@ -297,6 +297,13 @@
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_axis.html)
 
+### d3-brush
+
+- [d3.brush()](https://codepen.io/gafish/pen/pMOaKw)
+- d3.brushX() `(同d3.brush())`
+- d3.brushY() `(同d3.brush())`
+- d3.brushSelection(node) `(同d3.brush())`
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
