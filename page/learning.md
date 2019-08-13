@@ -113,17 +113,11 @@
 ### d3-color
 
 - [d3.color(specifier)](https://codepen.io/gafish/pen/OKLQgv)
-    - [color.opacity](https://codepen.io/gafish/pen/ZgzrVY)
-    - [color.rgb()]()
-    - [color.brighter([k])]()
-    - [color.darker([k])]()
-    - [color.displayable()]()
-    - [color.toString()]()
-    - [d3.rgb(r, g, b[, opacity]) & d3.rgb(specifier) & d3.rgb(color)]()
-    - [d3.hsl(h, s, l[, opacity]) & d3.hsl(specifier) & d3.hsl(color)]()
-    - [d3.lab(l, a, b[, opacity]) & d3.lab(specifier) & d3.lab(color)]()
-    - [d3.hcl(h, c, l[, opacity]) & d3.hcl(specifier) & d3.hcl(color)]()
-    - [d3.cubehelix(h, s, l[, opacity]) & d3.cubehelix(specifier) & d3.cubehelix(color)]()
+- [d3.rgb](https://codepen.io/gafish/pen/ZgzrVY)
+- [d3.hsl](https://codepen.io/gafish/pen/RXevjE)
+- [d3.lab](https://codepen.io/gafish/pen/aeRXYE)
+- [d3.hcl](https://codepen.io/gafish/pen/mNzvLo)
+- d3.cubehelix() `同d3.hsl`
 
 ### d3-scale
 
@@ -154,36 +148,21 @@
 - [d3.schemeSet1](https://codepen.io/gafish/pen/QeLmPK)
 - [d3.schemeSet2](https://codepen.io/gafish/pen/JgPLVB)
 - [d3.schemeSet3](https://codepen.io/gafish/pen/ymBKWb)
-- [d3.interpolateBrBG(t)](https://codepen.io/gafish/pen/zgYYLd)
-- [d3.schemeBrBG[k]](https://codepen.io/gafish/pen/pMozZB)
-- [d3.interpolatePRGn(t)]
-- [d3.schemePRGn[k]]()
-- [d3.interpolatePiYG(t)]
-- [d3.schemePiYG[k]]()
-- [d3.interpolatePuOr(t)]
-- [d3.schemePuOr[k]]()
-- [d3.interpolateRdBu(t)]
-- [d3.schemeRdBu[k]]()
-- [d3.interpolateRdGy(t)]
-- [d3.schemeRdGy[k]]()
-- [d3.interpolateRdYlBu(t)]
-- [d3.schemeRdYlBu[k]]()
-- [d3.interpolateRdYlGn(t)]
-- [d3.schemeRdYlGn[k]]()
-- [d3.interpolateSpectral(t)]
-- [d3.schemeSpectral[k]]()
-- [d3.interpolateBlues(t)]
-- [d3.schemeBlues[k]]()
-- [d3.interpolateGreens(t)]
-- [d3.schemeGreens[k]]()
-- [d3.interpolateGreys(t)]
-- [d3.schemeGreys[k]]()
-- [d3.interpolateOranges(t)]
-- [d3.schemeOranges[k]]()
-- [d3.interpolatePurples(t)]
-- [d3.schemePurples[k]]()
-- [d3.interpolateReds(t)]
-- [d3.schemeReds[k]]()
+- [d3.schemeBrBG[k] & d3.interpolateBrBG(t)](https://codepen.io/gafish/pen/pMozZB)
+- [d3.schemePRGn[k] & d3.interpolatePRGn(t)](https://codepen.io/gafish/pen/zgYYLd)
+- [d3.schemePiYG[k] & d3.interpolatePiYG(t)](https://codepen.io/gafish/pen/yLBYoOX)
+- [d3.schemePuOr[k] & d3.interpolatePuOr(t)](https://codepen.io/gafish/pen/KKPdvMm)
+- [d3.schemeRdBu[k] & d3.interpolateRdBu(t)](https://codepen.io/gafish/pen/xxKwLEa)
+- [d3.schemeRdGy[k] & d3.interpolateRdGy(t)](https://codepen.io/gafish/pen/GRKpvNR)
+- [d3.schemeRdYlBu[k] & d3.interpolateRdYlBu(t)](https://codepen.io/gafish/pen/QWLjMGd)
+- [d3.schemeRdYlGn[k] & d3.interpolateRdYlGn(t)](https://codepen.io/gafish/pen/MWgavbE)
+- [d3.schemeSpectral[k] & d3.interpolateSpectral(t)](https://codepen.io/gafish/pen/RwbWZKb)
+- [d3.schemeBlues[k] & d3.interpolateBlues(t)](https://codepen.io/gafish/pen/wvwKqgW)
+- [d3.schemeGreens[k] & d3.interpolateGreens(t)](https://codepen.io/gafish/pen/YzKyxNo)
+- [d3.schemeGreys[k] & d3.interpolateGreys(t)](https://codepen.io/gafish/pen/QWLjMpp)
+- [d3.schemeOranges[k] & d3.interpolateOranges(t)](https://codepen.io/gafish/pen/XWrmaMq)
+- [d3.schemePurples[k] & d3.interpolatePurples(t)](https://codepen.io/gafish/pen/oNvjeZV)
+- [d3.schemeReds[k] & d3.interpolateReds(t)](https://codepen.io/gafish/pen/bGbVrWw)
 - [d3.interpolateViridis(t)]()
 - [d3.interpolateInferno(t)]()
 - [d3.interpolateMagma(t)]()
@@ -303,6 +282,18 @@
 - d3.brushX() `(同d3.brush())`
 - d3.brushY() `(同d3.brush())`
 - d3.brushSelection(node) `(同d3.brush())`
+
+### d3-chord
+
+- [d3.chord()](https://codepen.io/gafish/pen/dxgJvN)
+- [d3.ribbon()](https://codepen.io/gafish/pen/PMyevy)
+
+### d3-collection
+
+- [Objects](https://codepen.io/gafish/pen/JgmZXr)
+- [Maps](https://codepen.io/gafish/pen/pMxKbj)
+- [Sets](https://codepen.io/gafish/pen/eqPbgw)
+- [Nests](https://codepen.io/gafish/pen/EqdGXj)
 
 ### other
 
