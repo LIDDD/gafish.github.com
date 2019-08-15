@@ -296,6 +296,14 @@
 ### d3-dsv
 
 - [d3.dsvFormat(delimiter)](https://codepen.io/gafish/pen/oNvxYLr)
+- [d3.csvParse(string[, row])](https://codepen.io/gafish/pen/VwZayON)
+- d3.csvParseRows(string[, row]) `同上`
+- d3.csvFormat(rows[, columns]) `同上`
+- d3.csvFormatRows(rows) `同上`
+- d3.tsvParse(string[, row]) `同上`
+- d3.tsvParseRows(string[, row]) `同上`
+- d3.tsvFormat(rows[, columns]) `同上`
+- d3.tsvFormatRows(rows) `同上`
 
 ### other
 
