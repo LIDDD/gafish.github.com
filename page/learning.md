@@ -305,6 +305,46 @@
 - d3.tsvFormat(rows[, columns]) `同上`
 - d3.tsvFormatRows(rows) `同上`
 
+### d3-ease
+
+- [d3.easeLinear(t)](https://codepen.io/gafish/pen/LYPNMer)
+- d3.easePolyIn(t) `同上`
+- d3.easePolyOut(t) `同上`
+- d3.easePoly(t) `同上`
+- easePolyInOutd3.'(t) `同上`
+- d3.easeQuadIn(t) `同上`
+- d3.easeQuadOut(t) `同上`
+- d3.easeQuad(t) `同上`
+- d3.easeQuadInOut(t) `同上`
+- easeCubicInd3.'(t) `同上`
+- d3.easeCubicOut(t) `同上`
+- d3.easeCubic(t) `同上`
+- d3.easeCubicInOut(t) `同上`
+- d3.easeSinIn(t) `同上`
+- easeSinOutd3.'(t) `同上`
+- d3.easeSin(t) `同上`
+- d3.easeSinInOut(t) `同上`
+- d3.easeExpIn(t) `同上`
+- d3.easeExpOut(t) `同上`
+- d3.easeExp(t) `同上`
+- easeExpInOutd3.'(t) `同上`
+- d3.easeCircleIn(t) `同上`
+- d3.easeCircleOut(t) `同上`
+- d3.easeCircle(t) `同上`
+- d3.easeCircleInOut(t) `同上`
+- easeElasticInd3.'(t) `同上`
+- d3.easeElastic(t) `同上`
+- d3.easeElasticOut(t) `同上`
+- d3.easeElasticInOut(t) `同上`
+- d3.easeBackIn(t) `同上`
+- easeBackOutd3.'(t) `同上`
+- d3.easeBack(t) `同上`
+- d3.easeBackInOut(t) `同上`
+- d3.easeBounceIn(t) `同上`
+- d3.easeBounce(t) `同上`
+- d3.easeBounceOut(t) `同上`
+- d3.easeBounceInOut(t) `同上`
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
