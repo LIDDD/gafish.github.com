@@ -345,6 +345,13 @@
 - d3.easeBounceOut(t) `同上`
 - d3.easeBounceInOut(t) `同上`
 
+### d3-format
+
+- [d3.format(specifier)](https://codepen.io/gafish/pen/dybMrgz)
+- d3.formatSpecifier(specifier) `同上`
+- d3.precisionFixed(step) `同上`
+- d3.precisionPrefix(step, value) `同上`
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
