@@ -259,6 +259,7 @@
 ### d3-fetch
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_fetch.html)
+- [DEMO](http://gafish.github.io/demo/d3_v5_fetch.html)
 
 ### d3-axis
 
@@ -351,6 +352,11 @@
 - d3.formatSpecifier(specifier) `同上`
 - d3.precisionFixed(step) `同上`
 - d3.precisionPrefix(step, value) `同上`
+
+### d3-geo
+
+- [d3.geoPath](https://codepen.io/gafish/pen/pozbBZg)
+- [d3.geoAzimuthalEqualArea()](https://codepen.io/gafish/pen/OJLRXOx)
 
 ### other
 
