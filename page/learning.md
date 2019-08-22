@@ -356,11 +356,12 @@
 ### d3-geo
 
 - [d3.geoPath](https://codepen.io/gafish/pen/pozbBZg)
-- [d3.geoAzimuthalEqualArea()](http://gafish.github.io/demo/d3_v5_geoAzimuthalEqualArea.html)
+- [d3.geoAzimuthalEqualArea()](https://codepen.io/gafish/pen/MWgbZXg)
 - d3.geoAzimuthalEquidistant() `同上`
 - d3.geoGnomonic() `同上`
 - d3.geoOrthographic() `同上`
 - d3.geoStereographic() `同上`
+- [d3.geoAlbersUsa()](https://codepen.io/gafish/pen/OJLRXOx)
 
 ### other
 
