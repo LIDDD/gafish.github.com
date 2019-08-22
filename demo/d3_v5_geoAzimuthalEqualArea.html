@@ -10,6 +10,7 @@ layout: demo
     <style>
       arction {
         display: flex;
+        flex-wrap: wrap;
       }
     </style>
   </head>
@@ -27,6 +28,14 @@ layout: demo
           <h6>d3.geoGnomonic()</h6>
           <svg id="demo3"></svg>
         </section>
+        <section>
+          <h6>d3.geoOrthographic()</h6>
+          <svg id="demo4"></svg>
+        </section>
+        <section>
+          <h6>d3.geoStereographic()</h6>
+          <svg id="demo5"></svg>
+        </section>
     </arction>
     <script>
       d3.json("datas/world.json").then(function(data) {
@@ -41,12 +50,12 @@ layout: demo
           var projection = d3[projection]()
             .angle(0)
             .rotate([-90, 0, 0])
-            // .fitExtent([[0, 0], [width, height]], data)
+            .fitExtent([[0, 0], [width, height]], data)
             // .fitSize([widtg, 500], data)
             // .fitWidth(height, data)
-            .fitHeight(height, data)
+            // .fitHeight(height, data)
             .precision(0.1)
-            .clipAngle(179)
+            // .clipAngle(179)
             .clipExtent(null)
             // .scale(100)
             // .translate([width / 2, height / 2])
@@ -88,6 +97,8 @@ layout: demo
         generateMap('demo1', 'geoAzimuthalEqualArea');
         generateMap('demo2', 'geoAzimuthalEquidistant');
         generateMap('demo3', 'geoGnomonic');
+        generateMap('demo4', 'geoOrthographic');
+        generateMap('demo5', 'geoStereographic');
       });
     </script>
   </body>
