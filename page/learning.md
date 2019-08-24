@@ -362,6 +362,18 @@
 - d3.geoOrthographic() `同上`
 - d3.geoStereographic() `同上`
 - [d3.geoAlbersUsa()](https://codepen.io/gafish/pen/OJLRXOx)
+- d3.geoAlbers() `同上`
+- [d3.geoConicConformal()](https://codepen.io/gafish/pen/xxKgJzM)
+- [d3.geoConicEqualArea()](https://codepen.io/gafish/pen/jONypXa)
+- d3.geoConicEqualArea() `同上`
+- d3.geoConicEquidistant() `同上`
+- d3.geoEquirectangular() `同上`
+- d3.geoMercator() `同上`
+- d3.geoTransverseMercator() `同上`
+- d3.geoNaturalEarth1() `同上`
+- [d3.geoProjection(project)](https://codepen.io/gafish/pen/pozRZYL)
+- d3.geoNaturalEarth1Raw `同上`
+- d3.geoOrthographicRaw `同上`
 
 ### other
 
