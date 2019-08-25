@@ -374,6 +374,19 @@
 - [d3.geoProjection(project)](https://codepen.io/gafish/pen/pozRZYL)
 - d3.geoNaturalEarth1Raw `同上`
 - d3.geoOrthographicRaw `同上`
+- [d3.geoArea()](https://codepen.io/gafish/pen/pozRZXV)
+- d3.geoArea() `同上`
+- d3.geoBounds() `同上`
+- d3.geoCentroid() `同上`
+- d3.geoDistance() `同上`
+- d3.geoLength() `同上`
+- d3.geoInterpolate() `同上`
+- d3.geoContains() `同上`
+- d3.geoRotation() `同上`
+- [d3.geoCircle()](https://codepen.io/gafish/pen/OJLpJaR)
+- d3.geoGraticule() `同上`
+- d3.geoGraticule10() `同上`
+- d3.geoIdentity() `同上`
 
 ### other
 
