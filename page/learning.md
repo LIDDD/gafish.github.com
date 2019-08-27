@@ -388,6 +388,10 @@
 - d3.geoGraticule10() `同上`
 - d3.geoIdentity() `同上`
 
+### d3-hierarchy
+
+- [d3.hierarchy(data[, children])](https://codepen.io/gafish/pen/GRKmRKP)
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
