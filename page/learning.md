@@ -391,6 +391,21 @@
 ### d3-hierarchy
 
 - [d3.hierarchy(data[, children])](https://codepen.io/gafish/pen/GRKmRKP)
+- [d3.stratify()](https://codepen.io/gafish/pen/PoYmjOM)
+- d3.cluster() `同上`
+- [d3.tree()](https://codepen.io/gafish/pen/QWLvgXp)
+- [d3.treemap()](https://codepen.io/gafish/pen/gOYWxrP)
+- [d3.treemapBinary(node, x0, y0, x1, y1)](https://codepen.io/gafish/pen/eYOWEPx)
+- d3.treemapBinary(node, x0, y0, x1, y1) `同上`
+- d3.treemapDice(node, x0, y0, x1, y1) `同上`
+- d3.treemapSlice(node, x0, y0, x1, y1) `同上`
+- d3.treemapSliceDice(node, x0, y0, x1, y1) `同上`
+- d3.treemapSquarify(node, x0, y0, x1, y1) `同上`
+- d3.treemapResquarify(node, x0, y0, x1, y1) `同上`
+- [d3.partition()](https://codepen.io/gafish/pen/qBWmKGX)
+- [d3.pack()](https://codepen.io/gafish/pen/LYPyrKz)
+- [d3.packSiblings(circles)](https://codepen.io/gafish/pen/yLBbqyY)
+- d3.packEnclose(circles) `同上`
 
 ### other
 
