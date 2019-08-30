@@ -409,7 +409,7 @@
 
 ### d3-interpolate
 
-- []()
+- [d3.interpolate(a, b)](https://codepen.io/gafish/pen/XWrgBQe)
 
 ### other
 
