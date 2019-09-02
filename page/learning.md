@@ -436,7 +436,11 @@
 
 ### d3-polygon
 
-
+- [d3.polygonArea(polygon)](https://codepen.io/gafish/pen/pozWvgy)
+- d3.polygonCentroid(polygon) `同上`
+- d3.polygonHull(polygon) `同上`
+- d3.polygonContains(polygon, point) `同上`
+- d3.polygonLength(polygon) `同上`
 
 ### other
 
