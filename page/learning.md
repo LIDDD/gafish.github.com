@@ -410,6 +410,17 @@
 ### d3-interpolate
 
 - [d3.interpolate(a, b)](https://codepen.io/gafish/pen/XWrgBQe)
+- [d3.interpolateNumber(a, b)](https://codepen.io/gafish/pen/ExYvOLZ)
+- d3.interpolateRound(a, b) `同上`
+- d3.interpolateNumber(a, b) `同上`
+- d3.interpolateRound(a, b) `同上`
+- d3.interpolateString(a, b) `同上`
+- d3.interpolateDate(a, b) `同上`
+- d3.interpolateArray(a, b) `同上`
+- d3.interpolateObject(a, b) `同上`
+- d3.interpolateTransformCss(a, b) `同上`
+- d3.interpolateTransformSvg(a, b) `同上`
+- d3.interpolateZoom(a, b) `同上`
 
 ### other
 
@@ -417,4 +428,5 @@
 
 ## TypeScript
 
+- [#学习资料#](https://typescript.bootcss.com/tutorials/migrating-from-javascript.html)
 - [Hello World](https://codepen.io/gafish/pen/NWKggpQ)
