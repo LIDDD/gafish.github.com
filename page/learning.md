@@ -412,7 +412,6 @@
 - [d3.interpolate(a, b)](https://codepen.io/gafish/pen/XWrgBQe)
 - [d3.interpolateNumber(a, b)](https://codepen.io/gafish/pen/ExYvOLZ)
 - d3.interpolateRound(a, b) `同上`
-- d3.interpolateNumber(a, b) `同上`
 - d3.interpolateRound(a, b) `同上`
 - d3.interpolateString(a, b) `同上`
 - d3.interpolateDate(a, b) `同上`
@@ -421,6 +420,16 @@
 - d3.interpolateTransformCss(a, b) `同上`
 - d3.interpolateTransformSvg(a, b) `同上`
 - d3.interpolateZoom(a, b) `同上`
+- [d3.quantize(interpolator, n)](https://codepen.io/gafish/pen/GRKvVbJ)
+- [d3.interpolateRgb(a, b)](https://codepen.io/gafish/pen/vYBeBRK)
+- d3.interpolateHsl(a, b) `同上`
+- d3.interpolateHslLong(a, b) `同上`
+- d3.interpolateLab(a, b) `同上`
+- d3.interpolateHcl(a, b) `同上`
+- d3.interpolateHclLong(a, b) `同上`
+- d3.interpolateCubehelix(a, b) `同上`
+- d3.interpolateCubehelixLong(a, b) `同上`
+
 
 ### other
 
