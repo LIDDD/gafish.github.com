@@ -468,6 +468,8 @@
 
 ### d3-time
 
+- [d3.timeDay](https://codepen.io/gafish/pen/mdbBozx)
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
