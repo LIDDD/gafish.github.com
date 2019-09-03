@@ -457,7 +457,16 @@
 
 ### d3-time-format
 
-- []()
+- [d3.timeFormat(specifier)](https://codepen.io/gafish/pen/wvwrNwG)
+- d3.utcFormat(specifier) `同上`
+- [d3.timeParse(specifier)](https://codepen.io/gafish/pen/GRKMzjp)
+- d3.utcParse(specifier) `同上`
+- [d3.isoFormat](https://codepen.io/gafish/pen/ZEzXwwm)
+- d3.isoParse `同上`
+- [d3.timeFormatLocale(definition)](https://codepen.io/gafish/pen/YzKrgKG)
+- d3.timeFormatDefaultLocale(definition) `同上`
+
+### d3-time
 
 ### other
 
