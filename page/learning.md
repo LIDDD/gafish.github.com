@@ -470,6 +470,12 @@
 
 - [d3.timeDay](https://codepen.io/gafish/pen/mdbBozx)
 
+### d3-timer
+
+- [d3.now()](https://codepen.io/gafish/pen/YzKrMza)
+- d3.timer(callback[, delay[, time]]) `同上`
+- d3.timeout(callback[, delay[, time]]) `同上`
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
