@@ -121,7 +121,7 @@
 
 ### d3-scale
 
-- [d3.scaleLinear()]()
+- [d3.scaleLinear()](https://codepen.io/gafish/pen/XWrezmr)
 - [d3.scalePow()]()
 - [d3.scaleSqrt()]()
 - [d3.scaleLog()]()
@@ -442,6 +442,23 @@
 - d3.polygonContains(polygon, point) `同上`
 - d3.polygonLength(polygon) `同上`
 
+### d3-quadtree
+
+- [d3.quadtree([data[, x, y]])](https://codepen.io/gafish/pen/zYOEERb)
+
+### d3-random
+
+- [d3.randomUniform([min, ][max])](https://codepen.io/gafish/pen/dybVZyp)
+- d3.randomNormal([mu][, sigma]) `同上`
+- d3.randomLogNormal([mu][, sigma]) `同上`
+- d3.randomBates(n) `同上`
+- d3.randomIrwinHall(n) `同上`
+- d3.randomExponential(lambda) `同上`
+
+### d3-time-format
+
+- []()
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
@@ -450,3 +467,7 @@
 
 - [#学习资料#](https://typescript.bootcss.com/tutorials/migrating-from-javascript.html)
 - [Hello World](https://codepen.io/gafish/pen/NWKggpQ)
+
+## Yeoman
+
+- [Get started](https://codepen.io/pen?template=QXPWJV)
