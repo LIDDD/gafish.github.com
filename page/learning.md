@@ -476,6 +476,14 @@
 - d3.timer(callback[, delay[, time]]) `同上`
 - d3.timeout(callback[, delay[, time]]) `同上`
 
+### d3-transition
+
+- [d3.transition([name])](https://codepen.io/gafish/pen/OJLOywE)
+
+### d3-voronoi
+
+- [d3.voronoi()](https://codepen.io/gafish/pen/vYBWGqK)
+
 ### other
 
 - [DEMO](http://gafish.github.io/demo/d3_v5_hello_world.html)
