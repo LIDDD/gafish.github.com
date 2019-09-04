@@ -495,4 +495,4 @@
 
 ## Yeoman
 
-- [Get started](https://codepen.io/pen?template=QXPWJV)
+- [Get started](https://codepen.io/pen?template=BaBwqbw)
