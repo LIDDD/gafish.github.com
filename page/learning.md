@@ -51,7 +51,6 @@
     - [d3.zoomIdentity](https://codepen.io/gafish/pen/ZdNxWv)
 
 ### d3-selection
-
 - [d3-selection](https://codepen.io/gafish/pen/XLwxLV)
 - [d3.window(node)](https://codepen.io/gafish/pen/XLLNgN)
 - [d3.style(node, name)](https://codepen.io/gafish/pen/MMMbzb)
@@ -482,3 +481,6 @@
 ## Yeoman
 
 - [Get started](https://codepen.io/pen?template=BaBwqbw)
+
+## Canvas
+
