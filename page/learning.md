@@ -484,3 +484,12 @@
 
 ## Canvas
 
+- [Canvas Basic Usage 1](https://codepen.io/gafish/pen/bGbjjNz)
+- [Canvas Basic Usage 2](https://codepen.io/gafish/pen/XWWbqbr)
+- [Canvas Basic Usage 3](https://codepen.io/gafish/pen/yLLNjGy)
+- [Canvas Basic Usage 4](https://codepen.io/gafish/pen/ZEEGgGZ)
+- [Canvas Basic Usage 5](https://codepen.io/gafish/pen/ZEEbrgJ)
+- [Canvas Basic Usage 6](https://codepen.io/gafish/pen/oNNjqLV)
+- [Canvas Basic Usage 7](https://codepen.io/gafish/pen/NWWGoOP)
+- [Canvas Basic Usage 8](https://codepen.io/gafish/pen/vYYNPML)
+- [Canvas Basic Usage 9](https://codepen.io/gafish/pen/NWWxxxX)
