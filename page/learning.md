@@ -498,3 +498,8 @@
 
 - [原生 WebGL](https://codepen.io/gafish/pen/QWWyRJL)
 - [ThreeJS Hello World](https://codepen.io/gafish/pen/VwwaVPG)
+- [ThreeJS Drawing Line](https://codepen.io/gafish/pen/dyypdpo)
+- [ThreeJS Createing Text](https://codepen.io/gafish/pen/WNNGMZJ)
+- [ThreeJS Load 3D Models](https://codepen.io/gafish/pen/dyypLxx)
+- [learning-threejs 02-first-scene](https://codepen.io/gafish/pen/KKKNJMX)
+- [learning-threejs 03-marterials-light](https://codepen.io/gafish/pen/OJJbGyq)
