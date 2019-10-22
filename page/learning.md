@@ -503,3 +503,5 @@
 - [ThreeJS Load 3D Models](https://codepen.io/gafish/pen/dyypLxx)
 - [learning-threejs 02-first-scene](https://codepen.io/gafish/pen/KKKNJMX)
 - [learning-threejs 03-marterials-light](https://codepen.io/gafish/pen/OJJbGyq)
+- [learning-threejs 04-marterials-light-animation](https://codepen.io/gafish/pen/BaapYgd)
+- [learning-threejs 05-control-gui](https://codepen.io/gafish/pen/NWWdYjz)
