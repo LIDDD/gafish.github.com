@@ -494,14 +494,14 @@
 - [Canvas Basic Usage 8](https://codepen.io/gafish/pen/vYYNPML)
 - [Canvas Basic Usage 9](https://codepen.io/gafish/pen/NWWxxxX)
 
-## WebGL
+## WebGL/ThreeJS
 
 - [原生 WebGL](https://codepen.io/gafish/pen/QWWyRJL)
 - [ThreeJS Hello World](https://codepen.io/gafish/pen/VwwaVPG)
 - [ThreeJS Drawing Line](https://codepen.io/gafish/pen/dyypdpo)
 - [ThreeJS Createing Text](https://codepen.io/gafish/pen/WNNGMZJ)
 - [ThreeJS Load 3D Models](https://codepen.io/gafish/pen/dyypLxx)
-- [learning-threejs 02-first-scene](https://codepen.io/gafish/pen/KKKNJMX)
-- [learning-threejs 03-marterials-light](https://codepen.io/gafish/pen/OJJbGyq)
-- [learning-threejs 04-marterials-light-animation](https://codepen.io/gafish/pen/BaapYgd)
-- [learning-threejs 05-control-gui](https://codepen.io/gafish/pen/NWWdYjz)
+- [learning-threejs chapter-01 02-first-scene](https://codepen.io/gafish/pen/KKKNJMX)
+- [learning-threejs chapter-01 03-marterials-light](https://codepen.io/gafish/pen/OJJbGyq)
+- [learning-threejs chapter-01 04-marterials-light-animation](https://codepen.io/gafish/pen/BaapYgd)
+- [learning-threejs chapter-01 05-control-gui](https://codepen.io/gafish/pen/NWWdYjz)
