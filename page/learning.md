@@ -505,3 +505,6 @@
 - [learning-threejs chapter-01 03-marterials-light](https://codepen.io/gafish/pen/OJJbGyq)
 - [learning-threejs chapter-01 04-marterials-light-animation](https://codepen.io/gafish/pen/BaapYgd)
 - [learning-threejs chapter-01 05-control-gui](https://codepen.io/gafish/pen/NWWdYjz)
+- [learning-threejs chapter05 01--basic-2d-geometries-plane](https://codepen.io/gafish/pen/yLLoOay)
+- [learning-threejs chapter05 02--basic-2d-geometries-ciecle](https://codepen.io/gafish/pen/bGGrMmK)
+- [learning-threejs chapter05 03--basic-2d-geometries-ring](https://codepen.io/gafish/pen/MWWvGMM)
