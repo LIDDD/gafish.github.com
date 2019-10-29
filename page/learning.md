@@ -508,3 +508,5 @@
 - [learning-threejs chapter05 01--basic-2d-geometries-plane](https://codepen.io/gafish/pen/yLLoOay)
 - [learning-threejs chapter05 02--basic-2d-geometries-ciecle](https://codepen.io/gafish/pen/bGGrMmK)
 - [learning-threejs chapter05 03--basic-2d-geometries-ring](https://codepen.io/gafish/pen/MWWvGMM)
+- [learning-threejs chapter05 04--basic-2d-geometries-shape](https://codepen.io/gafish/pen/dyyzKXz)
+- [learning-threejs chapter05 05--basic-3d-geometries-cube](https://codepen.io/gafish/pen/ExxvRmN)
