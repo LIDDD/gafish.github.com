@@ -526,5 +526,8 @@
 - [learning-threejs chapter06 05-extrude-svg](https://codepen.io/gafish/pen/RwweyzV)
 - [learning-threejs chapter06 06-parametric-geometries](https://codepen.io/gafish/pen/XWWxYKJ)
 - [learning-threejs chapter06 07-text-geometry](https://codepen.io/gafish/pen/BaaqVJq)
+- [learning-threejs chapter07 01-particles](https://codepen.io/gafish/pen/gOOBVQm)
+- [learning-threejs chapter07 02-particles-webgl](https://codepen.io/gafish/pen/dyygxrG)
+- [learning-threejs chapter07 03-basic-point-cloud](https://codepen.io/gafish/pen/ZEEqgNw)
 - [ThreeJS WebGLRenderer](https://codepen.io/gafish/pen/vYYemEZ)
 - [ThreeJS Mouse Event](https://codepen.io/gafish/pen/qBBVQJY)
