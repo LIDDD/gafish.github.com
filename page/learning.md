@@ -532,3 +532,4 @@
 - [learning-threejs chapter07 02-particles-webgl](https://codepen.io/gafish/pen/dyygxrG)
 - [learning-threejs chapter07 03-basic-point-cloud](https://codepen.io/gafish/pen/ZEEqgNw)
 - [learning-threejs chapter07 05a-program-based-point-cloud-webgl](https://codepen.io/gafish/pen/NWWEMrb)
+- [learning-threejs chapter07 06-rainy-scene](https://codepen.io/gafish/pen/pooqeNP)
