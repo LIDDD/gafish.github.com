@@ -157,3 +157,107 @@ let someValue: any = "this is a string";
 let strLength: number = (someValue as string).length;
 // 两种形式是等价的。 至于使用哪个大多数情况下是凭个人喜好；然而，当你在TypeScript里使用JSX时，只有as语法断言是被允许的。
 ```
+
+### 变量声明
+
+为什么用let语句来声明变量？
+- let与var的写法一致，主要的区别不在语法上，而是语义
+- 块作用域 
+  - 当用let声明一个变量，它使用的是词法作用域或块作用域
+  - 不能在1个作用域里多次声明
+  - 在一个嵌套作用域里内部的命名会屏蔽外部的命名
+
+let vs. const
+- 使用最小特权原则，所有变量除了你计划去修改的都应该使用const。 基本原则就是如果一个变量不需要对它写入，那么其它使用这些代码的人也不能够写入它们，并且要思考为什么会需要对这些变量重新赋值。 使用const也可以让我们更容易的推测数据的流动。  
+
+解构
+- 数组解构
+```js
+function f([first, second]: [number, number]) {
+    console.log(first);
+    console.log(second);
+}
+f([1, 2]);
+```
+- 元组解构
+```js
+let tuple: [number, string, boolean] = [7, "hello", true];
+
+let [a, b, c] = tuple; // a: number, b: string, c: boolean
+```
+- 对象解构
+```js
+let {a, b}: {a: string, b: number} = o;
+```
+
+### 接口
+
+类型检查器不会去检查属性的顺序，只要相应的属性存在并且类型也是对的就可以
+```js
+interface LabeledValue {
+  label: string;
+}
+
+function printLabel(labeledObj: LabeledValue) {
+  console.log(labeledObj.label);
+}
+
+let myObj = { size: 10, label: "Size 10 Object" };
+printLabel(myObj);
+```
+
+可选属性 - 接口里的属性不全都是必需的。 有些是只在某些条件下存在，或者根本不存在
+```js
+interface SquareConfig {
+  color?: string;
+  width?: number;
+}
+
+function createSquare(config: SquareConfig): { color: string; area: number } {
+  let newSquare = { color: "white", area: 100 };
+  if (config.color) {
+    newSquare.color = config.color;
+  }
+  if (config.width) {
+    newSquare.area = config.width * config.width;
+  }
+  return newSquare;
+}
+
+let mySquare = createSquare({ color: "black" });
+```
+
+只读属性 - 一些对象属性只能在对象刚刚创建的时候修改其值
+```js
+interface Point {
+  readonly x: number;
+  readonly y: number;
+}
+```
+TypeScript 具有ReadonlyArray<T>类型，它与Array<T>相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改：
+```js
+let a: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray<number> = a;
+ro[0] = 12; // error!
+ro.push(5); // error!
+ro.length = 100; // error!
+a = ro; // error!
+```
+readonly vs const - 最简单判断该用readonly还是const的方法是看要把它做为变量使用还是做为一个属性。 做为变量使用的话用const，若做为属性则使用readonly。
+
+额外的属性检查 - 对象字面量会被特殊对待而且会经过额外属性检查，当将它们赋值给变量或作为参数传递的时候。 如果一个对象字面量存在任何“目标类型”不包含的属性时，你会得到一个错误。
+```js
+// 绕开这些检查非常简单。 最简便的方法是使用类型断言：
+let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);
+
+// 最佳的方式是能够添加一个字符串索引签名
+interface SquareConfig {
+  color?: string;
+  width?: number;
+  [propName: string]: any;
+}
+
+// 最后一种跳过这些检查的方式，将这个对象赋值给一个另一个变量： 因为squareOptions不会经过额外属性检查，所以编译器不会报错。
+let squareOptions = { colour: "red", width: 100 };
+let mySquare = createSquare(squareOptions);
+```
