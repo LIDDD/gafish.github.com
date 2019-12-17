@@ -261,3 +261,120 @@ interface SquareConfig {
 let squareOptions = { colour: "red", width: 100 };
 let mySquare = createSquare(squareOptions);
 ```
+
+函数类型
+```js
+// 为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。
+interface SearchFunc {
+  (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+mySearch = function(source: string, subString: string) {
+  let result = source.search(subString);
+  return result > -1;
+};
+
+// 对于函数类型的类型检查来说，函数的参数名不需要与接口里定义的名字相匹配。 比如，我们使用下面的代码重写上面的例子：
+
+let mySearch: SearchFunc;
+mySearch = function(src: string, sub: string): boolean {
+  let result = src.search(sub);
+  return result > -1;
+};
+```
+
+可索引的类型
+```js
+interface StringArray {
+  [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+
+let myStr: string = myArray[0];
+
+// 你可以将索引签名设置为只读，这样就防止了给索引赋值：
+
+interface ReadonlyStringArray {
+  readonly [index: number]: string;
+}
+let myArray: ReadonlyStringArray = ["Alice", "Bob"];
+myArray[2] = "Mallory"; // error!
+
+```
+
+类类型
+
+```js
+// 可以在接口中描述一个方法，在类里实现它，如同下面的setTime方法一样：
+
+interface ClockInterface {
+  currentTime: Date;
+  setTime(d: Date): void;
+}
+
+class Clock implements ClockInterface {
+  currentTime: Date = new Date();
+  setTime(d: Date) {
+    this.currentTime = d;
+  }
+  constructor(h: number, m: number) {}
+}
+
+// 类表达式：
+
+interface ClockConstructor {
+  new (hour: number, minute: number);
+}
+
+interface ClockInterface {
+  tick();
+}
+
+const Clock: ClockConstructor = class Clock implements ClockInterface {
+  constructor(h: number, m: number) {}
+  tick() {
+    console.log("beep beep");
+  }
+};
+```
+
+继承接口
+```js
+interface Shape {
+  color: string;
+}
+
+interface Square extends Shape {
+  sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+```
+
+混合类型
+```js
+// 一个对象可以同时做为函数和对象使用，并带有额外的属性。
+
+interface Counter {
+  (start: number): string;
+  interval: number;
+  reset(): void;
+}
+
+function getCounter(): Counter {
+  let counter = function(start: number) {} as Counter;
+  counter.interval = 123;
+  counter.reset = function() {};
+  return counter;
+}
+
+let c = getCounter();
+c(10);
+c.reset();
+c.interval = 5.0;
+```
