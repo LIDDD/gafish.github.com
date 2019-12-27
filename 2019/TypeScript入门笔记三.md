@@ -237,4 +237,105 @@ var directions = [0 /* Up */, 1 /* Down */, 2 /* Left */, 3 /* Right */];
 
 ### 类型推断（Type Inference）
 
+TypeScript里，在有些没有明确指出类型的地方，类型推论会帮助提供类型。如下面的例子
+```ts
+let x = 3;
+// 变量x的类型被推断为数字
+```
+
+上下文归类
+```ts
+window.onmousedown = function(mouseEvent) {
+    console.log(mouseEvent.button);   //<- OK
+    console.log(mouseEvent.kangaroo); //<- Error!
+};
+// 在这个例子里，TypeScript类型检查器会使用 Window.onmousedown函数的类型来推断右边函数表达式的类型
+
+// 如果这个函数不是在上下文归类的位置上，那么这个函数的参数类型将隐式的成为any类型，而且也不会报错（除非你开启了--noImplicitAny选项）：
+const handler = function(uiEvent) {
+    console.log(uiEvent.button); //<- OK
+}
+```
+
+### 类型兼容性（Type Compatibility）
+
+```ts
+interface Named {
+    name: string;
+}
+
+class Person {
+    name: string;
+}
+
+let p: Named;
+// OK, because of structural typing
+p = new Person();
+// 在使用基于名义类型的语言，比如C#或Java中，这段代码会报错，因为Person类没有明确说明其实现了Named接口。
+
+// TypeScript的结构性子类型是根据JavaScript代码的典型写法来设计的。 因为JavaScript里广泛地使用匿名对象，例如函数表达式和对象字面量，所以使用结构类型系统来描述这些类型比使用名义类型系统更好。
+```
+
+比较两个函数
+```ts
+// 要查看x是否能赋值给y，首先看它们的参数列表。 x的每个参数必须能在y里找到对应类型的参数。
+let x = (a: number) => 0;
+let y = (b: number, s: string) => 0;
+
+y = x; // OK
+x = y; // Error
+
+// 类型系统强制源函数的返回值类型必须是目标函数返回值类型的子类型。
+let x = () => ({name: 'Alice'});
+let y = () => ({name: 'Alice', location: 'Seattle'});
+
+x = y; // OK
+y = x; // Error, because x() lacks a location property
+```
+
+枚举
+```ts
+// 枚举类型与数字类型兼容，并且数字类型与枚举类型兼容。不同枚举类型之间是不兼容的。比如，
+
+enum Status { Ready, Waiting };
+enum Color { Red, Blue, Green };
+
+let status = Status.Ready;
+status = Color.Green;  // Error
+```
+
+类
+```ts
+// 类与对象字面量和接口差不多，但有一点不同：类有静态部分和实例部分的类型。 比较两个类类型的对象时，只有实例的成员会被比较。 静态成员和构造函数不在比较的范围内。
+
+class Animal {
+    feet: number;
+    constructor(name: string, numFeet: number) { }
+}
+
+class Size {
+    feet: number;
+    constructor(numFeet: number) { }
+}
+
+let a: Animal;
+let s: Size;
+
+a = s;  // OK
+s = a;  // OK
+```
+泛型
+```ts
+// 因为TypeScript是结构性的类型系统，类型参数只影响使用其做为类型一部分的结果类型。比如，
+
+interface Empty<T> {
+}
+let x: Empty<number>;
+let y: Empty<string>;
+
+x = y;  // OK, because y matches structure of x
+// 上面代码里，x和y是兼容的，因为它们的结构使用类型参数时并没有什么不同
+```
+
+
 
