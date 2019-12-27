@@ -187,3 +187,138 @@ interface Point3d extends Point {
 
 let point3d: Point3d = {x: 1, y: 2, z: 3};
 ```
+
+### 函数
+
+```js
+// Named function
+function add(x, y) {
+    return x + y;
+}
+
+// Anonymous function
+let myAdd = function(x, y) { return x + y; };
+
+// 在JavaScript里，函数可以使用函数体外部的变量。 当函数这么做时，我们说它‘捕获’了这些变量。 
+
+let z = 100;
+
+function addToZ(x, y) {
+    return x + y + z;
+}
+```
+
+为函数定义类型
+```ts
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+// 这里左侧可以不写完整类型，TS可以做推断类型
+let myAdd = function(x: number, y: number): number { return x + y; };
+```
+
+书写完整函数类型
+```ts
+let myAdd: (x:number, y:number) => number =
+    function(x: number, y: number): number { return x + y; };
+```
+
+可选参数和默认参数
+```ts
+// 在TypeScript里我们可以在参数名旁使用?实现可选参数的功能
+function buildName(firstName: string, lastName?: string) {
+    if (lastName)
+        return firstName + " " + lastName;
+    else
+        return firstName;
+}
+
+let result1 = buildName("Bob");  // works correctly now
+let result2 = buildName("Bob", "Adams", "Sr.");  // error, too many parameters
+let result3 = buildName("Bob", "Adams");  // ah, just right
+```
+
+```ts
+// 在所有必须参数后面的带默认初始化的参数都是可选的，与可选参数一样，在调用函数的时候可以省略。 也就是说可选参数与末尾的默认参数共享参数类型。
+function buildName(firstName: string, lastName?: string) {
+    // ...
+}
+// 和
+
+function buildName(firstName: string, lastName = "Smith") {
+    // ...
+}
+// 共享同样的类型(firstName: string, lastName?: string) => string。 默认参数的默认值消失了，只保留了它是一个可选参数的信息。
+```
+
+
+剩余参数
+```ts
+function buildName(firstName: string, ...restOfName: string[]) {
+  return firstName + " " + restOfName.join(" ");
+}
+
+let employeeName = buildName("Joseph", "Samuel", "Lucas", "MacKinzie");
+```
+
+```ts
+// createCardPicker期望在某个Deck对象上调用。 也就是说this是Deck类型的，而非any，因此--noImplicitThis不会报错了。
+interface Card {
+    suit: string;
+    card: number;
+}
+interface Deck {
+    suits: string[];
+    cards: number[];
+    createCardPicker(this: Deck): () => Card;
+}
+let deck: Deck = {
+    suits: ["hearts", "spades", "clubs", "diamonds"],
+    cards: Array(52),
+    // NOTE: The function now explicitly specifies that its callee must be of type Deck
+    createCardPicker: function(this: Deck) {
+        return () => {
+            let pickedCard = Math.floor(Math.random() * 52);
+            let pickedSuit = Math.floor(pickedCard / 13);
+
+            return {suit: this.suits[pickedSuit], card: pickedCard % 13};
+        }
+    }
+}
+
+let cardPicker = deck.createCardPicker();
+let pickedCard = cardPicker();
+
+alert("card: " + pickedCard.card + " of " + pickedCard.suit);
+```
+
+```ts
+// 为同一个函数提供多个函数类型定义来进行函数重载。 编译器会根据这个列表去处理函数的调用。
+
+let suits = ["hearts", "spades", "clubs", "diamonds"];
+
+function pickCard(x: {suit: string; card: number; }[]): number;
+function pickCard(x: number): {suit: string; card: number; };
+function pickCard(x): any {
+    // Check to see if we're working with an object/array
+    // if so, they gave us the deck and we'll pick the card
+    if (typeof x == "object") {
+        let pickedCard = Math.floor(Math.random() * x.length);
+        return pickedCard;
+    }
+    // Otherwise just let them pick the card
+    else if (typeof x == "number") {
+        let pickedSuit = Math.floor(x / 13);
+        return { suit: suits[pickedSuit], card: x % 13 };
+    }
+}
+
+let myDeck = [{ suit: "diamonds", card: 2 }, { suit: "spades", card: 10 }, { suit: "hearts", card: 4 }];
+let pickedCard1 = myDeck[pickCard(myDeck)];
+alert("card: " + pickedCard1.card + " of " + pickedCard1.suit);
+
+let pickedCard2 = pickCard(15);
+alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
+// 注意，function pickCard(x): any并不是重载列表的一部分，因此这里只有两个重载：一个是接收对象另一个接收数字。 以其它参数调用pickCard会产生错误。
+```
