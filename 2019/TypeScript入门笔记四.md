@@ -140,5 +140,152 @@ function getName(n: NameOrResolver): Name {
 ```
 
 
+字符串字面量类型
+```ts
+// 字符串字面量类型允许你指定字符串必须的固定值。 在实际应用中，字符串字面量类型可以与联合类型，类型守卫和类型别名很好的配合。 通过结合使用这些特性，你可以实现类似枚举类型的字符串。
 
+type Easing = "ease-in" | "ease-out" | "ease-in-out";
+class UIElement {
+    animate(dx: number, dy: number, easing: Easing) {
+        if (easing === "ease-in") {
+            // ...
+        }
+        else if (easing === "ease-out") {
+        }
+        else if (easing === "ease-in-out") {
+        }
+        else {
+            // error! should not pass null or undefined.
+        }
+    }
+}
 
+let button = new UIElement();
+button.animate(0, 0, "ease-in");
+button.animate(0, 0, "uneasy"); // error: "uneasy" is not allowed here
+```
+
+可辨识联合
+```ts
+interface Square {
+    kind: "square";
+    size: number;
+}
+interface Rectangle {
+    kind: "rectangle";
+    width: number;
+    height: number;
+}
+interface Circle {
+    kind: "circle";
+    radius: number;
+}
+// 首先我们声明了将要联合的接口。 每个接口都有kind属性但有不同的字符串字面量类型。 kind属性称做可辨识的特征或标签。 其它的属性则特定于各个接口。 注意，目前各个接口间是没有联系的。 下面我们把它们联合到一起：
+
+type Shape = Square | Rectangle | Circle;
+// 现在我们使用可辨识联合:
+
+function area(s: Shape) {
+    switch (s.kind) {
+        case "square": return s.size * s.size;
+        case "rectangle": return s.height * s.width;
+        case "circle": return Math.PI * s.radius ** 2;
+    }
+}
+```
+
+多态的this类型
+```ts
+class BasicCalculator {
+    public constructor(protected value: number = 0) { }
+    public currentValue(): number {
+        return this.value;
+    }
+    public add(operand: number): this {
+        this.value += operand;
+        return this;
+    }
+    public multiply(operand: number): this {
+        this.value *= operand;
+        return this;
+    }
+    // ... other operations go here ...
+}
+
+let v = new BasicCalculator(2)
+            .multiply(5)
+            .add(1)
+            .currentValue();
+```
+
+索引类型（Index types）
+```ts
+// keyof T，索引类型查询操作符。 对于任何类型T，keyof T的结果为T上已知的公共属性名的联合
+// T[K]，索引访问操作符
+function pluck<T, K extends keyof T>(o: T, propertyNames: K[]): T[K][] {
+  return propertyNames.map(n => o[n]);
+}
+
+interface Car {
+    manufacturer: string;
+    model: string;
+    year: number;
+}
+let taxi: Car = {
+    manufacturer: 'Toyota',
+    model: 'Camry',
+    year: 2014
+};
+
+// Manufacturer and model are both of type string,
+// so we can pluck them both into a typed string array
+let makeAndModel: string[] = pluck(taxi, ['manufacturer', 'model']);
+
+// If we try to pluck model and year, we get an
+// array of a union type: (string | number)[]
+let modelYear = pluck(taxi, ['model', 'year'])
+```
+
+映射类型
+```ts
+// 这样使用
+type PartialWithNewMember<T> = {
+  [P in keyof T]?: T[P];
+} & { newMember: boolean }
+// 不要这样使用
+// 这会报错！
+type PartialWithNewMember<T> = {
+  [P in keyof T]?: T[P];
+  newMember: boolean;
+}
+
+// 最简单的映射类型和它的组成部分
+type Keys = 'option1' | 'option2';
+type Flags = { [K in Keys]: boolean };
+// 这个映射类型等同于：
+type Flags = {
+    option1: boolean;
+    option2: boolean;
+}
+```
+
+有条件类型
+```ts
+T extends U ? X : Y
+
+// 类型可以被立即解析的例子
+declare function f<T extends boolean>(x: T): T extends true ? string : number;
+
+// Type is 'string | number
+let x = f(Math.random() < 0.5)
+```
+
+预定义的有条件类型
+
+TypeScript 2.8在lib.d.ts里增加了一些预定义的有条件类型：
+
+- Exclude<T, U> -- 从T中剔除可以赋值给U的类型。
+- Extract<T, U> -- 提取T中可以赋值给U的类型。
+- NonNullable<T> -- 从T中剔除null和undefined。
+- ReturnType<T> -- 获取函数返回值类型。
+- InstanceType<T> -- 获取构造函数类型的实例类型。
