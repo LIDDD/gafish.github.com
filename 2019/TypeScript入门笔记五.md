@@ -248,3 +248,63 @@ import * as myLargeModule from "./MyLargeModule.ts";
 let x = new myLargeModule.Dog();
 
 ```
+
+### 命名空间（namespaces）
+
+任何使用module关键字来声明一个内部模块的地方都应该使用namespace关键字来替换
+
+引用标签
+```ts
+// alidation.ts
+namespace Validation {
+    export interface StringValidator {
+        isAcceptable(s: string): boolean;
+    }
+}
+// LettersOnlyValidator.ts
+/// <reference path="Validation.ts" />
+namespace Validation {
+    const lettersRegexp = /^[A-Za-z]+$/;
+    export class LettersOnlyValidator implements StringValidator {
+        isAcceptable(s: string) {
+            return lettersRegexp.test(s);
+        }
+    }
+}
+
+// Test.ts
+/// <reference path="Validation.ts" />
+/// <reference path="LettersOnlyValidator.ts" />
+/// <reference path="ZipCodeValidator.ts" />
+
+// Some samples to try
+let strings = ["Hello", "98052", "101"];
+
+// Validators to use
+let validators: { [s: string]: Validation.StringValidator; } = {};
+validators["ZIP code"] = new Validation.ZipCodeValidator();
+validators["Letters only"] = new Validation.LettersOnlyValidator();
+```
+
+外部命名空间
+```ts
+declare namespace D3 {
+    export interface Selectors {
+        select: {
+            (selector: string): Selection;
+            (element: EventTarget): Selection;
+        };
+    }
+
+    export interface Event {
+        x: number;
+        y: number;
+    }
+
+    export interface Base extends Selectors {
+        event: Event;
+    }
+}
+
+declare var d3: D3.Base;
+```
